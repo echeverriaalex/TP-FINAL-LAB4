@@ -1,0 +1,68 @@
+.navbar-admin{
+
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,34,121,1) 50%, rgba(0,212,255,1) 100%);
+
+}
+
+.home-linkedon{
+        /* la imagen a ser mostrada a pantalla completa */
+        background: url(../../img/wallhaven-kw5yy7.jpg) no-repeat center center;
+ 
+        /* nos aseguramos que el elemento ocupe toda la ventana del navegador */
+        min-height:100%;
+     
+        /* Propiedad a utilizar para la imagen */
+        background-size:cover;
+}
+
+.main-linkedon{
+    text-align: center;
+}
+
+.sign-in{
+    background: #fff;
+}
+
+.container{
+   
+  align-items: center;
+  margin-top: 20px;
+    
+}    
+
+.form-control{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,34,121,1) 50%, rgba(0,212,255,1) 100%);
+    align-items: center;
+    text-align: center;
+
+}
+
+.div-form::placeholder{
+    color:black;
+    align-items: center;
+
+}
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+.carousel-inner img {
+    width: 100%;
+   
+}
+
+.carousel-inner{
+    height: 500px;
+    width: 75%;
+    margin:0 auto;
+}
+
+.home{
+
+    background: #fff;
+}
