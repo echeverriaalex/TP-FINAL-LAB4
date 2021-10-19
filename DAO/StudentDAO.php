@@ -8,12 +8,14 @@
     {
         private $studentList = array();
 
+        /*
         public function Add(Student $student)
         {
             $this->RetrieveData();            
             array_push($this->studentList, $student);
-            $this->SaveData();
+            //$this->SaveData();
         }
+        */
 
         public function GetAll()
         {
@@ -42,13 +44,11 @@
 
             $this->studentList = array();
 
-            if(file_exists("https://utn-students-api.herokuapp.com/api/Student"))
-            {
-
                 $opt = array(
                     "http" => array(
                       "method" => "GET",
-                      "header" => Header_Name.": ".Header_Value."\r\n"
+                      //"header" => x-api-key.": ".Header_Value."\r\n"
+                      "header" => "x-api-key: 4f3bceed-50ba-4461-a910-518598664c08\r\n"
                     )
                 );
 
@@ -60,12 +60,12 @@
                 foreach($arrayToDecode as $valuesArray)
                 {
                     $student = new Student();
-                    $student->setName($valuesArray["firstName"]);
-                    $student->setSurname($valuesArray["lastName"]);
+                    $student->setFirstName($valuesArray["firstName"]);
+                    $student->setLastName($valuesArray["lastName"]);
                     $student->setDni($valuesArray["dni"]);
-                    $student->setPhone($valuesArray["phoneNumber"]);
+                    $student->setPhoneNumber($valuesArray["phoneNumber"]);
                     $student->setGender($valuesArray["gender"]);
-                    $student->setBirthDate($valuesArray["birthdate"]);
+                    $student->setBirthDate($valuesArray["birthDate"]);
                     $student->setEmail($valuesArray["email"]);
                     $student->setStudentId($valuesArray["studentId"]);
                     $student->setCareerId($valuesArray["careerId"]);
@@ -73,8 +73,7 @@
                     $student->setActive($valuesArray["active"]);
 
                     array_push($this->studentList, $student);
-                }
-            }
+                }            
         }
     }
 ?>
