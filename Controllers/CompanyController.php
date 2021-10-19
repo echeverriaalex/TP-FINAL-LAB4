@@ -22,6 +22,11 @@
             require_once(VIEWS_PATH."company-edit.php");
         }
 
+        public function ShowDeleteView(){
+
+            echo "a borrar companies";
+        }
+
         public function Add($name, $address, $cuit, $phone){
             
             $company = new Company($name, $address, $phone, $cuit);
