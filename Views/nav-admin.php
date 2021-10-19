@@ -9,19 +9,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+        <!--
+
+        COMENTO ESTO POR QUE LA NARRATIVA DEL TP DICE: 
+          El sistema deberá permitir que un usuario de tipo Administrador pueda: 
+          crear, modificar y eliminar Empresas.
+        TODAVIA NO BORRAR ESTO DE ESTUDIANTES POR SI LO LLEGAMOS A NECESITAR
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Students
           </a>
+
+          
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-            <li><a class="dropdown-item" href="<?php FRONT_ROOT ?>Company/ShowAddView">Add student</a></li>
-            <li><a class="dropdown-item" href="<?php FRONT_ROOT ?>Company/ShowEditView">Edit student</a></li>
-            <li><a class="dropdown-item" href="<?php FRONT_ROOT ?>Company/ShowDeleteView">Delete student</a></li>
+            <li><a class="dropdown-item" href="<?php // FRONT_ROOT ?>Company/ShowAddView">Add student</a></li>
+            <li><a class="dropdown-item" href="<?php //FRONT_ROOT ?>Company/ShowEditView">Edit student</a></li>
+            <li><a class="dropdown-item" href="<?php //FRONT_ROOT ?>Company/ShowDeleteView">Delete student</a></li>
         
           </ul>
+           
         </li>
+        -->
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
