@@ -1,5 +1,5 @@
 <?php
-    require_once('nav.php');
+    require_once('nav-admin.php');
 
     use Models\Company;
     $company = new Company();
