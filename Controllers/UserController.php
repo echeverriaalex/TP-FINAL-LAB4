@@ -20,9 +20,9 @@
         public function ShowSignUpView()
         {
             require_once(VIEWS_PATH."nav.php");
-            //require(VIEWS_PATH."signUp.php");
+            require(VIEWS_PATH."signUp.php");
             //echo "se registro correcto";
-            require_once(VIEWS_PATH."home.php");
+            //require_once(VIEWS_PATH."home.php");
         }
 
         
