@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Globant",
+        "address": "Av. Col\u00f3n 1102",
+        "phone": "0223 451-1777",
+        "cuit": "123456"
+    },
+    {
+        "name": "Accenture",
+        "address": "Av. Independencia 4250",
+        "phone": "542236263600",
+        "cuit": "789456"
+    },
+    {
+        "name": "Tesla",
+        "address": "Alem 456",
+        "phone": "55523497",
+        "cuit": "51238"
+    },
+    {
+        "name": "Facebook",
+        "address": "Almafuerte 9898",
+        "phone": "45501154",
+        "cuit": "785425"
+    },
+    {
+        "name": "Microsoft",
+        "address": "California 458",
+        "phone": "48873312",
+        "cuit": "985651"
+    },
+    {
+        "name": "Apple",
+        "address": "Arizona 9842",
+        "phone": "12100857889",
+        "cuit": "451238798"
+    },
+    {
+        "name": "GitHub",
+        "address": "Barcelona 9811",
+        "phone": "1222154748",
+        "cuit": "23156498"
+    },
+    {
+        "name": "Amazon",
+        "address": "Espa\u00f1a 1478",
+        "phone": "125456789888",
+        "cuit": "7894220"
+    },
+    {
+        "name": "Google",
+        "address": "Colombia 1489",
+        "phone": "13228574444",
+        "cuit": "45678"
+    },
+    {
+        "name": "PedidosYA",
+        "address": "Buenos Aires 456",
+        "phone": "456798999",
+        "cuit": "98125"
+    },
+    {
+        "name": "Oversoft",
+        "address": "Luro 879",
+        "phone": "5223487761",
+        "cuit": "45612330"
+    },
+    {
+        "name": "UALA",
+        "address": "Juan b justo 5468",
+        "phone": "122374779",
+        "cuit": "1223187"
+    },
+    {
+        "name": "MercadoLibre",
+        "address": "Falucho 420",
+        "phone": "23154688",
+        "cuit": "87451"
+    }
+]
