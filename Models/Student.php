@@ -26,7 +26,7 @@
             $this->setGender($gender);
             $this->setBirthDate($birthDate);
             $this->setStudentId($studentId);
-            $this->setCarrerId($carrerId);
+            $this->setCareerId($carrerId);
             $this->setFileNumber($fileNumber);
             $this->setActive($active);
         }
@@ -52,8 +52,8 @@
         public function getStudentId(){return $this->studentId;}
         public function setStudentId($studentId){$this->studentId = $studentId;}
 
-        public function getCarrerId(){return $this->carrerId;}
-        public function setCarrerId($carrerId){$this->carrerId = $carrerId;}
+        public function getCareerId(){return $this->carrerId;}
+        public function setCareerId($carrerId){$this->carrerId = $carrerId;}
 
         public function getFileNumber(){return $this->fileNumber;}
         public function setFileNumber($fileNumber){$this->fileNumber = $fileNumber;}
