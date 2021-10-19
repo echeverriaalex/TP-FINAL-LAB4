@@ -22,8 +22,8 @@
             require_once(VIEWS_PATH."company-edit.php");
         }
 
-        public function Add($name, $address, $phone, $cuit){
-
+        public function Add($name, $address, $cuit, $phone){
+            
             $company = new Company($name, $address, $phone, $cuit);
             $this->companyDAO->Add($company);
             $this->ShowAddView();
