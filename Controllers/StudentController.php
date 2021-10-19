@@ -22,13 +22,7 @@
         public function ShowMyProfile(){
 
 
-            require_once(VIEWS_PATH."profile.php");
-        }
-
-        public function EditProfile(){
-
-            require_once(VIEWS_PATH."edit-profile.php");
-
+            require_once(VIEWS_PATH."student-profile.php");
         }
 
         public function Add($name, $surname, $dni, $phone, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){

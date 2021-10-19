@@ -52,5 +52,12 @@
             require(VIEWS_PATH."signUp.php");
             require_once(VIEWS_PATH."footer.php");
         }                  
-    }
+    
+        /*
+        public function Index()
+        {
+            require_once(VIEWS_PATH."nav.php");
+            require(VIEWS_PATH."home.php");
+        }*/
+    }       
 ?>

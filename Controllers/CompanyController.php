@@ -14,15 +14,18 @@
         }
 
         public function ShowListView(){
-
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-list.php");
+        }
+
+        public function EditCompany(){
+            require_once(VIEWS_PATH."company-edit.php");
         }
 
         public function Add($name, $address, $phone, $cuit){
 
             $company = new Company($name, $address, $phone, $cuit);
-            $this->studentDAO->Add($company);
+            $this->companyDAO->Add($company);
             $this->ShowAddView();
         }
     }
