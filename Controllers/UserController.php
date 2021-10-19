@@ -1,5 +1,7 @@
 <?php
     namespace Controllers;
+
+    use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
 
@@ -15,13 +17,15 @@
             require(VIEWS_PATH."signIn.php".$msg);
         }
 
-        public function ShowSignUpView($msg = "")
+        public function ShowSignUpView()
         {
             require_once(VIEWS_PATH."nav.php");
-            require(VIEWS_PATH."signUp.php".$msg);
+            //require(VIEWS_PATH."signUp.php");
+            //echo "se registro correcto";
+            require_once(VIEWS_PATH."home.php");
         }
 
-        /*
+        
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."nav-admin.php");
@@ -33,7 +37,7 @@
             require_once(VIEWS_PATH."nav.php");
             require(VIEWS_PATH.'index.php');
         }
-        */
+        
 
         public function Add($email, $password){
 
@@ -41,13 +45,31 @@
                 $user = new User($email, $password, "user");
                 $this->userDAO->Add($user);
                 $this->ShowSignUpView();
+               
             } else {
-                $this->ShowSignUpView("?msg=incorrect");
+                $this->ShowSignUpView();
             }  
         }
 
         public function logIn($email, $password)
         {
+
+            
+            $studenDAO = new StudentDAO();
+            $students = $studenDAO->GetAll();
+
+            foreach($students as $student){
+
+                if($email == $student->getEmail()){
+
+                    require_once(VIEWS_PATH."student-profile.php");
+                    break;
+                }
+            }
+            
+
+
+            /*
             $user = $this->UserDAO->RetrieveUser($email, $password);
             if(isset($user))
             {
@@ -61,6 +83,7 @@
                 }
             } else {
             $this->ShowSignInView("?msg=logerror");}
+            */
         }
     }
 ?>
