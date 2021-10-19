@@ -17,24 +17,20 @@
             <div class="container">
     
                 <div class="col-lg-4">
-                    <h2> <?php echo $student->getName()." ".$student->getSurname(); ?> </h2>
+                    <h2> <?php echo $student->getFirstName()." ".$student->getLastName(); ?> </h2>
                     
                 </div>
 
-                <div>
-                    <a href="<?php echo FRONT_ROOT ?>Student/EditProfile">Edit profile</a>
+                <div class="col-lg-4">
+                    <a> Phone  <?php echo $student->getPhoneNumber(); ?> </a>
                 </div>
 
                 <div class="col-lg-4">
-                    <a> Phone  <?php echo $student->getPhone(); ?> </a>
+                    <a> DNI <?php echo $student->getDni();?></a>
                 </div>
 
                 <div class="col-lg-4">
-                    <a> DNI <?php echo $student->getDNI();?></a>
-                </div>
-
-                <div class="col-lg-4">
-                    <a> ID <?php echo $student->getId();?></a>
+                    <a> ID <?php echo $student->getStudentId();?></a>
                 </div>
             </div>
         </section>    

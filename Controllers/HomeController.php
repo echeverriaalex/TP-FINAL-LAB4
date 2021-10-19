@@ -3,9 +3,10 @@
 
     class HomeController
     {
-        public function Index($message = "")
+        public function Index()
         {
-            require_once(VIEWS_PATH."");
-        }        
-    }
+            require_once(VIEWS_PATH."nav.php");
+            require(VIEWS_PATH."home.php");
+        }
+    }       
 ?>
