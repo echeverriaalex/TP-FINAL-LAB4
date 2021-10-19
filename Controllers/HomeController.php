@@ -30,14 +30,14 @@
         {
         
             //require_once(VIEWS_PATH."header.php");
-          // require_once(VIEWS_PATH."nav.php");
+            //require_once(VIEWS_PATH."nav.php");
             //require(VIEWS_PATH."home.php");
            // require_once(VIEWS_PATH."signUp.php");
             
             
             
-               // require_once(VIEWS_PATH."nav-admin.php");
-                //require(VIEWS_PATH.'index.php');
+            //require_once(VIEWS_PATH."nav-admin.php");
+            //require(VIEWS_PATH.'index.php');
             
              //ANDA JOYA NO TOCAR
             //require_once(VIEWS_PATH."signIn.php");
@@ -47,7 +47,7 @@
             //require_once(VIEWS_PATH."footer.php");
 
 
-            //require_once(VIEWS_PATH."company-add.php");
+            require_once(VIEWS_PATH."company-list.php");
 
             
             /* // COMPANY ANDA TODO
@@ -68,7 +68,7 @@
         //============================================================
         //=========================== LOGIN ==========================
         //============================================================
-        public function viewSignIn()
+        public function ViewSignIn()
         {
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."nav.php");
@@ -76,19 +76,12 @@
             require_once(VIEWS_PATH."footer.php");
         }      
         
-        public function viewSignUp()
+        public function ViewSignUp()
         {
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."nav.php");
             require(VIEWS_PATH."signUp.php");
             require_once(VIEWS_PATH."footer.php");
-        }                  
-    
-        /*
-        public function Index()
-        {
-            require_once(VIEWS_PATH."nav.php");
-            require(VIEWS_PATH."home.php");
-        }*/
+        }
     }       
 ?>
