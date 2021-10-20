@@ -15,6 +15,20 @@
             $this->SaveData();
         }
 
+        public function Delete($companyName){
+
+            $this->RetrieveData();
+            
+            foreach($this->companyList as $key => $company){
+
+                if($company->getName() == $companyName){
+
+                    unset($this->companyList[$key]);
+                }
+            }
+            $this->SaveData();
+        }
+
         public function GetAll(){
             
             $this->RetrieveData();
