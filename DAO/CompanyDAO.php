@@ -15,6 +15,22 @@
             $this->SaveData();
         }
 
+        public function Edit($currentName, Company $companyEdit){
+
+            $this->RetrieveData();
+
+            foreach($this->companyList as $key => $company){
+
+                if($company->getName() == $currentName){
+                    
+                    $this->companyList[$key] = $companyEdit;
+
+                }
+                
+            }
+            $this->SaveData();
+        }
+
         public function Delete($companyName){
 
             $this->RetrieveData();

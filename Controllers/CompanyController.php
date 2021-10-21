@@ -18,7 +18,8 @@
             require_once(VIEWS_PATH."company-list.php");
         }
 
-        public function EditCompany(){
+        public function ShowEditView($name, $address, $phone, $cuit){
+
             require_once(VIEWS_PATH."company-edit.php");
         }
 
@@ -33,6 +34,13 @@
             $company = new Company($name, $address, $phone, $cuit);
             $this->companyDAO->Add($company);
             $this->ShowAddView();
+        }
+
+        public function Edit($currentName, $name, $address, $phone, $cuit){
+            
+            $companyEdit = new Company($name, $address, $phone, $cuit);
+            $this->companyDAO->Edit($currentName, $companyEdit);
+            $this->ShowDeleteView();
         }
 
         public function Delete($companyName){
