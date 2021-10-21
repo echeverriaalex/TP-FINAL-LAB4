@@ -23,12 +23,16 @@
                                     <td><?php echo $company->getAddress(); ?></td>
                                     <td><?php echo $company->getPhone(); ?></td>
                                     <td> 
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>/Company/Delete">
+                                        <form method="POST" action="<?php echo FRONT_ROOT?>Company/Delete">
                                             <input type="hidden" name="companyName" value="<?php echo $company->getName(); ?>">
                                             <button> Delete </button> 
                                         </form>
 
-                                        <form>
+                                        <form method="POST" action="<?php echo FRONT_ROOT?>Company/ShowEditView">
+                                            <input type="hidden" name="name" value="<?php echo $company->getName(); ?>">                                            
+                                            <input type="hidden" name="address" value="<?php echo $company->getAddress(); ?>">
+                                            <input type="hidden" name="phone" value="<?php echo $company->getPhone(); ?>">
+                                            <input type="hidden" name="cuit" value="<?php echo $company->getCuit(); ?>">                                            
                                             <button> Edit </button>
                                         </form>
                                     </td>
