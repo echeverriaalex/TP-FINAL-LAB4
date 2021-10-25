@@ -27,5 +27,7 @@
 
         public function setCuit($cuit){$this->cuit = $cuit;}
         public function getCuit(){return $this->cuit;}
+
+    
     }
 ?>

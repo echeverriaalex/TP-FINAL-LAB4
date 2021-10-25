@@ -18,6 +18,7 @@
             require_once(VIEWS_PATH."company-list.php");
         }
 
+
         public function ShowEditView($name, $address, $phone, $cuit){
 
             require_once(VIEWS_PATH."company-edit.php");
@@ -28,6 +29,8 @@
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-delete.php");
         }
+
+    
 
         public function Add($name, $address, $cuit, $phone){
             
@@ -49,5 +52,16 @@
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-delete.php");
         }
+
+
+        // FILTRADO DE COMPAÑIAS
+        public function Filter ($companyName)
+        {
+            $company = $this->companyDAO->Filter($companyName);
+            require_once(VIEWS_PATH. "company-info.php");
+
+            
+        }
+    
     }
 ?>
