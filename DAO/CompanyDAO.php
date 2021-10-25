@@ -15,6 +15,26 @@
             $this->SaveData();
         }
 
+
+        public function Filter ($companyName)
+        {
+            $this->RetrieveData();
+
+            $companyResult = new Company;
+
+            foreach($this->companyList as $company)
+            {
+                if($company->getName() == $companyName)
+                {
+                    $companyResult = $company;
+                    break;
+                }
+            }
+
+            return $companyResult;
+        
+        }
+
         public function Edit($currentName, Company $companyEdit){
 
             $this->RetrieveData();

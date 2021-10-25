@@ -3,6 +3,7 @@
 
     use DAO\CompanyDAO;
     use DAO\StudentDAO;
+    
 
     class HomeController
     {
@@ -47,9 +48,18 @@
             //require_once(VIEWS_PATH."footer.php");
 
 
-            require_once(VIEWS_PATH."company-list.php");
+            //require_once(VIEWS_PATH."company-list.php");
+
 
             
+            
+
+            $controller =  new CompanyController;
+            //$controller->ShowEditView($name, $address, $phone, $cuit);
+            //$controller->ShowListView();
+            $controller->ShowDeleteView();
+            //$controller->ShowFilterView();
+
             /* // COMPANY ANDA TODO
             $companyDAO = new CompanyDAO;
             $companyList = $companyDAO->GetAll();
