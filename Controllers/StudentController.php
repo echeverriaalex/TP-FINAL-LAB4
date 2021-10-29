@@ -14,6 +14,13 @@
             require_once(VIEWS_PATH."student-add.php");
         }
 
+        public function ShowDeleteView(){
+
+            $studentsList = $this->studentDAO->GetAll();
+            //var_dump($studentsList);
+            require_once(VIEWS_PATH."student-delete.php");
+        }
+
         public function ShowListView(){
             require_once(VIEWS_PATH."nav-admin.php");
             $studentList = $this->studentDAO->GetAll();
