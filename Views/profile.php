@@ -1,10 +1,13 @@
+<?php
+    require_once(VIEWS_PATH."nav.php");
+?>
 <div>    
     <main class="py-5">
         <section id="listado" class="mb-5">
             <div class="container">
     
                 <div class="col-lg-4">
-                    <h2> <?php echo $student->getName()." ".$student->getSurname(); ?> </h2>
+                    <h2 class="text-light"> <?php echo $student->getName()." ".$student->getSurname(); ?> </h2>
                     
                 </div>
 
