@@ -13,9 +13,8 @@
                                    <input type="text" name="companyName" class="form-control text-light" autofocus>
                               </div>
                          </div> 
-                         
                     </div>
-                    <button type="submit" class="btn btn-dark ml-auto d-block">Save</button>
+                    <button type="submit" class="btn btn-dark ml-auto d-block">Search</button>
                </form>
           </div>
      </section>
