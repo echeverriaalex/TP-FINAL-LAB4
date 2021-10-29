@@ -10,21 +10,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img class="img-fluid" src="Views/img/equipo.jpg" class="d-block w-100" alt="...">
+      <img class="img-fluid" src="<?php echo IMG_PATH?>equipo.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img class="img-fluid" src="Views/img/equipo2.jpg" class="d-block w-100" alt="...">
+      <img class="img-fluid" src="<?php echo IMG_PATH?>equipo2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="img-fluid" src="Views/img/equipo3.jpg" class="d-block w-100" alt="...">
+      <img class="img-fluid" src="<?php echo IMG_PATH?>equipo3.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>

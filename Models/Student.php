@@ -12,11 +12,11 @@
         private $gender;
         private $birthDate;     
         private $studentId;
-        private $carrerId;
+        private $careerId;
         private $fileNumber;
         private $active;
 
-        public function __construct($firstName='', $lastName='', $dni='', $phoneNumber='', $gender='', $birthDate='', $email='', $studentId='', $carrerId='', $fileNumber='', $active='', $password='', $role=''){
+        public function __construct($firstName='', $lastName='', $dni='', $phoneNumber='', $gender='', $birthDate='', $email='', $studentId='', $careerId='', $fileNumber='', $active='', $password='', $role=''){
 
             parent::__construct($email, $password, $role);
             $this->setFirstName($firstName);
@@ -26,7 +26,7 @@
             $this->setGender($gender);
             $this->setBirthDate($birthDate);
             $this->setStudentId($studentId);
-            $this->setCarrerId($carrerId);
+            $this->setCareerId($careerId);
             $this->setFileNumber($fileNumber);
             $this->setActive($active);
         }
@@ -52,8 +52,8 @@
         public function getStudentId(){return $this->studentId;}
         public function setStudentId($studentId){$this->studentId = $studentId;}
 
-        public function getCarrerId(){return $this->carrerId;}
-        public function setCarrerId($carrerId){$this->carrerId = $carrerId;}
+        public function getCareerId(){return $this->careerId;}
+        public function setCareerId($careerId){$this->careerId = $careerId;}
 
         public function getFileNumber(){return $this->fileNumber;}
         public function setFileNumber($fileNumber){$this->fileNumber = $fileNumber;}

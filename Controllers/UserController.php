@@ -9,19 +9,19 @@
 
         public function __construct(){$this->userDAO = new UserDAO();}
 
-        public function ShowSignInView($msg = "")
+        public function ShowSignInView()
         {
             require_once(VIEWS_PATH."nav.php");
-            require(VIEWS_PATH."signIn.php".$msg);
+            require(VIEWS_PATH."signIn.php");
         }
 
-        public function ShowSignUpView($msg = "")
+        public function ShowSignUpView()
         {
             require_once(VIEWS_PATH."nav.php");
-            require(VIEWS_PATH."signUp.php".$msg);
+            require(VIEWS_PATH."signUp.php");
         }
 
-        /*
+        
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."nav-admin.php");
@@ -33,7 +33,7 @@
             require_once(VIEWS_PATH."nav.php");
             require(VIEWS_PATH.'index.php');
         }
-        */
+        
 
         public function Add($email, $password){
 
@@ -42,13 +42,13 @@
                 $this->userDAO->Add($user);
                 $this->ShowSignUpView();
             } else {
-                $this->ShowSignUpView("?msg=incorrect");
+                $this->ShowSignUpView();
             }  
         }
 
-        public function logIn($email, $password)
+        public function LogIn($email, $password)
         {
-            $user = $this->UserDAO->RetrieveUser($email, $password);
+            $user = $this->userDAO->RetrieveUser($email, $password);
             if(isset($user))
             {
                 $_SESSION['email'] = $user->getEmail();
@@ -60,7 +60,12 @@
                     $this->ShowUserHome();
                 }
             } else {
-            $this->ShowSignInView("?msg=logerror");}
+            $this->ShowSignInView();}
+        }
+
+        public function LogOut()
+        {
+            session_destroy();
         }
     }
 ?>

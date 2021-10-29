@@ -13,15 +13,15 @@
           <title>TP LAB4</title>
           
           <!-- Bootstrap core CSS -->
-          <link href="Views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+          <link href="<?php echo CSS_PATH ?>bootstrap.min.css" rel="stylesheet">
 
           <!-- Additional CSS Files -->
 
-          <link rel="stylesheet" href="Views/css/styles.css">
-          <link rel="stylesheet" href="Views/css/fontawesome.css">
-          <link rel="stylesheet" href="Views/css/templatemo-onix-digital.css">
-          <link rel="stylesheet" href="Views/css/animated.css">
-          <link rel="stylesheet" href="Views/css/owl.css">
+          <link rel="stylesheet" href="<?php echo CSS_PATH ?>styles.css">
+          <link rel="stylesheet" href="<?php echo CSS_PATH ?>fontawesome.css">
+          <link rel="stylesheet" href="<?php echo CSS_PATH ?>templatemo-onix-digital.css">
+          <link rel="stylesheet" href="<?php echo CSS_PATH ?>animated.css">
+          <link rel="stylesheet" href="<?php echo CSS_PATH ?>owl.css">
 
         
      </head>

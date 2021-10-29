@@ -1,6 +1,4 @@
 <?php
-    require_once('nav.php');
-
     use Models\Company;
     $company = new Company();
 ?>

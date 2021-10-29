@@ -7,6 +7,7 @@
     define("VIEWS_PATH", "Views/");
     define("CSS_PATH", FRONT_ROOT.VIEWS_PATH . "css/");
     define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "js/");
+    define("IMG_PATH", FRONT_ROOT.VIEWS_PATH . "img/");
     define("Header_Name","x-api-key");
     define("Header_Value","4f3bceed-50ba-4461-a910-518598664c08");
     define("Request_URL_Career","https://utn-students-api.herokuapp.com/api/Career");

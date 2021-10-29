@@ -1,5 +1,4 @@
 <?php
-    require_once "nav.php";
     use DAO\StudentDAO;
 
     $StudentDAO = new StudentDAO();
@@ -22,7 +21,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <a> Phone  <?php echo $student->getPhoneNumber(); ?> </a>
+                    <a> Phone Number  <?php echo $student->getPhoneNumber(); ?> </a>
                 </div>
 
                 <div class="col-lg-4">
