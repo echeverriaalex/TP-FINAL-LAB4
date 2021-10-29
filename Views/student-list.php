@@ -19,7 +19,7 @@
                               foreach($studentList as $student){
                          ?>
                                    <tr>
-                                        <td><?php echo $student->getId(); ?></td>
+                                        <td><?php echo $student->getFileNumber(); ?></td>
                                         <td><?php echo $student->getFirstName(); ?></td>
                                         <td><?php echo $student->getLastName(); ?></td>
                                         <td><?php echo $student->getDni(); ?></td>
