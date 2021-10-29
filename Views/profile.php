@@ -14,7 +14,7 @@
     ?>      
     <main class="py-5">
         <section id="listado" class="mb-5">
-            <div class="container">
+            <div class="list-group">
     
                 <div class="col-lg-4">
                     <h2> <?php echo $student->getName()." ".$student->getSurname(); ?> </h2>
@@ -26,15 +26,15 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <a> Phone  <?php echo $student->getPhone(); ?> </a>
+                    <a> Phone:  <?php echo $student->getPhone(); ?> </a>
                 </div>
 
                 <div class="col-lg-4">
-                    <a> DNI <?php echo $student->getDNI();?></a>
+                    <a> DNI: <?php echo $student->getDNI();?></a>
                 </div>
 
                 <div class="col-lg-4">
-                    <a> ID <?php echo $student->getId();?></a>
+                    <a> ID: <?php echo $student->getId();?></a>
                 </div>
             </div>
         </section>    
