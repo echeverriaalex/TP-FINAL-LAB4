@@ -7,31 +7,25 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Name</label>
-                                   <input type="text" name="name" value="" class="form-control" autofocus>
+                                   <input type="text" name="name" value="" class="form-control text-light" autofocus>
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Address</label>
-                                   <input type="text" name="address" value="" class="form-control">
+                                   <input type="text" name="address" value="" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">CUIT</label>
-                                   <input type="text" name="cuit" value="" class="form-control">
+                                   <input type="text" name="cuit" value="" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Phone</label>
-                                   <input type="text" name="phone" value="" class="form-control">
-                              </div>
-                         </div>
-                         <div class="col-lg-4">
-                              <div class="form-group">
-                                   <label for="">ID</label>
-                                   <input type="text" name="id" value="" class="form-control">
+                                   <input type="text" name="phone" value="" class="form-control text-light">
                               </div>
                          </div>
                     </div>

@@ -1,7 +1,5 @@
-<?php namespace Views;?>
-
 <div class="main-banner" id="top">
-    <div class="container col-12 met-5 ">
+  <div class="container col-12 met-5 ">
     <div class="abs-center">
       <div class="row align-items-center mt-2">
         <div class="col-lg-12">
@@ -39,9 +37,8 @@
               </div>
             </div>
           </div>
+        </div>
       </div>
-    </div>
     <div>
   </div>
 </div>
-

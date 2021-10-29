@@ -13,6 +13,7 @@
           <title>TP LAB4</title>
           
           <!-- Bootstrap core CSS -->
+       
           <link href="<?php echo CSS_PATH ?>bootstrap.min.css" rel="stylesheet">
 
           <!-- Additional CSS Files -->
@@ -22,7 +23,6 @@
           <link rel="stylesheet" href="<?php echo CSS_PATH ?>templatemo-onix-digital.css">
           <link rel="stylesheet" href="<?php echo CSS_PATH ?>animated.css">
           <link rel="stylesheet" href="<?php echo CSS_PATH ?>owl.css">
-
         
      </head>
      <body>

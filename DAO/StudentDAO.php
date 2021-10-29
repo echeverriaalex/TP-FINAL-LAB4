@@ -8,12 +8,14 @@
     {
         private $studentList = array();
 
+        /*
         public function Add(Student $student)
         {
             $this->RetrieveData();            
             array_push($this->studentList, $student);
-            $this->SaveData();
+            //$this->SaveData();
         }
+        */
 
         public function GetAll()
         {
@@ -53,7 +55,7 @@
 
             $jsonContent = file_get_contents(Request_URL_Students, false , $ctx);
             $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-
+          
             foreach($arrayToDecode as $valuesArray)
             {
                 $student = new Student();

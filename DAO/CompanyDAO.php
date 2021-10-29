@@ -15,6 +15,56 @@
             $this->SaveData();
         }
 
+
+        public function Filter ($companyName)
+        {
+            $this->RetrieveData();
+
+            $companyResult = new Company;
+
+            foreach($this->companyList as $company)
+            {
+                if($company->getName() == $companyName)
+                {
+                    $companyResult = $company;
+                    break;
+                }
+            }
+
+            return $companyResult;
+        
+        }
+
+        public function Edit($currentName, Company $companyEdit){
+
+            $this->RetrieveData();
+
+            foreach($this->companyList as $key => $company){
+
+                if($company->getName() == $currentName){
+                    
+                    $this->companyList[$key] = $companyEdit;
+
+                }
+                
+            }
+            $this->SaveData();
+        }
+
+        public function Delete($companyName){
+
+            $this->RetrieveData();
+            
+            foreach($this->companyList as $key => $company){
+
+                if($company->getName() == $companyName){
+
+                    unset($this->companyList[$key]);
+                }
+            }
+            $this->SaveData();
+        }
+
         public function GetAll(){
             
             $this->RetrieveData();

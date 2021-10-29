@@ -1,5 +1,7 @@
 <?php
     namespace Controllers;
+
+    use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
 
@@ -41,6 +43,7 @@
                 $user = new User($email, $password, "user");
                 $this->userDAO->Add($user);
                 $this->ShowSignUpView();
+               
             } else {
                 $this->ShowSignUpView();
             }  
@@ -62,7 +65,7 @@
             } else {
             $this->ShowSignInView();}
         }
-
+      
         public function LogOut()
         {
             session_destroy();

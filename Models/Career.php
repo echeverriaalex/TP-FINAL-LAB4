@@ -22,5 +22,6 @@
         
         public function getDescription(){return $this-> description;}
         public function getActive(){return $this-> active;}
+        
     }
 ?>
