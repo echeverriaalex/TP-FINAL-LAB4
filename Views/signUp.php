@@ -8,7 +8,7 @@
               <div class="item header-text align-items-center  ">
                 <h6>Linkedon</h6>
                 <h2>>Sign Up</h2>
-                <form action="<?php FRONT_ROOT ?>User/Add" method="post" class="row align-items-center mt-5">
+                <form action="<?php echo FRONT_ROOT ?>User/Add" method="post" class="row align-items-center mt-5">
                   <div class="col-md-6 div-form">
                     <label for="inputEmail4" class="form-label">Email</label>
                     <input type="email" name="email" class="form-control text-light" id="inputEmail4">

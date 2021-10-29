@@ -11,18 +11,16 @@
 
         public function __construct(){$this->userDAO = new UserDAO();}
 
-        public function ShowSignInView($msg = "")
+        public function ShowSignInView()
         {
             require_once(VIEWS_PATH."nav.php");
-            require(VIEWS_PATH."signIn.php".$msg);
+            require(VIEWS_PATH."signIn.php");
         }
 
         public function ShowSignUpView()
         {
             require_once(VIEWS_PATH."nav.php");
             require(VIEWS_PATH."signUp.php");
-            //echo "se registro correcto";
-            //require_once(VIEWS_PATH."home.php");
         }
 
         
@@ -51,26 +49,9 @@
             }  
         }
 
-        public function logIn($email, $password)
+        public function LogIn($email, $password)
         {
-
-            
-            $studenDAO = new StudentDAO();
-            $students = $studenDAO->GetAll();
-
-            foreach($students as $student){
-
-                if($email == $student->getEmail()){
-
-                    require_once(VIEWS_PATH."student-profile.php");
-                    break;
-                }
-            }
-            
-
-
-            /*
-            $user = $this->UserDAO->RetrieveUser($email, $password);
+            $user = $this->userDAO->RetrieveUser($email, $password);
             if(isset($user))
             {
                 $_SESSION['email'] = $user->getEmail();
@@ -82,8 +63,12 @@
                     $this->ShowUserHome();
                 }
             } else {
-            $this->ShowSignInView("?msg=logerror");}
-            */
+            $this->ShowSignInView();}
+        }
+      
+        public function LogOut()
+        {
+            session_destroy();
         }
     }
 ?>
