@@ -14,7 +14,7 @@
         {
             $this->RetrieveData();
             $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));           
-            array_push($this->UserList, $user);
+            array_push($this->userList, $user);
             $this->SaveData();
         }
 
@@ -38,7 +38,7 @@
         public function RetrieveUser($email, $password)
         {
             $this->RetrieveData();
-            $userResult = null;
+            $userResult = new User();
 
             foreach($this->userList as $user){
 

@@ -1,3 +1,10 @@
+<?php
+    use DAO\StudentDAO;
+
+    $StudentDAO = new StudentDAO();
+    $students = $StudentDAO->GetAll();
+
+?>
 <div>
     <main class="py-5 profile">
         <section id="listado" class="mb-5">
