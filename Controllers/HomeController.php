@@ -57,7 +57,7 @@
             $controller =  new CompanyController;
             //$controller->ShowEditView($name, $address, $phone, $cuit);
             //$controller->ShowListView();
-            $controller->ShowDeleteView();
+            $controller->ShowManageView();
             //$controller->ShowFilterView();
 
             /* // COMPANY ANDA TODO
