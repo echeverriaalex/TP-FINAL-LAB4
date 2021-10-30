@@ -13,11 +13,10 @@
             require_once(VIEWS_PATH."student-add.php");
         }
 
-        public function ShowDeleteView(){
+        public function ShowManageView(){
 
             $studentsList = $this->studentDAO->GetAll();
-            //var_dump($studentsList);
-            require_once(VIEWS_PATH."student-delete.php");
+            require_once(VIEWS_PATH."student-manage.php");
         }
 
         public function ShowListView(){
@@ -27,7 +26,6 @@
         }
 
         public function ShowMyProfile(){
-
 
             require_once(VIEWS_PATH."student-profile.php");
         }

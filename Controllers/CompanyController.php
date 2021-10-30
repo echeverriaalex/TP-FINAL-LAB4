@@ -18,19 +18,16 @@
             require_once(VIEWS_PATH."company-list.php");
         }
 
-
         public function ShowEditView($name, $address, $phone, $cuit){
 
             require_once(VIEWS_PATH."company-edit.php");
         }
 
-        public function ShowDeleteView(){
+        public function ShowManageView(){
 
             $companyList = $this->companyDAO->GetAll();
-            require_once(VIEWS_PATH."company-delete.php");
+            require_once(VIEWS_PATH."company-manage.php");
         }
-
-    
 
         public function Add($name, $address, $cuit, $phone){
             
@@ -43,7 +40,7 @@
             
             $companyEdit = new Company($name, $address, $phone, $cuit);
             $this->companyDAO->Edit($currentName, $companyEdit);
-            $this->ShowDeleteView();
+            $this->ShowManageView();
         }
 
         public function Delete($companyName){
@@ -53,15 +50,10 @@
             require_once(VIEWS_PATH."company-delete.php");
         }
 
+        public function Filter ($companyName){
 
-        // FILTRADO DE COMPAÑIAS
-        public function Filter ($companyName)
-        {
             $company = $this->companyDAO->Filter($companyName);
             require_once(VIEWS_PATH. "company-info.php");
-
-            
         }
-    
     }
 ?>

@@ -6,9 +6,9 @@
     </button> -->    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Add student</a></li>
-      <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Student/ShowDeleteView">Manage students</a></li>
+      <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Student/ShowManageView">Manage students</a></li>
       <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Company/ShowAddView">Add company</a>
-      <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Company/ShowDeleteView">Manage companies</a>
+      <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Company/ShowManageView">Manage companies</a>
     </div>
   </div>
 </nav>
