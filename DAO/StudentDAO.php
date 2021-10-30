@@ -8,12 +8,14 @@
     {
         private $studentList = array();
 
+        /*
         public function Add(Student $student)
         {
             $this->RetrieveData();            
             array_push($this->studentList, $student);
             //$this->SaveData();
         }
+        */
 
         public function GetAll()
         {
