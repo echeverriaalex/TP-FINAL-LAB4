@@ -49,7 +49,7 @@
 
             $this-> companyDAO->Delete($companyName);
             $companyList = $this->companyDAO->GetAll();
-            require_once(VIEWS_PATH."company-delete.php");
+            require_once(VIEWS_PATH."company-manage.php");
         }
 
         public function Filter ($companyName){
