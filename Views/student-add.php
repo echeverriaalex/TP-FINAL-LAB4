@@ -9,13 +9,13 @@
                     <div class="row">  
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Name</label>
+                                   <label for="">First Name</label>
                                    <input type="text" name="name" value="" class="form-control" autofocus>
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Surname</label>
+                                   <label for="">Last Name</label>
                                    <input type="text" name="surname" value="" class="form-control">
                               </div>
                          </div>
@@ -27,7 +27,7 @@
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Phone</label>
+                                   <label for="">Phone Number</label>
                                    <input type="text" name="phone" value="" class="form-control">
                               </div>
                          </div>

@@ -2,12 +2,12 @@
       
 
         <!-- Scripts -->
-        <script src="Views/vendor/jquery/jquery.min.js"></script>
-        <script src="Views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="Views/assets/js/owl-carousel.js"></script>
-        <script src="Views/assets/js/animation.js"></script>
-        <script src="Views/assets/js/imagesloaded.js"></script>
-        <script src="Views/assets/js/custom.js"></script>
+        <script src="<?php echo JS_PATH?>jquery/jquery.min.js"></script>
+        <script src="<?php echo JS_PATH?>bootstrap.bundle.min.js"></script>
+        <script src="<?php echo JS_PATH?>owl-carousel.js"></script>
+        <script src="<?php echo JS_PATH?>Vanimation.js"></script>
+        <script src="<?php echo JS_PATH?>imagesloaded.js"></script>
+        <script src="<?php echo JS_PATH?>custom.js"></script>
 
         <script>
 

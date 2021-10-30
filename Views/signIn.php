@@ -1,5 +1,3 @@
-<?php namespace Views;?>
-
 <div class="sign-in">
   <div class="container col-4 ">
     <div class="row align-items-center mt-5">
@@ -41,6 +39,3 @@
     <div>
   </div>
 <div>
-
-
-

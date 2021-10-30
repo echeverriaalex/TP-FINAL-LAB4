@@ -1,0 +1,12 @@
+[
+  {
+    "email": "pedrovictorel@gmail.com",
+    "password": "$2y$10$wlAa6Im4awHhRfDDoJZ14.ZBI8mm0jiUVrSYdicI.4EO7KZLGZOtG",
+    "role": "admin"
+  },
+  {
+    "email": "wlorant1@sbwire.com",
+    "password": "$2y$10$wlAa6Im4awHhRfDDoJZ14.ZBI8mm0jiUVrSYdicI.4EO7KZLGZOtG",
+    "role": "user"
+  }
+]

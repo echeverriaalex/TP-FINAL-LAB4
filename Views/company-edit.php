@@ -1,5 +1,6 @@
 <?php
-    require_once('nav-admin.php');
+    use Models\Company;
+    $company = new Company();
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
