@@ -14,6 +14,12 @@
             require_once(VIEWS_PATH."student-add.php");
         }
 
+        public function ShowManageView(){
+
+            $studentsList = $this->studentDAO->GetAll();
+            require_once(VIEWS_PATH."student-manage.php");
+        }
+
         public function ShowListView(){
             require_once(VIEWS_PATH."nav-admin.php");
             $studentList = $this->studentDAO->GetAll();
@@ -21,6 +27,7 @@
         }
 
         public function ShowMyProfile(){
+
             require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."student-profile.php");
         }

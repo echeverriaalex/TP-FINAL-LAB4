@@ -5,7 +5,7 @@
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4"> Delete Companies </h2>
+               <h2 class="mb-4"> Manage Companies </h2>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Ciut</th>
