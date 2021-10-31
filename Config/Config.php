@@ -13,4 +13,14 @@
     define("Request_URL_Career","https://utn-students-api.herokuapp.com/api/Career");
     define("Request_URL_JobPosition","https://utn-students-api.herokuapp.com/api/JobPosition");
     define("Request_URL_Students","https://utn-students-api.herokuapp.com/api/Student");
+
+    ///PARTE DE PDO
+
+    define("DB_HOST", "localhost");
+    define("DB_NAME", "University");
+    define("DB_USER", "root");
+    define("DB_PASS", "79587958");
+
+
+
 ?>
