@@ -1,3 +1,13 @@
+<?php 
+     if(isset($_SESSION["email"])) {
+          if($_SESSION["role"] != "admin") {
+               header("location: " . FRONT_ROOT . "User/ShowUserHome");
+          }
+     } else {
+          header("location: " . FRONT_ROOT . "Home/Index");
+     }
+?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">

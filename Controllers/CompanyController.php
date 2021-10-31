@@ -15,7 +15,7 @@
         }
 
         public function ShowListView(){
-            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."select-nav.php");
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-list.php");
         }
@@ -28,10 +28,15 @@
         public function ShowDeleteView(){
 
             $companyList = $this->companyDAO->GetAll();
+            require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."company-delete.php");
         }
 
-    
+        public function ShowFilterView(){
+
+            require_once(VIEWS_PATH."select-nav.php");
+            require_once(VIEWS_PATH."company-filter.php");
+        }
 
         public function Add($name, $address, $cuit, $phone){
             
@@ -54,14 +59,14 @@
             require_once(VIEWS_PATH."company-delete.php");
         }
 
-
-        // FILTRADO DE COMPAÑIAS
         public function Filter ($companyName)
         {
             $company = $this->companyDAO->Filter($companyName);
-            require_once(VIEWS_PATH. "company-info.php");
-
-            
+            if($company->getName() != "") {
+                require_once(VIEWS_PATH. "company-info.php");
+            } else {
+                $this->ShowFilterView();
+            }            
         }
     
     }
