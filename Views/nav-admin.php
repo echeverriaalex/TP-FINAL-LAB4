@@ -31,11 +31,11 @@
           </ul>
         </li>
 
-        <?php if(isset($_SESSION['userLog'])) { ?>
-              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>Student/logout">LogOut</a></li>
+        <?php if(isset($_SESSION['email'])) { ?>
+              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>User/LogOut">LogOut</a></li>
 
 
-        <?php	} ?>
+            <?php	} ?>
       </ul>
     </div>
   </div>
