@@ -13,7 +13,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Name</label>
-                                   <input type="text" name="companyName" class="form-control text-light" autofocus>
+                                   <input type="text" name="companyName" class="form-control text-light" autofocus required>
                               </div>
                          </div> 
                     </div>
