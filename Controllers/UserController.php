@@ -29,7 +29,6 @@
             require(VIEWS_PATH."signUp.php");
         }
 
-        
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."nav-admin.php");            
@@ -43,8 +42,7 @@
             //require_once(VIEWS_PATH."company-filter.php");
             require(VIEWS_PATH.'student-profile.php');
         }
-        
-
+     
         public function Add($email, $password){
 
             if($this->userDAO->IsStudent($email)){

@@ -28,7 +28,6 @@
         }
 
         public function ShowEditView($name, $address, $phone, $cuit){
-
             require_once(VIEWS_PATH."company-edit.php");
         }
 
@@ -37,6 +36,12 @@
             $companyList = $this->companyDAO->GetAll();      
             require_once(VIEWS_PATH.'nav-admin.php');
             require_once(VIEWS_PATH."company-manage.php");
+        }
+
+        public function ShowFilterView(){
+
+            require_once(VIEWS_PATH."select-nav.php");
+            require_once(VIEWS_PATH."company-filter.php");
         }
 
         public function Add($name, $address, $cuit, $phone){
@@ -66,9 +71,15 @@
 
         public function Filter ($companyName){
 
-            require_once(VIEWS_PATH."select-nav.php");
+            require_once(VIEWS_PATH."select-nav.php");       
             $company = $this->companyDAO->Filter($companyName);
             require_once(VIEWS_PATH. "company-info.php");
+
+            if($company->getName() != "") {
+                require_once(VIEWS_PATH. "company-info.php");
+            } else {
+                $this->ShowFilterView();
+            }
         }
     }
 ?>

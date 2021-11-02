@@ -1,8 +1,5 @@
 <?php
-    namespace Controllers;
-    use DAO\CompanyDAO;
-    use DAO\StudentDAO;
-    class HomeController{
+    namespace Controllers;    
 
         public function Index(){
             

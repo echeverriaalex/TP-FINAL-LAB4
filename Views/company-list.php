@@ -1,3 +1,9 @@
+<?php 
+     if(!(isset($_SESSION["email"]))) {
+          header("location: " . FRONT_ROOT . "Home/Index");
+     }
+?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
