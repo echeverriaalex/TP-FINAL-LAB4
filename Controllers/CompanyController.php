@@ -6,8 +6,12 @@
     class CompanyController{
 
         private $companyDAO;
+        private $companyPDO;
 
-        public function __construct(){$this->companyDAO = new CompanyDAO();}
+        public function __construct(){
+            $this->companyDAO = new CompanyDAO();
+            $this->companyPDO = new CompanyPDO();
+        }
 
         public function ShowAddView(){
             require_once(VIEWS_PATH."nav-admin.php");
@@ -19,17 +23,16 @@
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-list.php");
         }
-      
-        public function ShowEditView(){
-            require_once(VIEWS_PATH."nav-admin.php");
+
+        public function ShowEditView($name, $address, $phone, $cuit){
             require_once(VIEWS_PATH."company-edit.php");
         }
 
-        public function ShowDeleteView(){
+        public function ShowManageView(){
 
             $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."nav-admin.php");
-            require_once(VIEWS_PATH."company-delete.php");
+            require_once(VIEWS_PATH."company-manage.php");
         }
 
         public function ShowFilterView(){
@@ -49,14 +52,14 @@
             
             $companyEdit = new Company($name, $address, $phone, $cuit);
             $this->companyDAO->Edit($currentName, $companyEdit);
-            $this->ShowDeleteView();
+            $this->ShowManageView();
         }
 
         public function Delete($companyName){
 
             $this-> companyDAO->Delete($companyName);
             $companyList = $this->companyDAO->GetAll();
-            require_once(VIEWS_PATH."company-delete.php");
+            $this->ShowManageView();
         }
 
         public function Filter ($companyName)
@@ -68,6 +71,5 @@
                 $this->ShowFilterView();
             }            
         }
-    
     }
 ?>

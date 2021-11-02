@@ -1,5 +1,6 @@
 <?php
     use Models\Company;
+    
     $company = new Company();
     
      if(isset($_SESSION["email"])) {
