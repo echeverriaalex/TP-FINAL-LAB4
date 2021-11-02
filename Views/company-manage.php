@@ -32,15 +32,15 @@
                                     <td> 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>Company/Delete">
                                             <input type="hidden" name="companyName" value="<?php echo $company->getName(); ?>">
-                                            <button> Delete </button> 
+                                            <button class="btn btn-outline-danger"> Delete </button>
                                         </form>
-
+                                        <br>
                                         <form method="POST" action="<?php echo FRONT_ROOT?>Company/ShowEditView">
                                             <input type="hidden" name="name" value="<?php echo $company->getName(); ?>">                                            
                                             <input type="hidden" name="address" value="<?php echo $company->getAddress(); ?>">
                                             <input type="hidden" name="phone" value="<?php echo $company->getPhone(); ?>">
                                             <input type="hidden" name="cuit" value="<?php echo $company->getCuit(); ?>">                                            
-                                            <button> Edit </button>
+                                            <button type="button" class="btn btn-outline-primary"> Edit </button>
                                         </form>
                                     </td>
                                 </tr>

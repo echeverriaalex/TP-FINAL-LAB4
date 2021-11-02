@@ -38,13 +38,13 @@
                                                   echo "Disabled";
                                         ?>
                                    </td>
-                                    
+               
                                    <td> 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>student/Delete">
                                             <input type="hidden" name="studentName" value="<?php echo $student->getFirstName(); ?>">
-                                            <button> Delete </button> 
+                                            <button type="button" class="btn btn-outline-danger"> Delete </button> 
                                         </form>
-
+                                             <br>
                                         <form method="POST" action="<?php echo FRONT_ROOT?>student/ShowEditView">
                                              <input type="hidden" name="firstName" value="<?php echo $student->getFirstName(); ?>"> 
                                              <input type="hidden" name="lastName" value="<?php echo $student->getLastName(); ?>">
@@ -56,7 +56,7 @@
                                              <input type="hidden" name="carrerId" value="<?php echo $student->getCareerId(); ?>">
                                              <input type="hidden" name="fileNumber" value="<?php echo $student->getFileNumber(); ?>">
                                              <input type="hidden" name="active" value="<?php echo $student->getActive(); ?>">
-                                            <button> Edit </button>
+                                            <button type="button" class="btn btn-outline-primary"> Edit </button>
                                         </form>
                                    </td>
                               </tr>

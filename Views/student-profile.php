@@ -9,15 +9,15 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-secondary"> Phone <?php echo $student->getPhoneNumber(); ?> </a>
+                        <a class="list-group-item list-group-item-action list-group-item-secondary"> Phone: <?php echo $student->getPhoneNumber(); ?> </a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-success"> DNI <?php echo $student->getDni();?></a>
+                        <a class="list-group-item list-group-item-action list-group-item-success"> DNI: <?php echo $student->getDni();?></a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-danger"> ID <?php echo $student->getStudentId();?></a>
+                        <a class="list-group-item list-group-item-action list-group-item-danger"> ID: <?php echo $student->getStudentId();?></a>
                     </div>
                 </div>
             </div>
