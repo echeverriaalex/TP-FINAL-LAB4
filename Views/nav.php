@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-admin ">
+<nav class="navbar navbar-expand navbar-admin ">
   <div class="container-fluid ">
     <a class="navbar-brand text-light" href="<?php echo FRONT_ROOT?>Home/Index">Linkedon</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
