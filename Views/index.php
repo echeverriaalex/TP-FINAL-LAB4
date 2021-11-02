@@ -2,7 +2,7 @@
 <main class="main-index py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Agregar alumno</h2>
+               <h2 class="mb-4">Welcome (pensar que hacer con este index)</h2>
                <form action="<?php echo FRONT_ROOT ?>Student/Add" method="post" class="bg-light-alpha p-5">
                     <div class="row">                         
                          <div class="col-lg-4">

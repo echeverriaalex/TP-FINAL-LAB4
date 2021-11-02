@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-admin ">
   <div class="container-fluid ">
     <a class="navbar-brand text-light" href="<?php echo FRONT_ROOT?>Home/Index">Linkedon</a>
@@ -8,24 +6,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-
-      <li class="nav-item">
-          <a class="nav-link text-light" href="#">Information</a>
-      </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#">Information</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a>
         </li>
 
         <?php if(isset($_SESSION['email'])) { ?>
-              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>User/LogOut">LogOut</a></li>
-
-
-            <?php	} ?>
-  
+            <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>User/LogOut">LogOut</a></li>
+        <?php	} ?>  
       </ul>
-
     </div>
   </div>
 </nav>
