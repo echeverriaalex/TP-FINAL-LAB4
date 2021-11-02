@@ -21,7 +21,7 @@
         }
 
         public function ShowManageView(){
-
+            require_once(VIEWS_PATH."nav-admin.php");
             $studentsList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."student-manage.php");
         }
