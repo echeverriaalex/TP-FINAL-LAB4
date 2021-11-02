@@ -1,6 +1,3 @@
-<?php
-    require_once(VIEWS_PATH."nav.php");
-?>
 <body class= "home">
   <div class ="container mt-5">
     <div class= "row">

@@ -1,6 +1,3 @@
-<?php
-     require_once(VIEWS_PATH."nav-admin.php");
-?>
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
@@ -35,5 +32,6 @@
                     <button type="submit" class="btn btn-dark ml-auto d-block">Save</button>
                </form>
           </div>
+          
      </section>
 </main>
