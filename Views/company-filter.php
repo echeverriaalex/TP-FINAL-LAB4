@@ -1,6 +1,9 @@
-<?php
-     require_once(VIEWS_PATH."nav-admin.php");
+<?php 
+     if(!(isset($_SESSION["email"]))) {
+          header("location: " . FRONT_ROOT . "Home/Index");
+     }
 ?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
@@ -10,7 +13,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Name</label>
-                                   <input type="text" name="companyName" class="form-control text-light" autofocus>
+                                   <input type="text" name="companyName" class="form-control text-light" autofocus required>
                               </div>
                          </div> 
                     </div>
