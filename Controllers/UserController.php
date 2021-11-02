@@ -3,13 +3,19 @@
 
     use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
+    use Models\Student;
     use Models\User as User;
 
     class UserController
     {
-        private $userDAO;
+        //private $userDAO;
+        private $studentDAO;
 
-        public function __construct(){$this->userDAO = new UserDAO();}
+        public function __construct(){
+            
+            //$this->userDAO = new UserDAO();
+            $this->studentDAO = new StudentDAO();
+        }
 
         public function ShowSignInView()
         {
@@ -35,7 +41,7 @@
         {
             require_once(VIEWS_PATH."nav-user.php");
             //require_once(VIEWS_PATH."company-filter.php");
-            require(VIEWS_PATH.'profile.php');
+            require(VIEWS_PATH.'student-profile.php');
         }
         
 
@@ -51,26 +57,34 @@
             }  
         }
 
-        public function LogIn($email, $password)
-        {
-            $user = $this->userDAO->RetrieveUser($email, $password);
-            if(isset($user))
+        public function LogIn($email, $password){
+
+            //$user = $this->userDAO->RetrieveUser($email, $password);
+            $student = $this->studentDAO->retrieveStudent($email);
+            
+            if(isset($student) && ($student->getEmail() != ""))
             {
-                $_SESSION['email'] = $user->getEmail();
-                if($user->getRole() == "admin"){
-                    $_SESSION['role'] = $user->getRole();
+                $_SESSION['email'] = $student->getEmail();
+                $_SESSION['role'] = $student->getRole();
+                if($student->getRole() == "admin"){
                     $this->ShowAdminHome();
                 } else {
-                    $_SESSION['role'] = $user->getRole();
-                    $this->ShowUserHome();
+                    //$this->ShowUserHome();
+                    require_once(VIEWS_PATH."nav-user.php");
+                    require_once(VIEWS_PATH."student-profile.php");
                 }
             } else {
             $this->ShowSignInView();}
+
+            require_once(VIEWS_PATH."student-profile.php");
         }
-      
-        public function LogOut()
-        {
+
+        public function LogOut(){
+
+            $_SESSION = null; 
             session_destroy();
+            $home = new HomeController();
+            $home->Index();
         }
     }
 ?>

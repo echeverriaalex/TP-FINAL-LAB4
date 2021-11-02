@@ -5,9 +5,8 @@
     class HomeController{
 
         public function Index(){
-        
-            //require_once(VIEWS_PATH."header.php");
-            //require_once(VIEWS_PATH."nav.php");
+            
+            require_once(VIEWS_PATH."nav.php");
             require(VIEWS_PATH."home.php");
            // require_once(VIEWS_PATH."signUp.php");
             //require_once(VIEWS_PATH."nav-admin.php");

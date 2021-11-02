@@ -9,6 +9,12 @@
 
         public function __construct(){$this->studentDAO = new StudentDAO();}
 
+        public function IndexStudent(){
+
+            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."home.php");
+        }
+
         public function ShowAddView(){
             require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."student-add.php");
@@ -28,7 +34,7 @@
 
         public function ShowMyProfile(){
 
-            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."nav-user.php");
             require_once(VIEWS_PATH."student-profile.php");
         }
 
