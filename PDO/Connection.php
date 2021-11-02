@@ -1,5 +1,5 @@
 <?php
-    namespace PDAO;
+    namespace PDO;
 
     use \PDO as PDO;
     use PDOException as Exception;
