@@ -1,5 +1,23 @@
 [
     {
+        "name": "Globant",
+        "address": "Av. Col\u00f3n 1102",
+        "phone": "0223 451-1777",
+        "cuit": "123456"
+    },
+    {
+        "name": "Accenture",
+        "address": "Av. Independencia 4250",
+        "phone": "542236263600",
+        "cuit": "789456"
+    },
+    {
+        "name": "Tesla",
+        "address": "Alem 456",
+        "phone": "55523497",
+        "cuit": "51238"
+    },
+    {
         "name": "Facebook",
         "address": "Almafuerte 9898",
         "phone": "45501154",

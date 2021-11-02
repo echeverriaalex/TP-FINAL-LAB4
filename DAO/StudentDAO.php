@@ -1,79 +1,73 @@
 <?php
     namespace DAO;
-
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
 
-    class StudentDAO implements IStudentDAO
-    {
+    class StudentDAO implements IStudentDAO{
+
         private $studentList = array();
 
-        public function Add(Student $student)
-        {
+        public function Add(Student $student){
+
             $this->RetrieveData();            
             array_push($this->studentList, $student);
-            $this->SaveData();
+            //$this->SaveData();
         }
 
-        public function GetAll()
-        {
+        public function GetAll(){
+
             $this->RetrieveData();
             return $this->studentList;
-        }
+        } 
 
-        private function SaveData(){
+        public function retrieveStudent ($studentEmail){
 
-            $arrayToEncode = array();
+            $this->RetrieveData();
+            $studentResult = new Student();
 
             foreach($this->studentList as $student){
 
-                $valuesArray["name"] = $student->getName();
-                $valuesArray["surname"] = $student->getSurname();
-                $valuesArray["dni"] = $student->getDni();
-                $valuesArray["phone"] = $student->getPhone();
-                $valuesArray["gender"] = $student->getGender();
-                $valuesArray["birthDate"] = $student->getBirthDate();
-                $valuesArray["email"] = $student->getEmail();
-                $valuesArray["studentId"] = $student->getStudentId();
-                $valuesArray["carrerId"] = $student->getCarrerId();
-                $valuesArray["fileNumber"] = $student->getFileNumber();
-                $valuesArray["active"] = $student->getActive();
-                $valuesArray["password"] = $student->getPassword();
-                array_push($arrayToEncode, $valuesArray);
-            }
+                if($student->getEmail() == $studentEmail){
 
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);            
-            file_put_contents('Data/students.json', $jsonContent);
+                    $studentResult = $student;
+                    break;
+                }
+            }
+            return $studentResult;
         }
 
         private function RetrieveData(){
 
             $this->studentList = array();
+        
+            $opt = array(
+                "http" => array(
+                    "method" => "GET",
+                    "header" => Header_Name.": ".Header_Value."\r\n"
+                )
+            );
 
-            if(file_exists('Data/students.json'))
-            {
-                $jsonContent = file_get_contents('Data/students.json');
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+            $ctx = stream_context_create($opt);
+            $jsonContent = file_get_contents(Request_URL_Students, false , $ctx);
+            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+          
+            foreach($arrayToDecode as $valuesArray){
 
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $student = new Student();
-                    $student->setName($valuesArray["name"]);
-                    $student->setSurname($valuesArray["surname"]);
-                    $student->setDni($valuesArray["dni"]);
-                    $student->setPhone($valuesArray["phone"]);
-                    $student->setGender($valuesArray["gender"]);
-                    $student->setBirthDate($valuesArray["birthDate"]);
-                    $student->setEmail($valuesArray["email"]);
-                    $student->setStudentId($valuesArray["studentId"]);
-                    $student->setCarrerId($valuesArray["carrerId"]);
-                    $student->setFileNumber($valuesArray["fileNumber"]);
-                    $student->setActive($valuesArray["active"]);
-                    $student->setPassword($valuesArray["password"]);
-                    array_push($this->studentList, $student);
-                }
+                $student = new Student();
+                $student->setFirstName($valuesArray["firstName"]);
+                $student->setLastName($valuesArray["lastName"]);
+                $student->setDni($valuesArray["dni"]);
+                $student->setPhoneNumber($valuesArray["phoneNumber"]);
+                $student->setGender($valuesArray["gender"]);
+                $student->setBirthDate($valuesArray["birthDate"]);
+                $student->setEmail($valuesArray["email"]);
+                $student->setStudentId($valuesArray["studentId"]);
+                $student->setCareerId($valuesArray["careerId"]);
+                $student->setFileNumber($valuesArray["fileNumber"]);
+                $student->setActive($valuesArray["active"]);
+
+                array_push($this->studentList, $student);
             }
         }
     }
-    
 ?>

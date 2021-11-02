@@ -1,35 +1,41 @@
-<?php
-    require_once('nav.php');
+<?php 
+     if(isset($_SESSION["email"])) {
+          if($_SESSION["role"] != "admin") {
+               header("location: " . FRONT_ROOT . "User/ShowUserHome");
+          }
+     } else {
+          header("location: " . FRONT_ROOT . "Home/Index");
+     }
 ?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Students list </h2>
-               <table class="table bg-light-alpha">
-                    <thead>
-                         <th>ID</th>
-                         <th>Name</th>
-                         <th>Surname</th>
-                         <th>DNI</th>
-                         <th>Phone</th>
-                    </thead>
-                    <tbody>
-                         <?php
-                              foreach($studentList as $student){
-                         ?>
-                                   <tr>
-                                        <td><?php echo $student->getId(); ?></td>
-                                        <td><?php echo $student->getName(); ?></td>
-                                        <td><?php echo $student->getSurname(); ?></td>
-                                        <td><?php echo $student->getDni(); ?></td>
-                                        <td><?php echo $student->getPhone(); ?></td>
-                                    </tr>
-                         <?php
-                              }
-                         ?>
-                         </tr>
-                    </tbody>
-               </table>
+               <h2 class="mb-4">Students List </h2>
+                    <table class="table bg-light-alpha">
+                         <thead>
+                              <th>ID</th>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>DNI</th>
+                              <th>Phone Number</th>
+                         </thead>
+                         <tbody>
+                              <?php
+                                   foreach($studentList as $student){
+                              ?>
+                                        <tr>
+                                             <td><?php echo $student->getStudentId(); ?></td>
+                                             <td><?php echo $student->getFirstName(); ?></td>
+                                             <td><?php echo $student->getLastName(); ?></td>
+                                             <td><?php echo $student->getDni(); ?></td>
+                                             <td><?php echo $student->getPhoneNumber(); ?></td>
+                                        </tr>
+                              <?php
+                                   }
+                              ?>
+                         </tbody>
+                    </table>
           </div>
      </section>
 </main>

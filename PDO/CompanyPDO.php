@@ -1,18 +1,35 @@
 <?php
-    namespace DAO;
+    namespace PDO;
 
-    use DAO\ICompanyDAO;
+    use PDO\ICompanyPDO;
     use Models\Company;
+    use PDO\Connection;
+    use PDOException;
 
-    class CompanyDAO implements ICompanyDAO{
+    class CompanyPDO implements ICompanyPDO{
 
-        private $companyList = array();
+        private $connection;
+        private $tableName ="Companies";
 
         public function Add(Company $company){
 
-            $this->RetrieveData();
-            array_push($this->companyList, $company);
-            $this->SaveData();
+            try{
+
+                $query = "INSERT INTO ".$this->tableName."(nameCompany, address, phone, cuit) 
+                VALUES (:nameCompany, :address, :phone, :cuit);";
+
+                $parameters["nameCompany"] = $company->getName();
+                $parameters["address"] = $company->getAddress();
+                $parameters["phone"] = $company->getPhone();
+                $parameters["cuit"] = $company->getCuit();
+
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            }catch(PDOException $ex){
+
+                throw $ex;
+            }
         }
 
 
@@ -46,6 +63,7 @@
                     $this->companyList[$key] = $companyEdit;
 
                 }
+                
             }
             $this->SaveData();
         }

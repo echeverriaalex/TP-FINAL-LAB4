@@ -9,31 +9,38 @@
 
         public function __construct(){$this->studentDAO = new StudentDAO();}
 
+        public function IndexStudent(){
+
+            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."home.php");
+        }
+
         public function ShowAddView(){
+            require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."student-add.php");
         }
 
-        public function ShowListView(){
+        public function ShowManageView(){
 
+            $studentsList = $this->studentDAO->GetAll();
+            require_once(VIEWS_PATH."student-manage.php");
+        }
+
+        public function ShowListView(){
+            require_once(VIEWS_PATH."nav-admin.php");
             $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."student-list.php");
         }
 
         public function ShowMyProfile(){
 
-
-            require_once(VIEWS_PATH."profile.php");
+            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."student-profile.php");
         }
 
-        public function EditProfile(){
+        public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
 
-            require_once(VIEWS_PATH."edit-profile.php");
-
-        }
-
-        public function Add($name, $surname, $dni, $phone, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
-
-            $student = new Student($name, $surname, $dni, $phone, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
+            $student = new Student($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
             $this->studentDAO->Add($student);
             $this->ShowAddView();
         }

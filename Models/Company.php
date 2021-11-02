@@ -15,7 +15,6 @@
             $this->setPhone($phone);
             $this->setCuit($cuit);
         }
-
         
         public function setName($name){$this->name = $name;}
         public function getName(){return $this->name;}
@@ -28,5 +27,7 @@
 
         public function setCuit($cuit){$this->cuit = $cuit;}
         public function getCuit(){return $this->cuit;}
+
+    
     }
 ?>
