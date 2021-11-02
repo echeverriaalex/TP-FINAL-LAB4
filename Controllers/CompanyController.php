@@ -1,13 +1,19 @@
 <?php
     namespace Controllers;
     use DAO\CompanyDAO;
+    use PDO\CompanyPDO;
     use Models\Company;
 
     class CompanyController{
 
         private $companyDAO;
+        private $companyPDO;
 
-        public function __construct(){$this->companyDAO = new CompanyDAO();}
+        public function __construct(){
+        
+            $this->companyDAO = new CompanyDAO();
+            $this->companyPDO = new CompanyPDO();
+        }
 
         public function ShowAddView(){
             require_once(VIEWS_PATH."nav-admin.php");
@@ -27,14 +33,17 @@
 
         public function ShowManageView(){
 
-            $companyList = $this->companyDAO->GetAll();
+            $companyList = $this->companyDAO->GetAll();      
+            require_once('nav-admin.php');
+            require_once("company-filter.php");
             require_once(VIEWS_PATH."company-manage.php");
         }
 
         public function Add($name, $address, $cuit, $phone){
             
             $company = new Company($name, $address, $phone, $cuit);
-            $this->companyDAO->Add($company);
+            //$this->companyDAO->Add($company);
+            $this->companyPDO->Add($company);
             $this->ShowAddView();
         }
 
@@ -49,7 +58,7 @@
 
             $this-> companyDAO->Delete($companyName);
             $companyList = $this->companyDAO->GetAll();
-            require_once(VIEWS_PATH."company-manage.php");
+            $this->ShowManageView();
         }
 
         public function Filter ($companyName){
