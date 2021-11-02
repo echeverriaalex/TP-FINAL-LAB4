@@ -46,7 +46,6 @@
                     $this->companyList[$key] = $companyEdit;
 
                 }
-                
             }
             $this->SaveData();
         }

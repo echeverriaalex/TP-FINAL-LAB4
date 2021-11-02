@@ -1,32 +1,8 @@
 <?php
-    namespace Controllers;
-
-    use DAO\CompanyDAO;
-    use DAO\StudentDAO;
-    
+    namespace Controllers;    
 
     class HomeController
     {
-        public function viewHomeAdmin(){
-       
-            /*
-            if($this->adminIsLogged()){
-      
-                require_once(VIEWS_PATH."header.php");
-                require_once(VIEWS_PATH."nav-admin.php");
-                require(VIEWS_PATH.'index.php');
-                require_once(VIEWS_PATH."footer.php");
-            }else{
-              echo '<script>alert("No tiene acceso para entrar en esta pagina");</script>';
-              $this->Index();
-            }
-            */
-        }
-        
-
-        //============================================================
-        //=========================== HOME ===========================
-        //============================================================
         public function Index()
         {
         
