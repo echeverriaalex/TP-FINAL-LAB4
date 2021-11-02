@@ -26,14 +26,16 @@
         
         public function ShowAdminHome()
         {
-            require_once(VIEWS_PATH."nav-admin.php");
-            require(VIEWS_PATH.'home.php');
+            require_once(VIEWS_PATH."nav-admin.php");            
+            require_once(VIEWS_PATH."company-filter.php");
+            require(VIEWS_PATH.'index.php');
         }
 
         public function ShowUserHome()
         {
             require_once(VIEWS_PATH."nav-user.php");
-            require(VIEWS_PATH.'home.php');
+            //require_once(VIEWS_PATH."company-filter.php");
+            require(VIEWS_PATH.'profile.php');
         }
         
 

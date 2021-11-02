@@ -1,6 +1,3 @@
-<?php
-    require_once(VIEWS_PATH."nav.php");
-?>
 <div>
     <main class="py-5 profile">
         <section id="listado" class="mb-5">
