@@ -6,6 +6,7 @@
      } else {
           header("location: " . FRONT_ROOT . "Home/Index");
      }
+     
 ?>
 
 <nav class="navbar navbar-expand navbar-admin ">

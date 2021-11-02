@@ -13,14 +13,8 @@
         </li>
         -->
 
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Companies
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a></li>
-            <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Company/ShowFilterView">Filter By Name</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a>
         </li>
 
         <li>
