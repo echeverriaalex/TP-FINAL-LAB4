@@ -27,17 +27,14 @@
         }
 
         public function ShowEditView($name, $address, $phone, $cuit){
-
             require_once(VIEWS_PATH."company-edit.php");
         }
 
         public function ShowManageView(){
 
-            $companyList = $this->companyDAO->GetAll();      
-            require_once('nav-admin.php');
-            require_once("company-filter.php");
-            require_once(VIEWS_PATH."company-manage.php");
+            $companyList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."company-manage.php");
         }
 
         public function ShowFilterView(){
@@ -68,32 +65,16 @@
             $this->ShowManageView();
         }
 
-        public function Filter ($companyName){
-
-
-            if($companyName != ""){
-
-                //header("location: ".FRONT_ROOT."HomeController/Index");
-                //require_once(VIEWS_PATH."company-manage.php");
-                $home = new HomeController();
-                $home->Index();
-            }
-
-
-            /*
+        public function Filter ($companyName)
+        {
             $company = $this->companyDAO->Filter($companyName);
             require_once(VIEWS_PATH. "company-info.php");
 
             if($company->getName() != "") {
-
-
-
-
                 require_once(VIEWS_PATH. "company-info.php");
             } else {
                 $this->ShowFilterView();
-            }  
-            */            
+            }
         }
     }
 ?>

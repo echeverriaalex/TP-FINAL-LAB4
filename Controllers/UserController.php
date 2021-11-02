@@ -23,7 +23,6 @@
             require(VIEWS_PATH."signUp.php");
         }
 
-        
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."nav-admin.php");            
@@ -37,8 +36,7 @@
             //require_once(VIEWS_PATH."company-filter.php");
             require(VIEWS_PATH.'profile.php');
         }
-        
-
+     
         public function Add($email, $password){
 
             if($this->userDAO->IsStudent($email)){
@@ -54,14 +52,13 @@
         public function LogIn($email, $password)
         {
             $user = $this->userDAO->RetrieveUser($email, $password);
-            if(isset($user))
+            if(isset($user) && ($user->getEmail() != ""))
             {
                 $_SESSION['email'] = $user->getEmail();
+                $_SESSION['role'] = $user->getRole();
                 if($user->getRole() == "admin"){
-                    $_SESSION['role'] = $user->getRole();
                     $this->ShowAdminHome();
                 } else {
-                    $_SESSION['role'] = $user->getRole();
                     $this->ShowUserHome();
                 }
             } else {
