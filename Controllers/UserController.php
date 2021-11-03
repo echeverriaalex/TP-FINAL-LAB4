@@ -68,6 +68,7 @@
                     $this->ShowAdminHome();
                 } else {
                     //$this->ShowUserHome();
+                    $_SESSION['studentlogged'] = $student;
                     require_once(VIEWS_PATH."nav-user.php");
                     require_once(VIEWS_PATH."student-profile.php");
                 }
@@ -80,6 +81,7 @@
         public function LogOut(){
 
             $_SESSION = null; 
+            unset($_SESSION['studentlogged']);
             session_destroy();
             $home = new HomeController();
             $home->Index();

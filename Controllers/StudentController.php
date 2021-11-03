@@ -11,8 +11,16 @@
 
         public function IndexStudent(){
 
-            require_once(VIEWS_PATH."nav-user.php");
-            require_once(VIEWS_PATH."home.php");
+            if(isset($_SESSION['studentlogged'])){
+
+                require_once(VIEWS_PATH."nav-user.php");
+                require_once(VIEWS_PATH."home.php");
+            }
+            else{
+
+                $home = new HomeController();
+                $home->Index();
+            }
         }
 
         public function ShowAddView(){
@@ -34,8 +42,17 @@
 
         public function ShowMyProfile(){
 
-            require_once(VIEWS_PATH."nav-user.php");
-            require_once(VIEWS_PATH."student-profile.php");
+            if(isset($_SESSION['studentlogged'])){
+
+                require_once(VIEWS_PATH."nav-user.php");
+                $student = $_SESSION['studentlogged'];
+                require_once(VIEWS_PATH."student-profile.php");
+            }
+            else{
+
+                $home = new HomeController();
+                $home->Index();
+            }
         }
 
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
