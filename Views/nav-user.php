@@ -18,7 +18,7 @@
         </li>
 
         <li>
-          <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>User/LogIn">Profile</a>
+          <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Student/ShowMyProfile">Profile</a>
         </li>
 
         <?php if(isset($_SESSION['email'])) { ?>
