@@ -14,10 +14,7 @@
         public function Add(Company $company){
 
             try{
-
-                $query = "INSERT INTO ".$this->tableName."(nameCompany, address, phone, cuit) 
-                VALUES (:nameCompany, :address, :phone, :cuit);";
-
+                $query = "INSERT INTO ".$this->tableName."(nameCompany, address, phone, cuit) VALUES (:nameCompany, :address, :phone, :cuit);";
                 $parameters["nameCompany"] = $company->getName();
                 $parameters["address"] = $company->getAddress();
                 $parameters["phone"] = $company->getPhone();
@@ -32,98 +29,116 @@
             }
         }
 
+       
+       /* public function SearchCompanyByName($nameCompany){
 
-        public function Filter ($companyName)
-        {
-            $this->RetrieveData();
+            try {
+                $query = "SELECT * FROM ".$this->tableName." WHERE (nameCompany = :nameCompany);";
 
-            $companyResult = new Company;
+                $parameters['nameCompany'] = $nameCompany;
+                $this->connection = Connection::GetInstance();
+                $companyResults = $this->connection->Execute($query, $parameters);
 
-            foreach($this->companyList as $company)
-            {
-                if($company->getName() == $companyName)
-                {
-                    $companyResult = $company;
-                    break;
+                if (!empty($companyResults)) {
+                    return true;
+                } else {
+                    return false;
                 }
+            } catch (PDOException $ex) {
+                throw $ex;
             }
+        }*/
 
-            return $companyResult;
-        
+        public function Filter($nameCompany){
+            
+            try {
+
+                $parameters['nameCompany'] = $nameCompany;
+                $query = "SELECT * FROM ".$this->tableName." WHERE (nameCompany = :nameCompany);";
+
+                $this->connection = Connection::GetInstance();
+                $companyResults = $this->connection->Execute($query, $parameters);
+                
+                if(!empty($companyResults)){
+                    
+                    foreach ($companyResults as $row) {
+
+                        $company = new Company();
+                        $company->setName($row['nameCompany']);
+                        $company->setAddress($row['address']);
+                        $company->setPhone($row['phone']);
+                        $company->setCuit($row["cuit"]);
+                    }
+                    return $company;
+                }
+                else{
+                    return null;
+                }
+
+            }catch(PDOException $ex) {
+                throw $ex;
+            }
         }
 
         public function Edit($currentName, Company $companyEdit){
 
-            $this->RetrieveData();
+            try {
 
-            foreach($this->companyList as $key => $company){
+                $query = "UPDATE ".$this->tableName." SET nameCompany = :nameCompany, address = :address, phone = :phone, cuit = :cuit WHERE (nameCompany = :currentName);";
 
-                if($company->getName() == $currentName){
-                    
-                    $this->companyList[$key] = $companyEdit;
+                $parameters["nameCompany"] = $companyEdit->getName();
+                $parameters["address"] = $companyEdit->getAddress();
+                $parameters["phone"] = $companyEdit->getPhone();
+                $parameters["cuit"] = $companyEdit->getCuit();                
+                $parameters["currentName"] = $currentName;
 
-                }
-                
+                $this->connection = Connection::GetInstance();
+                $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
+                return $deletedCount;
+
+            } catch (PDOException $ex) {
+
+                throw $ex;
             }
-            $this->SaveData();
         }
 
         public function Delete($companyName){
 
-            $this->RetrieveData();
+            try {
+                $query = "DELETE FROM ".$this->tableName." WHERE (nameCompany = :nameCompany);";
+                $parameters['nameCompany'] = $companyName;
+                $this->connection = Connection::GetInstance();
+                $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
+                return $deletedCount;
             
-            foreach($this->companyList as $key => $company){
-
-                if($company->getName() == $companyName){
-
-                    unset($this->companyList[$key]);
-                }
+            } catch (PDOException $ex) {
+                throw $ex;
             }
-            $this->SaveData();
         }
 
         public function GetAll(){
             
-            $this->RetrieveData();
-            return $this->companyList;
-        }
-        
-        private function SaveData(){
+            try {
+                $companyList = array();
+                $query = "SELECT * FROM ".$this->tableName;
 
-            $arrayToEncode = array();
+                $this->connection = Connection::GetInstance();
+                $companyResults = $this->connection->Execute($query);
 
-            foreach($this->companyList as $company){
-
-                $valuesArray['name'] = $company->getName();
-                $valuesArray['address'] = $company->getAddress();
-                $valuesArray['phone'] = $company->getPhone();
-                $valuesArray['cuit'] = $company->getCuit();
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-            file_put_contents('Data/companies.json', $jsonContent);
-        }
-
-        private function RetrieveData(){
-
-            $this->companyList = array();
-
-            if(file_exists('Data/companies.json')){
-
-                $jsonContent = file_get_contents('Data/companies.json');
-                $arrayToDecode = ($jsonContent)? json_decode($jsonContent, true) : array();
-
-                foreach($arrayToDecode as $valuesArray){
+                foreach ($companyResults as $row) {
 
                     $company = new Company();
-                    $company->setName($valuesArray['name']);
-                    $company->setAddress($valuesArray['address']);
-                    $company->setPhone($valuesArray['phone']);
-                    $company->setCuit($valuesArray['cuit']);
-                    array_push($this->companyList, $company);
+                    $company->setName($row['nameCompany']);
+                    $company->setAddress($row['address']);
+                    $company->setPhone($row['phone']);
+                    $company->setCuit($row["cuit"]);
+                    array_push($companyList, $company);
                 }
-            }            
+                return $companyList;
+
+            } catch (PDOException $ex) {
+                throw $ex;
+            }
         }
     }
 ?>
