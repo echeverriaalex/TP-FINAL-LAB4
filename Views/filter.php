@@ -1,11 +1,3 @@
-<?php 
-/*
-     if(!(isset($_SESSION["email"]))) {
-          header("location: " . FRONT_ROOT . "Home/Index");
-     }
-     */
-?>
-
 <main class="">
      <section id="listado" class="">
           <div class="container">
