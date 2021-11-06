@@ -1,16 +1,10 @@
-<?php 
-     if(!(isset($_SESSION["email"]))) {
-        header("location: " . FRONT_ROOT . "Home/Index");
-     }
-?>
-
 <div>
     <main class="py-5 profile">
         <section id="listado" class="mb-5">
             <div class="container">
                 <div class="list-group">
                     <?php
-                        if($company->getName() != null){
+                        if( $company != null && $company->getName() != null){
                     ?>
                     <div class="col-lg-4">
                         <h2 class="text-light"> <?php echo $company->getName() ?> </h2>
