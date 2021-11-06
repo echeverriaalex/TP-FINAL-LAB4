@@ -1,10 +1,8 @@
-<?php namespace Views;?>
-
 <div class="sign-in">
   <div class="container col-4 ">
     <div class="row align-items-center mt-5">
 
-      <form action="<?php echo FRONT_ROOT ?>User/LogIn" method="post">
+      <form action="<?php echo FRONT_ROOT?>User/LogIn" method="post">
         <div class="mb-3 col-auto-center ">
           <label for="exampleFormControlInput1" class="form-label">Email</label>
           <input type="email" class="form-control text-light" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -41,6 +39,3 @@
     <div>
   </div>
 <div>
-
-
-

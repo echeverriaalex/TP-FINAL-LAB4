@@ -9,9 +9,11 @@
         <section id="listado" class="mb-5">
             <div class="container">
                 <div class="list-group">
-
+                    <?php
+                        if($company->getName() != null){
+                    ?>
                     <div class="col-lg-4">
-                        <h2> <?php echo $company->getName() ?> </h2>
+                        <h2 class="text-light"> <?php echo $company->getName() ?> </h2>
                     </div>
 
                     <div class="col-lg-4">
@@ -24,7 +26,18 @@
 
                     <div class="col-lg-4">
                         <a class="list-group-item list-group-item-action list-group-item-danger"> Cuit <?php echo $company->getCuit();?></a>
+                    </div>                    
+                    <?php
+                        }
+                        else{
+                    ?>
+                    <div class="col-lg-4">
+                        <h2 class="text-light"> <?php echo "No results found"; ?> </h2>
                     </div>
+
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </section> 

@@ -9,9 +9,29 @@
 
         public function __construct(){$this->studentDAO = new StudentDAO();}
 
+        public function IndexStudent(){
+
+            if(isset($_SESSION['studentlogged'])){
+
+                require_once(VIEWS_PATH."nav-user.php");
+                require_once(VIEWS_PATH."home.php");
+            }
+            else{
+
+                $home = new HomeController();
+                $home->Index();
+            }
+        }
+
         public function ShowAddView(){
             require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."student-add.php");
+        }
+
+        public function ShowManageView(){
+
+            $studentsList = $this->studentDAO->GetAll();
+            require_once(VIEWS_PATH."student-manage.php");
         }
 
         public function ShowListView(){
@@ -21,8 +41,18 @@
         }
 
         public function ShowMyProfile(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            require_once(VIEWS_PATH."student-profile.php");
+
+            if(isset($_SESSION['studentlogged'])){
+
+                require_once(VIEWS_PATH."nav-user.php");
+                $student = $_SESSION['studentlogged'];
+                require_once(VIEWS_PATH."student-profile.php");
+            }
+            else{
+
+                $home = new HomeController();
+                $home->Index();
+            }
         }
 
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){

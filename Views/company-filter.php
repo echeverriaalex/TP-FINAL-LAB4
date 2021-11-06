@@ -13,10 +13,9 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Name</label>
-                                   <input type="text" name="companyName" class="form-control text-light" autofocus>
+                                   <input type="text" name="companyName" class="form-control text-light" autofocus required>
                               </div>
                          </div> 
-                         
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Search</button>
                </form>

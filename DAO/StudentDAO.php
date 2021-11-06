@@ -1,42 +1,38 @@
 <?php
     namespace DAO;
-
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
 
-    class StudentDAO implements IStudentDAO
-    {
+    class StudentDAO implements IStudentDAO{
+
         private $studentList = array();
 
-        /*
-        public function Add(Student $student)
-        {
+        public function Add(Student $student){
+
             $this->RetrieveData();            
             array_push($this->studentList, $student);
             //$this->SaveData();
         }
-        */
 
-        public function GetAll()
-        {
+        public function GetAll(){
+
             $this->RetrieveData();
             return $this->studentList;
         } 
 
-        public function retrieveStudent ($studentEmail)
-        {
+        public function retrieveStudent ($studentEmail){
+
             $this->RetrieveData();
             $studentResult = new Student();
 
-            foreach($this->studentList as $student)
-            {
-                if($student->getEmail() == $studentEmail)
-                {
+            foreach($this->studentList as $student){
+
+                if($student->getEmail() == $studentEmail){
+
                     $studentResult = $student;
                     break;
                 }
             }
-
             return $studentResult;
         }
 
@@ -52,12 +48,11 @@
             );
 
             $ctx = stream_context_create($opt);
-
             $jsonContent = file_get_contents(Request_URL_Students, false , $ctx);
             $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
           
-            foreach($arrayToDecode as $valuesArray)
-            {
+            foreach($arrayToDecode as $valuesArray){
+
                 $student = new Student();
                 $student->setFirstName($valuesArray["firstName"]);
                 $student->setLastName($valuesArray["lastName"]);
