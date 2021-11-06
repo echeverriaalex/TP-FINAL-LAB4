@@ -1,5 +1,5 @@
 <?php
-    namespace DAO;
+    namespace PDO;
 
     use Models\JobPosition as JobPosition;
 
