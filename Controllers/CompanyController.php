@@ -3,6 +3,7 @@
     use DAO\CompanyDAO;
     use PDO\CompanyPDO;
     use Models\Company;
+    use PDO\SessionCheck;
 
     class CompanyController{
 
@@ -16,25 +17,38 @@
         }
 
         public function ShowAddView(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            require_once(VIEWS_PATH."company-add.php");
+            require_once(VIEWS_PATH."select-nav.php");
+            if(SessionCheck::Check())
+                require_once(VIEWS_PATH."company-add.php");
+            else
+                HomeController::Index();
         }
 
         public function ShowListView(){
             require(VIEWS_PATH."select-nav.php");
-            $this->ShowFilterView();
             //$companyList = $this->companyDAO->GetAll();
-            $companyList = $this->companyPDO->GetAll();
-            require_once(VIEWS_PATH."company-list.php");
+            
+            if(SessionCheck::Check()){
+                $this->ShowFilterView();           
+                $companyList = $this->companyPDO->GetAll();
+                require_once(VIEWS_PATH."company-list.php");
+            }
+            else
+                HomeController::Index();
         }
         
         public function ShowManageView(){
             
-            require_once(VIEWS_PATH.'nav-admin.php');
-            $this->ShowFilterView();
+            require_once(VIEWS_PATH.'select-nav.php');
             //$companyList = $this->companyDAO->GetAll();
-            $companyList = $this->companyPDO->GetAll();
-            require_once(VIEWS_PATH."company-manage.php");
+
+            if(SessionCheck::Check()){
+                $this->ShowFilterView();
+                $companyList = $this->companyPDO->GetAll();
+                require_once(VIEWS_PATH."company-manage.php");
+            }
+            else
+                HomeController::Index();
         }
 
         public function ShowEditView($name, $address, $phone, $cuit){
@@ -84,13 +98,13 @@
             if($company != null && $company->getName() != "") {
 
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "company-info.php");
 
             } else {
                 //$this->ShowFilterView();
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "company-info.php");
             }            
         }
