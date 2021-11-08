@@ -4,19 +4,19 @@
     use Models\User as User;
 
     class Student extends User
-    {   
+    {
+        private $studentId;
+        private $careerId;
         private $firstName;
         private $lastName;
         private $dni;
-        private $phoneNumber;
-        private $gender;
-        private $birthDate;     
-        private $studentId;
-        private $careerId;
         private $fileNumber;
+        private $gender;
+        private $birthDate;  
+        private $phoneNumber;
         private $active;
 
-        public function __construct($firstName='', $lastName='', $dni='', $phoneNumber='', $gender='', $birthDate='', $email='', $studentId='', $careerId='', $fileNumber='', $active='', $password='', $role=''){
+        public function __construct($studentId='', $careerId='', $firstName='', $lastName='', $dni='', $fileNumber='', $gender='', $birthDate='',$email='', $phoneNumber='', $active='', $password='', $role=''){
 
             parent::__construct($email, $password, $role);
             $this->setFirstName($firstName);
