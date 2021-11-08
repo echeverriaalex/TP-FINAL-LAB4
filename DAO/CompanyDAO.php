@@ -1,24 +1,24 @@
 <?php
     namespace DAO;
 
-    use DAO\ICompanyDAO;
-    use Models\Company;
+    use DAO\ICompanyDAO as ICompanyDAO;
+    use Models\Company as Company;
 
     class CompanyDAO implements ICompanyDAO{
 
         private $companyList = array();
 
-        public function Add(Company $company){
+        public function add(Company $company){
 
-            $this->RetrieveData();
+            $this->retrieveData();
             array_push($this->companyList, $company);
-            $this->SaveData();
+            $this->saveData();
         }
 
 
-        public function Filter ($companyName)
+        public function filter ($companyName)
         {
-            $this->RetrieveData();
+            $this->retrieveData();
 
             $companyResult = new Company;
 
@@ -35,9 +35,9 @@
         
         }
 
-        public function Edit($currentName, Company $companyEdit){
+        public function edit($currentName, Company $companyEdit){
 
-            $this->RetrieveData();
+            $this->retrieveData();
 
             foreach($this->companyList as $key => $company){
 
@@ -47,12 +47,12 @@
 
                 }
             }
-            $this->SaveData();
+            $this->saveData();
         }
 
-        public function Delete($companyName){
+        public function delete($companyName){
 
-            $this->RetrieveData();
+            $this->retrieveData();
             
             foreach($this->companyList as $key => $company){
 
@@ -61,16 +61,16 @@
                     unset($this->companyList[$key]);
                 }
             }
-            $this->SaveData();
+            $this->saveData();
         }
 
-        public function GetAll(){
+        public function getAll(){
             
-            $this->RetrieveData();
+            $this->retrieveData();
             return $this->companyList;
         }
         
-        private function SaveData(){
+        private function saveData(){
 
             $arrayToEncode = array();
 
@@ -87,7 +87,7 @@
             file_put_contents('Data/companies.json', $jsonContent);
         }
 
-        private function RetrieveData(){
+        private function retrieveData(){
 
             $this->companyList = array();
 

@@ -1,11 +1,11 @@
 <?php
     namespace DAO;
 
-    use Models\Company;
+    use Models\Company as Company;
 
     interface ICompanyDAO
     {
-        function Add(Company $company);
-        function GetAll();
+        function add(Company $company);
+        function getAll();
     }
 ?>

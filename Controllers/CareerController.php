@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
-    use DAO\CareerDAO;
-    use Models\Career;
+    use DAO\CareerDAO as CareerDAO;
+    use Models\Career as Career;
 
     class CareerController{
 
@@ -15,14 +15,14 @@
 
         public function ShowListView(){
 
-            $careerList = $this->careerDAO->GetAll();
+            $careerList = $this->careerDAO->getAll();
             require_once(VIEWS_PATH."career-list.php");
         }
 
         public function Add($careerId, $description, $active){
 
             $career = new Career($careerId, $description, $active);
-            $this->studentDAO->Add($career);
+            $this->studentDAO->add($career);
             $this->ShowAddView();
         }
     }
