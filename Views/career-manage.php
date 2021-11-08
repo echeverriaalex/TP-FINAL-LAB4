@@ -2,7 +2,16 @@
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4"> Manage Career </h2>
-               <table class="table bg-light-alpha">
+
+                    <div class="container">
+                         <a href="<?php  echo FRONT_ROOT?>Career/Update"> <h2 class="mb-2"> Update Careers </h2> </a>
+                    </div>
+
+                    <?php
+                         if(!empty($careerList)){
+                    ?>
+
+                    <table class="table bg-light-alpha">
                     <thead>
                          <th>ID</th>
                          <th>Description</th>
@@ -33,6 +42,16 @@
                                 </tr>
                          <?php
                               }
+                         }
+                         else{
+                         ?>
+                              <div class="list-group">
+                                   <div class="col-lg-4">
+                                        <h2 class="text-light"> <?php echo "No results found"; ?> </h2>
+                                   </div>
+                              </div>
+                         <?php
+                         }
                          ?>
                          </tr>
                     </tbody>

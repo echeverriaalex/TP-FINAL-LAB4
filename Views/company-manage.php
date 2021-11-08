@@ -1,19 +1,15 @@
-<?php 
-    /* if(isset($_SESSION["email"])) {
-          if($_SESSION["role"] != "admin") {
-               header("location: " . FRONT_ROOT . "User/ShowUserHome");
-          }
-     } else {
-          header("location: " . FRONT_ROOT . "Home/Index");
-     }
-
-     */
-?>
-
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4"> Manage Companies </h2>
+
+               <div class="container">
+                    <a href="<?php  echo FRONT_ROOT?>Company/ShowAddView"> <h2 class="mb-2"> Add a new company </h2> </a>
+               </div>              
+
+               <?php
+                    if(!empty($companyList)){
+               ?>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Cuit</th>
@@ -47,11 +43,21 @@
                                     </td>
                                 </tr>
                          <?php
-                              }
-                         ?>
+                         }
+                    }
+                    else{
+                    ?>
+                         <div class="list-group">
+                              <div class="col-lg-4">
+                                   <h2 class="text-light"> <?php echo "No results found"; ?> </h2>
+                              </div>
+                         </div>
+                    <?php
+                    }
+                    ?>
                          </tr>
                     </tbody>
-               </table>
+               </table>               
           </div>
      </section>
 </main>
