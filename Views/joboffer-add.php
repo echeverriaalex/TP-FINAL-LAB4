@@ -6,26 +6,20 @@
                     <div class="row">  
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Name</label>
-                                   <input type="text" name="name" value="" class="form-control text-light" autofocus>
+                                   <label for="">Company Name</label>
+                                   <input type="text" name="companyName" value="" class="form-control text-light" autofocus>
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Address</label>
-                                   <input type="text" name="address" value="" class="form-control text-light">
+                                   <label for="">Job Position Id</label>
+                                   <input type="text" name="jobPositionId" value="" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">CUIT</label>
-                                   <input type="text" name="cuit" value="" class="form-control text-light">
-                              </div>
-                         </div>
-                         <div class="col-lg-4">
-                              <div class="form-group">
-                                   <label for="">Phone</label>
-                                   <input type="text" name="phone" value="" class="form-control text-light">
+                                   <label for="">Salary</label>
+                                   <input type="text" name="salary" value="" class="form-control text-light">
                               </div>
                          </div>
                     </div>
