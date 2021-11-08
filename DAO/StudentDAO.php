@@ -23,17 +23,17 @@
         public function retrieveStudent ($studentEmail){
 
             $this->RetrieveData();
-            $studentResult = new Student();
+            $result = null;
 
             foreach($this->studentList as $student){
 
                 if($student->getEmail() == $studentEmail){
 
-                    $studentResult = $student;
+                    $result = $student;
                     break;
                 }
             }
-            return $studentResult;
+            return $result;
         }
 
         private function RetrieveData(){
