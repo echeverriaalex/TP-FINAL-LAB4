@@ -4,21 +4,21 @@
     class JobOffer{
 
         private $companyName;
-        private $jobPosition;
+        private $jobPositionId;
         private $salary;
 
-        public function __construct($companyName = '',$jobPosition = '', $salary = ''){
+        public function __construct($companyName = '',$jobPositionId = '', $salary = ''){
 
             $this->setCompanyName($companyName);
-            $this->setJobPosition($jobPosition);
+            $this->setjobPositionId($jobPositionId);
             $this->setSalary($salary);
         }
 
         public function getCompanyName(){return $this->companyName;}
-        public function getJobPosition(){return $this->jobPosition;}
+        public function getjobPositionId(){return $this->jobPositionId;}
         public function getSalary(){return $this->salary;}
         public function setCompanyName($companyName){$this->companyName = $companyName;}
-        public function setJobPosition($jobPosition){$this->jobPosition = $jobPosition;}
+        public function setjobPositionId($jobPositionId){$this->jobPositionId = $jobPositionId;}
         public function setSalary($salary){$this->salary = $salary;}
     }
 ?>
