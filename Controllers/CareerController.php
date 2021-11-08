@@ -16,12 +16,12 @@
         }
 
         public function ShowAddView(){
-            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require_once(VIEWS_PATH."career-add.php");
         }
 
         public function ShowListView(){
-            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."select-nav.php");
             $this->ShowFilterView();
             //$careerList = $this->careerDAO->GetAll();
             $careerList = $this->careerPDO->GetAll();
@@ -32,7 +32,7 @@
         public function ShowManageView(){
 
             //$companyList = $this->companyDAO->GetAll();  
-            require_once(VIEWS_PATH.'nav-admin.php');
+            require_once(VIEWS_PATH.'select-nav.php');
             $this->ShowFilterView();
             $careerList = $this->careerPDO->GetAll();
             require_once(VIEWS_PATH."career-manage.php");
@@ -57,15 +57,22 @@
             if($career != null && $career->getDescription() != "") {
 
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "career-info.php");
 
             } else {
                 //$this->ShowFilterView();
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "career-info.php");
             }            
+        }
+
+        public function Delete($careerName){
+
+            //$this-> companyDAO->Delete($careerName);
+            $this->careerPDO->Delete($careerName);
+            $this->ShowManageView();
         }
 
         public function Update(){
