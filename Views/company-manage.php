@@ -1,11 +1,13 @@
 <?php 
-     if(isset($_SESSION["email"])) {
+    /* if(isset($_SESSION["email"])) {
           if($_SESSION["role"] != "admin") {
                header("location: " . FRONT_ROOT . "User/ShowUserHome");
           }
      } else {
           header("location: " . FRONT_ROOT . "Home/Index");
      }
+
+     */
 ?>
 
 <main class="py-5">
@@ -14,7 +16,7 @@
                <h2 class="mb-4"> Manage Companies </h2>
                <table class="table bg-light-alpha">
                     <thead>
-                         <th>Ciut</th>
+                         <th>Cuit</th>
                          <th>Name</th>
                          <th>Address</th>
                          <th>Phone</th>
@@ -32,7 +34,7 @@
                                     <td> 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>Company/Delete">
                                             <input type="hidden" name="companyName" value="<?php echo $company->getName(); ?>">
-                                            <button> Delete </button> 
+                                            <button type="submit" class="btn btn-outline-danger"> Delete </button> 
                                         </form>
 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>Company/ShowEditView">
@@ -40,7 +42,7 @@
                                             <input type="hidden" name="address" value="<?php echo $company->getAddress(); ?>">
                                             <input type="hidden" name="phone" value="<?php echo $company->getPhone(); ?>">
                                             <input type="hidden" name="cuit" value="<?php echo $company->getCuit(); ?>">                                            
-                                            <button> Edit </button>
+                                            <button type="submit" class="btn btn-outline-primary"> Edit </button>
                                         </form>
                                     </td>
                                 </tr>

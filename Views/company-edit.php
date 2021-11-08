@@ -6,27 +6,27 @@
                     <div class="row">  
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <input type="hidden" name="currentName" value="<?php $name; ?>">
+                                   <input type="hidden" name="currentName" value="<?php echo $name; ?>">
                                    <label for="">Name</label>
-                                   <input type="text" name="name" value="<?php $name; ?>" class="form-control text-light">
+                                   <input type="text" name="name" value="<?php echo $name; ?>" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Address</label>
-                                   <input type="text" name="address" value="<?php $address; ?>" class="form-control text-light">
+                                   <input type="text" name="address" value="<?php echo $address; ?>" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Phone</label>
-                                   <input type="text" name="phone" value="<?php $phone ;?>" class="form-control text-light">
+                                   <input type="text" name="phone" value="<?php echo $phone ;?>" class="form-control text-light">
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Cuit</label>
-                                   <input type="text" name="cuit" value="<?php $cuit; ?>" class="form-control text-light">
+                                   <input type="text" name="cuit" value="<?php echo $cuit; ?>" class="form-control text-light">
                               </div>
                          </div>
                     </div>
