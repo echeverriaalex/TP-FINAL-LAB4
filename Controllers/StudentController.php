@@ -34,11 +34,8 @@
         }
 
         public function ShowManageView(){
-
-            require_once(VIEWS_PATH.'nav-admin.php');
-            $this->ShowFilterView();
-            //$studentsList = $this->studentDAO->GetAll();
-            $studentsList = $this->studentPDO->GetAll();
+            require_once(VIEWS_PATH."nav-admin.php");
+            $studentsList = $this->studentDAO->getAll();
             require_once(VIEWS_PATH."student-manage.php");
         }
 
@@ -53,7 +50,7 @@
 
         public function ShowListView(){
             require_once(VIEWS_PATH."nav-admin.php");
-            $studentList = $this->studentDAO->GetAll();
+            $studentList = $this->studentDAO->getAll();
             require_once(VIEWS_PATH."student-list.php");
         }
 
@@ -83,7 +80,7 @@
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
 
             $student = new Student($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
-            $this->studentDAO->Add($student);
+            $this->studentDAO->add($student);
             $this->ShowAddView();
         }
     }

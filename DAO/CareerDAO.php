@@ -1,18 +1,19 @@
 <?php
     namespace DAO;
-    use Models\Career;
+
+    use Models\Career as Career;
 
     class CareerDAO{
 
         private $careerList = array();
 
-        public function GetAll(){
+        public function getAll(){
 
-            $this->RetrieveDataAPI();
+            $this->retrieveDataAPI();
             return $this->careerList;
         }
 
-        public function RetrieveDataAPI(){
+        public function retrieveDataAPI(){
 
             $opt = array(
                     "http"=> array(

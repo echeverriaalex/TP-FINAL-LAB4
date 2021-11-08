@@ -1,18 +1,15 @@
 <?php
     namespace Controllers;
-    use DAO\CompanyDAO;
-    use PDO\CompanyPDO;
-    use Models\Company;
+    use DAO\CompanyDAO as CompanyDAO;
+    use Models\Company as Company;
 
     class CompanyController{
 
         private $companyDAO;
-        private $companyPDO;
 
         public function __construct(){
         
             $this->companyDAO = new CompanyDAO();
-            $this->companyPDO = new CompanyPDO();
         }
 
         public function ShowAddView(){
@@ -21,15 +18,15 @@
         }
 
         public function ShowListView(){
-            require(VIEWS_PATH."select-nav.php");
-            $this->ShowFilterView();
-            //$companyList = $this->companyDAO->GetAll();
-            $companyList = $this->companyPDO->GetAll();
+            require_once(VIEWS_PATH."select-nav.php");
+            require_once(VIEWS_PATH."company-filter.php");
+            $companyList = $this->companyDAO->getAll();
             require_once(VIEWS_PATH."company-list.php");
         }
         
         public function ShowManageView(){
-            
+
+            $companyList = $this->companyDAO->getAll();      
             require_once(VIEWS_PATH.'nav-admin.php');
             $this->ShowFilterView();
             //$companyList = $this->companyDAO->GetAll();
@@ -53,8 +50,9 @@
         public function Add($name, $address, $cuit, $phone){
             
             $company = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Add($company);
-            $this->companyPDO->Add($company);
+            $this->companyDAO->Add($company);
+            
+
             echo "<script> alert('La empresa se agrego exitosamente.');</script>";
             $this->ShowAddView();
         }
@@ -62,26 +60,22 @@
         public function Edit($currentName, $name, $address, $phone, $cuit){
             
             $companyEdit = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Edit($currentName, $companyEdit);
-            $this->companyPDO->Edit($currentName, $companyEdit);
+            $this->companyDAO->edit($currentName, $companyEdit);
             $this->ShowManageView();
         }
 
         public function Delete($companyName){
 
-            //$this-> companyDAO->Delete($companyName);
-            $this->companyPDO->Delete($companyName);
+            $this-> companyDAO->delete($companyName);
+            $companyList = $this->companyDAO->getAll();
             $this->ShowManageView();
         }
 
         public function Filter ($companyName){
 
             require_once(VIEWS_PATH."select-nav.php");       
-            //$company = $this->companyDAO->Filter($companyName);
-            $company = $this->companyPDO->Filter($companyName);
-            //require_once(VIEWS_PATH. "company-info.php");
-            
-            if($company != null && $company->getName() != "") {
+            $company = $this->companyDAO->filter($companyName);
+            require_once(VIEWS_PATH. "company-info.php");
 
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
                 require_once(VIEWS_PATH."nav-admin.php");

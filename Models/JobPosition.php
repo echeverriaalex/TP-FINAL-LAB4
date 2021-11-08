@@ -3,22 +3,23 @@
 
     class JobPosition{
 
-        private $jobPositionId;
-        private $careerId;
+        private $id;
         private $description;
+        private $careerId;
 
-        public function __construct($jobPositionId = '',$careerId = '', $description = ''){
-
-            $this->setJobPositionId($jobPositionId);
-            $this->setCareerId($careerId);
+        public function __construct($id = '', $description= '', $careerId = ''){
+            $this->setId($id);
             $this->setDescription($description);
+            $this->setCareerId($careerId);
         }
+        
+        public function setId($id){$this->id = $id;}
+        public function getId(){return $this->id;}
 
-        public function getJobPositionId(){return $this->jobPositionId;}
-        public function getCareerId(){return $this->careerId;}
-        public function getDescription(){return $this->description;}
-        public function setJobPositionId($jobPositionId){$this->jobPositionId = $jobPositionId;}
-        public function setCareerId($careerId){$this->careerId = $careerId;}
         public function setDescription($description){$this->description = $description;}
+        public function getDescription(){return $this->description;}
+
+        public function setCareerId($careerId){$this->careerId = $careerId;}
+        public function getCareerId(){return $this->careerId;}
     }
 ?>

@@ -1,8 +1,7 @@
 <?php
     namespace Controllers;
-    use DAO\CareerDAO;
-    use Models\Career;
-    use PDO\CareerPDO;
+    use DAO\CareerDAO as CareerDAO;
+    use Models\Career as Career;
 
     class CareerController{
 
@@ -70,16 +69,14 @@
 
         public function Update(){
 
-            $this->careerPDO->UpdateCareerDatabase();
-            echo "<br> Base de datos actualizada con API <br>";
-            $this->ShowManageView();
+            $careerList = $this->careerDAO->getAll();
+            require_once(VIEWS_PATH."career-list.php");
         }
 
         public function Add($careerId, $description, $active){
 
             $career = new Career($careerId, $description, $active);
-            //$this->careerDAO->Add($career);
-            $this->careerPDO->Add($career);
+            $this->studentDAO->add($career);
             $this->ShowAddView();
         }
     }

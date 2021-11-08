@@ -7,16 +7,9 @@
 
         private $studentList = array();
 
-        public function Add(Student $student){
+        public function getAll(){
 
-            $this->RetrieveData();            
-            array_push($this->studentList, $student);
-            //$this->SaveData();
-        }
-
-        public function GetAll(){
-
-            $this->RetrieveData();
+            $this->retrieveData();
             return $this->studentList;
         } 
 
@@ -36,7 +29,7 @@
             return $result;
         }
 
-        private function RetrieveData(){
+        private function retrieveData(){
 
             $this->studentList = array();
         

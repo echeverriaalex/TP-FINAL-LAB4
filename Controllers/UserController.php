@@ -1,9 +1,7 @@
 <?php
     namespace Controllers;
 
-    use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
-    use Models\Student;
     use Models\User as User;
     use PDO\StudentPDO;
     use PDO\UserPDO;
@@ -38,16 +36,13 @@
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."nav-admin.php");            
-            require(VIEWS_PATH.'home.php');
-            require_once(VIEWS_PATH."company-filter.php");
-    
+            require(VIEWS_PATH.'home.php');    
         }
 
         public function ShowUserHome()
         {
             require_once(VIEWS_PATH."nav-user.php");
-            //require_once(VIEWS_PATH."company-filter.php");
-            require(VIEWS_PATH.'student-profile.php');
+            require(VIEWS_PATH.'user-profile.php');
         }
 
         public function ShowStudentView(){
@@ -58,9 +53,9 @@
      
         public function Add($email, $password){
 
-            if($this->userDAO->IsStudent($email)){
+            if($this->userDAO->isStudent($email)){
                 $user = new User($email, $password, "user");
-                $this->userDAO->Add($user);
+                $this->userDAO->add($user);
                 $this->ShowSignUpView();
                
             } else {
@@ -120,9 +115,9 @@
             /*
             if(isset($student) && ($student->getEmail() != ""))
             {
-                $_SESSION['email'] = $student->getEmail();
-                $_SESSION['role'] = $student->getRole();
-                if($student->getRole() == "admin"){
+                $_SESSION['email'] = $user->getEmail();
+                $_SESSION['role'] = $user->getRole();
+                if($user->getRole() == "admin"){
                     $this->ShowAdminHome();
                 } else {
                     //$this->ShowUserHome();
@@ -143,8 +138,7 @@
             $_SESSION = null; 
             unset($_SESSION['userlogged']);
             session_destroy();
-            $home = new HomeController();
-            $home->Index();
+            header("location: ../Home/Index");
         }
     }
 ?>
