@@ -1,11 +1,10 @@
 <?php
-    namespace DAO;
-
+    namespace PDO;
     use Models\Student as Student;
 
-    interface IStudentDAO
-    {
-        //function Add(Student $student);
+    interface IStudentPDO{
+        
+        function Add(Student $student);
         function GetAll();
     }
 ?>

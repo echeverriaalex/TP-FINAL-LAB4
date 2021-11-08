@@ -2,6 +2,11 @@
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4"> Manage Students</h2>
+
+               <?php
+                    if(!empty($studentsList)){
+               ?>
+
                <table class="table bg-light-alpha">
                     <thead>
                         <th> First name </th>
@@ -17,7 +22,7 @@
                         <th> Options </th>
                     </thead>
                     <tbody>
-                         <?php
+                         <?php                              
                               foreach($studentsList as $student){
                          ?>
                               <tr>
@@ -30,15 +35,8 @@
                                    <td><?php echo $student->getStudentId(); ?></td>
                                    <td><?php echo $student->getCareerId(); ?></td>
                                    <td><?php echo $student->getFileNumber(); ?></td>
-                                   <td>
-                                        <?php 
-                                             if($student->getActive())
-                                                  echo "Active";
-                                             else 
-                                                  echo "Disabled";
-                                        ?>
-                                   </td>
-               
+                                   <td><?php if($student->getActive()) echo "Active"; else echo "No active"; ?></td>
+                                    
                                    <td> 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>student/Delete">
                                             <input type="hidden" name="studentName" value="<?php echo $student->getFirstName(); ?>">
@@ -60,6 +58,16 @@
                                         </form>
                                    </td>
                               </tr>
+                         <?php
+                                   }
+                              }
+                              else{
+                         ?>
+                              <div class="list-group">
+                                   <div class="col-lg-4">
+                                        <h2 class="text-light"> <?php echo "No student results found."; ?> </h2>
+                                   </div>
+                              </div>
                          <?php
                               }
                          ?>

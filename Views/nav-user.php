@@ -13,15 +13,11 @@
         </li>
         -->
 
-        <li class="nav-item">
-          <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a>
-        </li>
+        <li class="nav-item"> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a> </li>
+        <li> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Student/ShowMyProfile">Profile</a> </li>
+        <li> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>/">Job offers</a> </li>
 
-        <li>
-          <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>User/LogIn">Profile</a>
-        </li>
-
-        <?php if(isset($_SESSION['email'])) { ?>
+        <?php if(isset($_SESSION['userlogged'])) { ?>
             <li><a class="nav-link text-light" href="<?php echo FRONT_ROOT?>User/LogOut">LogOut</a></li>
         <?php	} ?>  
       </ul>

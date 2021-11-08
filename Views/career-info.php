@@ -4,24 +4,19 @@
             <div class="container">
                 <div class="list-group">
                     <?php
-                        if( $company != null && $company->getName() != null){
+                        if($career != null && $career->getDescription() != null){
                     ?>
-                    <br>
                     <div class="col-lg-4">
-                        <h2 class="text-light"> <?php echo $company->getName() ?> </h2>
+                        <h2 class="text-light"> <?php echo $career->getDescription() ?> </h2>
                     </div>
 
                     <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-secondary"> Adress <?php echo $company->getAddress(); ?> </a>
+                        <a class="list-group-item list-group-item-action list-group-item-secondary"> ID <?php echo $career->getCareerId(); ?> </a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-success"> Phone <?php echo $company->getPhone();?></a>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <a class="list-group-item list-group-item-action list-group-item-danger"> Cuit <?php echo $company->getCuit();?></a>
-                    </div>                    
+                        <a class="list-group-item list-group-item-action list-group-item-success"> Status <?php if($career->getActive()) echo "Active"; else echo "No active";?></a>
+                    </div>                  
                     <?php
                         }
                         else{

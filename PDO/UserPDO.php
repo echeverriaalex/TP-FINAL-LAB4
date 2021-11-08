@@ -1,34 +1,94 @@
 <?php
-    namespace DAO;
-
-    use DAO\IUserDAO as IUserDAO;
-    use DAO\StudentDAO as StudentDAO;
+    namespace PDO;
+    use PDO\IUserPDO;
+    use PDO\StudentPDO;
     use Models\User as User;
     use Models\Student as Student;
+    use PDO\Connection;
+    use PDOException;
 
-    class UserDAO implements IUserDAO
-    {
-        private $userList = array();
+    class UserPDO implements IUserPDO{
 
-        public function Add(User $user)
-        {
-            $this->RetrieveData();
-            $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));           
-            array_push($this->UserList, $user);
-            $this->SaveData();
+        private $connection;
+        private $tableName = "Users";
+
+        public function Add(User $user){
+
+            try{
+                $query = "INSERT INTO ".$this->tableName." (email, passwordUser, roleUser) VALUES (:email, :passwordUser, :roleUser);";
+             
+                $parameters["email"] = $user->getEmail();
+                $parameters["passwordUser"] = $user->getPassword();
+                $parameters["roleUser"] = $user->getRole();
+
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            }catch(PDOException $ex){
+
+                throw $ex;
+            }
         }
 
-        public function GetAll()
-        {
-            $this->RetrieveData();
-            return $this->userList;
+        public function GetAll(){
+
+            try {
+                $userList = array();
+                $query = "SELECT * FROM ".$this->tableName;
+
+                $this->connection = Connection::GetInstance();
+                $userResults = $this->connection->Execute($query);
+
+                foreach ($userResults as $row) {
+
+                    $user = new User();
+                    $user->setEmail($row['email']);
+                    $user->setPassword($row['passwordUser']);
+                    $user->setRole($row['roleUser']);
+                    array_push($userList, $user);
+                }
+                return $userList;
+
+            } catch (PDOException $ex) {
+                throw $ex;
+            }
+        }
+
+        public function SearchUser($email){
+            
+            try {
+
+                $parameters['email'] = $email;
+                $query = "SELECT * FROM ".$this->tableName." WHERE (email = :email);";
+
+                $this->connection = Connection::GetInstance();
+                $usertResults = $this->connection->Execute($query, $parameters);
+                
+                if(!empty($usertResults)){
+                    
+                    foreach ($usertResults as $row) {
+
+                        $user = new User();
+                        $user->setEmail($row['email']);
+                        $user->setPassword($row['passwordUser']);
+                        $user->setRole($row['roleUser']);
+                    }
+                    return $user;
+                }
+                else{
+                    return null;
+                }
+
+            }catch(PDOException $ex) {
+                throw $ex;
+            }
         }
         
         public function IsStudent($email)
         {
             $result = false;
-            $studentDAO = new StudentDAO();
-            $student = $studentDAO->RetrieveStudent($email);
+            //$studentDAO = new StudentDAO();
+            //$student = $studentDAO->RetrieveStudent($email);
             if(isset($student)){
                 $result = true;
             }

@@ -15,11 +15,14 @@
             //require_once(VIEWS_PATH."signIn.php");
             //require_once(VIEWS_PATH."company-list.php");
 
-            $controller =  new CompanyController;
+            //$controller =  new CompanyController;
             //$controller->ShowEditView($name, $address, $phone, $cuit);
             //$controller->ShowListView();
             //$controller->ShowManageView();
             //$controller->ShowFilterView();
+
+            //$controller = new CareerController;
+            //$controller->ShowListView();
 
             //$controller = new 
 

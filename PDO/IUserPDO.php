@@ -1,10 +1,9 @@
 <?php
-    namespace DAO;
-
+    namespace PDO;
     use Models\User as User;
 
-    interface IUserDAO
-    {
+    interface IUserPDO{
+
         function Add(User $user);
         function GetAll();
     }
