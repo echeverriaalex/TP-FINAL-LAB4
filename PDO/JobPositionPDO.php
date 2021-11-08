@@ -1,9 +1,9 @@
 <?php
-    namespace DAO;
+    
 
-    use DAO\IJobPositionDAO as IJobPositionDAO;
-    use DAO\JobPositionDAO as JobPositionDAO;
-    use Models\JobPosition as JobPosition;
+    namespace PDO;
+    use Models\JobPosition;
+    use PDO\Connection;
     use PDOException;
 
     class JobPositionPDO implements IJobPositionPDO
@@ -29,10 +29,15 @@
         }
 
 
+        public function UpdateJobPositionDatabase(){
 
+            $jobPositionListApi = $this->RetrieveDataAPI();
+            
+            foreach($jobPositionListApi as $jobPosition){
 
-
-
+                $this->Add($jobPosition);
+            }
+        }
 
 
 
@@ -63,6 +68,34 @@
 
 
         }
+
+
+
+
+        public function RetrieveDataAPI(){
+
+            $opt = array(
+                    "http"=> array(
+                            "method" => "GET",
+                            "header" => "x-api-key: 4f3bceed-50ba-4461-a910-518598664c08\r\n"
+                )
+            );
+    
+            $ctx = stream_context_create($opt);
+            $jsonContent = file_get_contents('https://utn-students-api.herokuapp.com/api/JobPosition', false, $ctx);
+    
+            $arrayToDecode = ($jsonContent)? json_decode($jsonContent, true) : array ();
+            $careerListApi = array();
+    
+            foreach($arrayToDecode as $valuesArray){
+
+                $career = new JobPosition($valuesArray['jobPositionId'], $valuesArray['careerId'], $valuesArray['description']);
+                array_push($careerListApi, $career);
+            }
+            return $careerListApi;
+        }
     }
     
 ?>
+
+
