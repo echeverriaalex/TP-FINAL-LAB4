@@ -70,6 +70,7 @@
 
         public function LogOut(){
 
+            $_SESSION = null;
             session_destroy();
             header("location: ../Home/Index");
         }

@@ -21,4 +21,3 @@
     define("DB_NAME", "Linkedon");
     define("DB_USER", "root");
     define("DB_PASS", "root");
-?>
