@@ -4,7 +4,7 @@
     class HomeController{
         public function Index(){
             
-            require_once(VIEWS_PATH."nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require(VIEWS_PATH."home.php");
            // require_once(VIEWS_PATH."signUp.php");
             //require_once(VIEWS_PATH."nav-admin.php");
@@ -14,11 +14,14 @@
             //require_once(VIEWS_PATH."signIn.php");
             //require_once(VIEWS_PATH."company-list.php");
 
-            $controller =  new CompanyController;
+            //$controller =  new CompanyController;
             //$controller->ShowEditView($name, $address, $phone, $cuit);
             //$controller->ShowListView();
             //$controller->ShowManageView();
             //$controller->ShowFilterView();
+
+            //$controller = new CareerController;
+            //$controller->ShowListView();
 
             //$controller = new 
 
