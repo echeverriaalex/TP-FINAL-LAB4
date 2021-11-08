@@ -1,16 +1,19 @@
 <?php
     namespace Models;
 
+    use PDO/JobOfferPDO;
+
+
     class JobOfferController{
 
-        private $jobOffersPDO;
+        private $jobOfferPDO;
 
-        public function __construct(){$this->jobOffersPDO ;}// = new CompanyPDO();}
+        public function __construct(){$this->jobOfferPDO ;}= new JobOfferPDO();}
 
         public function ShowAddView(){
 
             require_once(VIEWS_PATH."nav-admin.php");
-            require_once(VIEWS_PATH."joboffer-add.php");
+            require_once(VIEWS_PATH."jobOffer-add.php");
         }
 
         public function ShowListView(){
@@ -21,7 +24,7 @@
         }
 
         public function ShowEditView($name, $address, $phone, $cuit){
-            require_once(VIEWS_PATH."");
+            require_once(VIEWS_PATH."jobOffer-edit.php");
         }
 
         public function ShowManageView(){
@@ -38,27 +41,24 @@
             require_once(VIEWS_PATH."");
         }
 
-        public function Add($name, $address, $cuit, $phone){
+        public function Add($companyName, $jobPositionId, $salary){
             
-            $jobOffer = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Add($company);
-            //$this->->Add($company);
+            $jobOffer = new JobOffer($companyName, $jobPositionId, $salary);
+            $this->jobOfferPDO->Add($jobOffer);
             echo "<script> alert('La oferta de trabajo se agrego exitosamente.');</script>";
             $this->ShowAddView();
         }
 
-        public function Edit($currentName, $name, $address, $phone, $cuit){
+        public function Edit($currentName, $companyName, $jobPositionId, $salary){
             
-            $companyEdit = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Edit($currentName, $companyEdit);
-            //$this->->Edit($currentName, $companyEdit);
+            $jobOfferEdit = new JobOffer($companyName, $jobPositionId, $salary);
+            $this->jobOfferPDO->Edit($currentName, $jobOfferEdit);
             $this->ShowManageView();
         }
 
-        public function Delete($jobOfferName){
+        public function Delete($companyName){
 
-            //$this-> companyDAO->Delete($companyName);
-            //$this->->Delete($jobOfferName);
+            $this-> jobOfferPDO->Delete($companyName);
             $this->ShowManageView();
         }
 
