@@ -8,6 +8,7 @@
                               <th>First Name</th>
                               <th>Last Name</th>
                               <th>DNI</th>
+                              <th> E-mail </th>
                               <th>Phone Number</th>
                          </thead>
                          <tbody>
@@ -18,8 +19,14 @@
                                              <td><?php echo $student->getStudentId(); ?></td>
                                              <td><?php echo $student->getFirstName(); ?></td>
                                              <td><?php echo $student->getLastName(); ?></td>
-                                             <td><?php echo $student->getDni(); ?></td>
-                                             <td><?php echo $student->getPhoneNumber(); ?></td>
+                                             <td><?php echo $student->gettDni(); ?></td>
+                                             <td><?php echo $student->getEmail(); ?></td>
+                                             <td><?php echo $student->getPhoneNumber(); ?></td>                                          
+                                             <td><?php echo $student->getCareerId(); ?> </td>
+                                             <td><?php echo $student->setFileNumber(); ?> </td>
+                                             <td><?php echo $student->setGender(); ?> </td>
+                                             <td><?php echo $student->setBirthDate(); ?> </td>
+                                             <td><?php echo $student->setActive(); ?> </td>
                                         </tr>
                               <?php
                                    }
