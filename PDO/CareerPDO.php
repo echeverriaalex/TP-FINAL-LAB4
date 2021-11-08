@@ -75,11 +75,13 @@
             }
         }
 
-        public function Delete($companyName){
+        */
+
+        public function Delete($careerName){
 
             try {
-                $query = "DELETE FROM ".$this->tableName." WHERE (nameCompany = :nameCompany);";
-                $parameters['nameCompany'] = $companyName;
+                $query = "DELETE FROM ".$this->tableName." WHERE (descriptionCareer = :descriptionCareer);";
+                $parameters['descriptionCareer'] = $careerName;
                 $this->connection = Connection::GetInstance();
                 $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
                 return $deletedCount;
@@ -88,8 +90,6 @@
                 throw $ex;
             }
         }
-
-        */
 
         public function UpdateCareerDatabase(){
 
