@@ -25,33 +25,33 @@
 
         public function ShowSignInView()
         {
-            require_once(VIEWS_PATH."nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require(VIEWS_PATH."signIn.php");
         }
 
         public function ShowSignUpView()
         {
-            require_once(VIEWS_PATH."nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require(VIEWS_PATH."signUp.php");
         }
 
         public function ShowAdminHome()
         {
-            require_once(VIEWS_PATH."nav-admin.php");            
+            require_once(VIEWS_PATH."select-nav.php");            
             require_once(VIEWS_PATH."company-filter.php");
             require(VIEWS_PATH.'index.php');
         }
 
         public function ShowUserHome()
         {
-            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."select-nav.php");
             //require_once(VIEWS_PATH."company-filter.php");
             require(VIEWS_PATH.'student-profile.php');
         }
 
         public function ShowStudentView(){
 
-            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require_once(VIEWS_PATH."student-profile.php");
         }
      
@@ -94,7 +94,7 @@
                         $student->setRole($user->getRole());
                         $_SESSION['userlogged'] = $student;
                         //$this->ShowStudentView();                       
-                        require_once(VIEWS_PATH."select-nav.php");
+                        require_once(VIEWS_PATH."select-select-nav.php");
                         require_once(VIEWS_PATH."student-profile.php");
                         break;
 
@@ -110,11 +110,6 @@
                             break;        
                 }
             }
-
-
-
-
-
 
             /*
             if(isset($student) && ($student->getEmail() != ""))
