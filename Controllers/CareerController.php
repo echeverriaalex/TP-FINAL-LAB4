@@ -77,10 +77,10 @@
             }            
         }
 
-        public function Delete($careerName){
+        public function Delete($careerID){
 
             //$this-> companyDAO->Delete($careerName);
-            $this->careerPDO->Delete($careerName);
+            $this->careerPDO->Delete($careerID);
             $this->ShowManageView();
         }
 

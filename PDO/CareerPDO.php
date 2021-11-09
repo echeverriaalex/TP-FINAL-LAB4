@@ -77,11 +77,11 @@
 
         */
 
-        public function Delete($careerName){
+        public function Delete($careerID){
 
             try {
-                $query = "DELETE FROM ".$this->tableName." WHERE (descriptionCareer = :descriptionCareer);";
-                $parameters['descriptionCareer'] = $careerName;
+                $query = "DELETE FROM ".$this->tableName." WHERE (careerId = :careerId);";
+                $parameters['careerId'] = $careerID;
                 $this->connection = Connection::GetInstance();
                 $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
                 return $deletedCount;

@@ -28,7 +28,7 @@
                                     <td><?php if($career->getActive()) echo "Active"; else echo "No active";?></td>
                                     <td> 
                                         <form method="POST" action="<?php echo FRONT_ROOT?>Career/Delete">
-                                            <input type="hidden" name="careerName" value="<?php echo $career->getCareerId(); ?>">
+                                            <input type="hidden" name="careerID" value="<?php echo $career->getCareerId(); ?>">
                                             <button type="submit" class="btn btn-outline-danger"> Delete </button> 
                                         </form>
 
