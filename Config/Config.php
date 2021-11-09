@@ -17,7 +17,7 @@
     define("Request_URL_Students","https://utn-students-api.herokuapp.com/api/Student");
 
     //Database constants
-    define("DB_HOST", "localhost");
+    define("DB_HOST", "127.0.0.1:3307");
     define("DB_NAME", "Linkedon");
     define("DB_USER", "root");
     define("DB_PASS", "root");

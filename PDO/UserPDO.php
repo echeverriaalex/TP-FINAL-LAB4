@@ -1,16 +1,16 @@
 <?php
     namespace PDO;
-    use PDO\IUserPDO;
-    use PDO\StudentPDO;
+    use PDO\IUserPDO as IUserPDO;
+    use PDO\StudentPDO as StudentPDO;
     use Models\User as User;
     use Models\Student as Student;
-    use PDO\Connection;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class UserPDO implements IUserPDO{
 
         private $connection;
-        private $tableName = "Users";
+        private $tableName = "users";
 
         public function Add(User $user){
 
@@ -86,64 +86,9 @@
         
         public function IsStudent($email)
         {
-            $result = false;
-            //$studentDAO = new StudentDAO();
-            //$student = $studentDAO->RetrieveStudent($email);
-            if(isset($student)){
-                $result = true;
-            }
-            return $result;
-        }
-
-        public function RetrieveUser($email, $password)
-        {
-            $this->RetrieveData();
-            $userResult = null;
-
-            foreach($this->userList as $user){
-
-                if(($user->getEmail() == $email) && (password_verify($password, $user->getPassword()))){
-                    $userResult = $user;
-                    break;
-                }
-            }
-            return $userResult;
-        }
-
-        private function SaveData(){
-
-            $arrayToEncode = array();
-
-            foreach($this->userList as $user){
-
-                $valuesArray["email"] = $user->getEmail();
-                $valuesArray["password"] = $user->getPassword();
-                $valuesArray["role"] = $user->getRole();
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);            
-            file_put_contents('Data/users.json', $jsonContent);
-        }
-
-        private function RetrieveData(){
-
-            $this->userList = array();
-
-            if(file_exists('Data/users.json'))
-            {
-                $jsonContent = file_get_contents('Data/users.json');
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $user = new User();
-                    $user->setEmail($valuesArray["email"]);
-                    $user->setPassword($valuesArray["password"]);
-                    $user->setRole($valuesArray["role"]);
-                    array_push($this->userList, $user);
-                }
-            }
+            $studentPDO = new StudentPDO();
+            $student = $studentPDO->SearchStudent($email);
+            return isset($student);
         }
     }
     

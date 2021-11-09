@@ -1,13 +1,13 @@
 <?php
     namespace PDO;
-    use Models\Career;
-    use PDO\Connection;
+    use Models\Career as Career;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class CareerPDO{
 
         private $connection;
-        private $tableName = "Careers";
+        private $tableName = "careers";
 
         public function Add(Career $newCareer){
 
@@ -50,32 +50,6 @@
                 throw $ex;
             }
         }
-
-        /* EN CASO DE NECESITAR MODIFICAR PARA QUE SEA CON CAREERS
-
-         public function Edit($currentName, Company $companyEdit){
-
-            try {
-
-                $query = "UPDATE ".$this->tableName." SET nameCompany = :nameCompany, address = :address, phone = :phone, cuit = :cuit WHERE (nameCompany = :currentName);";
-
-                $parameters["nameCompany"] = $companyEdit->getName();
-                $parameters["address"] = $companyEdit->getAddress();
-                $parameters["phone"] = $companyEdit->getPhone();
-                $parameters["cuit"] = $companyEdit->getCuit();                
-                $parameters["currentName"] = $currentName;
-
-                $this->connection = Connection::GetInstance();
-                $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
-                return $deletedCount;
-
-            } catch (PDOException $ex) {
-
-                throw $ex;
-            }
-        }
-
-        */
 
         public function Delete($careerName){
 

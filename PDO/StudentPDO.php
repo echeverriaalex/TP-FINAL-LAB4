@@ -1,15 +1,14 @@
 <?php
     namespace PDO;
-    use PDO\IStudentPDO;
+    use PDO\IStudentPDO as IStudentPDO;
     use Models\Student as Student;
-    use Models\User;
-    use PDO\Connection;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class StudentPDO implements IStudentPDO{
 
         private $connection;
-        private $tableName = "Students";
+        private $tableName = "students";
 
         public function Add(Student $newStudent){
 
@@ -32,10 +31,6 @@
 
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
-
-                $userPDO = new UserPDO();
-                $user = new User($newStudent->getEmail(), "", "student");
-                $userPDO->Add($user);
 
             }catch(PDOException $ex){
 
@@ -122,25 +117,6 @@
                 throw $ex;
             }
         }
-
-        /* REVISAR SI LO NECESITAMOS
-        public function retrieveStudent ($studentEmail)
-        {
-            //$this->RetrieveData();
-            $studentResult = null;
-
-            foreach($this->studentList as $student)
-            {
-                if($student->getEmail() == $studentEmail)
-                {
-                    $studentResult = $student;
-                    break;
-                }
-            }
-
-            return $studentResult;
-        }
-        */
 
         public function RetrieveDataAPI(){
 

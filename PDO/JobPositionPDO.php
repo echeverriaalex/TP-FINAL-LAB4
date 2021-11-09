@@ -2,14 +2,14 @@
     
 
     namespace PDO;
-    use Models\JobPosition;
-    use PDO\Connection;
+    use Models\JobPosition as JobPosition;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class JobPositionPDO implements IJobPositionPDO
     {
         private $connection;
-        private $tableName = "JobPositions";
+        private $tableName = "jobPositions";
 
 
         public function Add(JobPosition $jobPosition)
@@ -64,13 +64,7 @@
             }catch (PDOException $ex){
                 throw $ex;
             }
-
-
-
         }
-
-
-
 
         public function RetrieveDataAPI(){
 

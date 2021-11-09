@@ -67,7 +67,6 @@
         public function Add($name, $address, $cuit, $phone){
             
             $company = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Add($company);
             $this->companyPDO->Add($company);
             echo "<script> alert('La empresa se agrego exitosamente.');</script>";
             $this->ShowAddView();
@@ -76,14 +75,12 @@
         public function Edit($currentName, $name, $address, $phone, $cuit){
             
             $companyEdit = new Company($name, $address, $phone, $cuit);
-            //$this->companyDAO->Edit($currentName, $companyEdit);
             $this->companyPDO->Edit($currentName, $companyEdit);
             $this->ShowManageView();
         }
 
         public function Delete($companyName){
 
-            //$this-> companyDAO->Delete($companyName);
             $this->companyPDO->Delete($companyName);
             $this->ShowManageView();
         }
@@ -91,21 +88,14 @@
         public function Filter ($companyName){
 
             require_once(VIEWS_PATH."select-nav.php");       
-            //$company = $this->companyDAO->Filter($companyName);
             $company = $this->companyPDO->Filter($companyName);
-            //require_once(VIEWS_PATH. "company-info.php");
             
             if($company != null && $company->getName() != "") {
-
-                // aca despues poner select nav porque tambien lo van a usar los estudiantes
                 require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "company-info.php");
 
             } else {
-                //$this->ShowFilterView();
-                // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."select-nav.php");
-                require_once(VIEWS_PATH. "company-info.php");
+                $this->ShowFilterView();
             }            
         }
     }
