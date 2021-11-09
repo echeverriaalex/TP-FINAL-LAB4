@@ -105,7 +105,7 @@
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
 
             $student = new Student($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
-            $this->studentDAO->add($student);
+            //$this->studentDAO->add($student);
             $this->ShowAddView();
         }
     }
