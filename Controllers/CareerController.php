@@ -3,6 +3,7 @@
     use DAO\CareerDAO;
     use Models\Career;
     use PDO\CareerPDO;
+    use PDO\SessionCheck;
 
     class CareerController{
 
@@ -17,16 +18,24 @@
 
         public function ShowAddView(){
             require_once(VIEWS_PATH."select-nav.php");
-            require_once(VIEWS_PATH."career-add.php");
+            if(SessionCheck::Check())
+                require_once(VIEWS_PATH."career-add.php");
+            else
+                HomeController::Index();
         }
 
         public function ShowListView(){
             require_once(VIEWS_PATH."select-nav.php");
-            $this->ShowFilterView();
-            //$careerList = $this->careerDAO->GetAll();
-            $careerList = $this->careerPDO->GetAll();
-            var_dump($careers);
-            //require_once(VIEWS_PATH."career-list.php");
+
+            if(SessionCheck::Check()){
+                $this->ShowFilterView();
+                //$careerList = $this->careerDAO->GetAll();
+                $careerList = $this->careerPDO->GetAll();
+                var_dump($careers);
+                //require_once(VIEWS_PATH."career-list.php");
+            }
+            else
+                HomeController::Index();            
         }
         
         public function ShowManageView(){
