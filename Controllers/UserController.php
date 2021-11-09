@@ -1,6 +1,6 @@
 <?php
     namespace Controllers;
-
+    use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
     use PDO\StudentPDO;
@@ -92,7 +92,7 @@
                         $student->setRole($user->getRole());
                         $_SESSION['userlogged'] = $student;
                         //$this->ShowStudentView();                       
-                        require_once(VIEWS_PATH."select-select-nav.php");
+                        require_once(VIEWS_PATH."select-nav.php");
                         require_once(VIEWS_PATH."student-profile.php");
                         break;
 
