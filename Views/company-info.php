@@ -6,6 +6,7 @@
                     <?php
                         if( $company != null && $company->getName() != null){
                     ?>
+                    <br>
                     <div class="col-lg-4">
                         <h2 class="text-light"> <?php echo $company->getName() ?> </h2>
                     </div>

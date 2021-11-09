@@ -8,12 +8,10 @@
     class CompanyController{
 
         private $companyDAO;
-        private $companyPDO;
 
         public function __construct(){
         
             $this->companyDAO = new CompanyDAO();
-            $this->companyPDO = new CompanyPDO();
         }
 
         public function ShowAddView(){

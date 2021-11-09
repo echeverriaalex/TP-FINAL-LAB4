@@ -1,24 +1,85 @@
 <?php
     namespace DAO;
 
-    use DAO\ICompanyDAO;
-    use Models\Company;
+    use DAO\ICompanyDAO as ICompanyDAO;
+    use Models\Company as Company;
+    use DAO\Connection as Connection;
+    use \Exception as Exception;
 
     class CompanyDAO implements ICompanyDAO{
 
         private $companyList = array();
+        private $connection;
+        private $tableName = "company";
 
-        public function Add(Company $company){
+        public function Add(Company $company)
+        {
+            try
+            {
+                $query = "INSERT INTO ".$this->tableName." (name, address, phone, cuit) VALUES (:name, :address, :phone, :cuit);";
+                
+                $parameters["name"] = $company->getName();
+                $parameters["address"] = $company->getAddress();
+                $parameters["phone"] = $company->getPhone();
+                $parameters["cuit"] = $company->getCuit();
 
-            $this->RetrieveData();
-            array_push($this->companyList, $company);
-            $this->SaveData();
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
+        public function GetAll()
+        {
+            try
+            {
+        
+
+                $query = "SELECT * FROM ".$this->tableName;
+
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->Execute($query);
+                
+                foreach ($resultSet as $row)
+                {                
+                    $company = new Company();
+                    $company->setName($row["name"]);
+                    $company->setAddress($row["address"]);
+                    $company->setPhone($row["phone"]);
+                    $company->setCuit($row["cuit"]);
+
+
+                    array_push($companyList, $company);
+                }
+
+                return $companyList;
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
         }
 
 
-        public function Filter ($companyName)
+
+        /*
+        public function Add(Company $company){
+
+            $this->retrieveData();
+            array_push($this->companyList, $company);
+            $this->saveData();
+        }
+
+
+        public function filter ($companyName)
         {
-            $this->RetrieveData();
+            $this->retrieveData();
 
             $companyResult = new Company;
 
@@ -35,9 +96,9 @@
         
         }
 
-        public function Edit($currentName, Company $companyEdit){
+        public function edit($currentName, Company $companyEdit){
 
-            $this->RetrieveData();
+            $this->retrieveData();
 
             foreach($this->companyList as $key => $company){
 
@@ -47,12 +108,12 @@
 
                 }
             }
-            $this->SaveData();
+            $this->saveData();
         }
 
-        public function Delete($companyName){
+        public function delete($companyName){
 
-            $this->RetrieveData();
+            $this->retrieveData();
             
             foreach($this->companyList as $key => $company){
 
@@ -61,16 +122,16 @@
                     unset($this->companyList[$key]);
                 }
             }
-            $this->SaveData();
+            $this->saveData();
         }
 
-        public function GetAll(){
+        public function getAll(){
             
-            $this->RetrieveData();
+            $this->retrieveData();
             return $this->companyList;
         }
         
-        private function SaveData(){
+        private function saveData(){
 
             $arrayToEncode = array();
 
@@ -87,7 +148,7 @@
             file_put_contents('Data/companies.json', $jsonContent);
         }
 
-        private function RetrieveData(){
+        private function retrieveData(){
 
             $this->companyList = array();
 
@@ -106,6 +167,6 @@
                     array_push($this->companyList, $company);
                 }
             }            
-        }
+        }*/
     }
 ?>

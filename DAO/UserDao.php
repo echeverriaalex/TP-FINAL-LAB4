@@ -10,35 +10,35 @@
     {
         private $userList = array();
 
-        public function Add(User $user)
+        public function add(User $user)
         {
-            $this->RetrieveData();
+            $this->retrieveData();
             $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));           
             array_push($this->userList, $user);
-            $this->SaveData();
+            $this->saveData();
         }
 
-        public function GetAll()
+        public function getAll()
         {
-            $this->RetrieveData();
+            $this->retrieveData();
             return $this->userList;
         }
         
-        public function IsStudent($email)
+        public function isStudent($email)
         {
             $result = false;
             $studentDAO = new StudentDAO();
-            $student = $studentDAO->RetrieveStudent($email);
+            $student = $studentDAO->retrieveStudent($email);
             if(isset($student)){
                 $result = true;
             }
             return $result;
         }
 
-        public function RetrieveUser($email, $password)
+        public function retrieveUser($email, $password)
         {
-            $this->RetrieveData();
-            $userResult = new User();
+            $this->retrieveData();
+            $userResult = null;
 
             foreach($this->userList as $user){
 
@@ -50,7 +50,7 @@
             return $userResult;
         }
 
-        private function SaveData(){
+        private function saveData(){
 
             $arrayToEncode = array();
 
@@ -66,7 +66,7 @@
             file_put_contents('Data/users.json', $jsonContent);
         }
 
-        private function RetrieveData(){
+        private function retrieveData(){
 
             $this->userList = array();
 
