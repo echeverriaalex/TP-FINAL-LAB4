@@ -1,22 +1,16 @@
 <?php
     namespace Controllers;
-    use DAO\StudentDAO;
-    use DAO\UserDAO as UserDAO;
     use Models\User as User;
     use PDO\StudentPDO;
     use PDO\UserPDO;
 
     class UserController{
 
-        //private $userDAO;
         private $studentDAO;
         private $studentPDO;
         private $userPDO;
 
         public function __construct(){
-            
-            //$this->userDAO = new UserDAO();
-            $this->studentDAO = new StudentDAO();
             $this->userPDO = new UserPDO();
             $this->studentPDO = new StudentPDO();
         }
@@ -36,30 +30,22 @@
         public function ShowAdminHome()
         {
             require_once(VIEWS_PATH."select-nav.php");            
-            require_once(VIEWS_PATH."company-filter.php");
-            require(VIEWS_PATH.'index.php');
+            require_once(VIEWS_PATH."home.php");
         }
 
         public function ShowUserHome()
         {
             require_once(VIEWS_PATH."select-nav.php");
-            //require_once(VIEWS_PATH."company-filter.php");
             require(VIEWS_PATH.'student-profile.php');
-        }
-
-        public function ShowStudentView(){
-
-            require_once(VIEWS_PATH."select-nav.php");
-            require_once(VIEWS_PATH."student-profile.php");
         }
      
         public function Add($email, $password){
 
-            if($this->userDAO->isStudent($email)){
+            if($this->userPDO->IsStudent($email)){
                 $user = new User($email, $password, "user");
-                $this->userDAO->add($user);
+                $this->userPDO->Add($user);
+                echo "<script> alert('El alumno se registro exitosamente.');</script>";
                 $this->ShowSignUpView();
-               
             } else {
                 $this->ShowSignUpView();
             }  
@@ -67,38 +53,23 @@
 
         public function LogIn($email, $password){
 
-            //$user = $this->userDAO->RetrieveUser($email, $password);
-            //$student = $this->studentDAO->retrieveStudent($email);
-            //$result = $this->studentDAO->retrieveStudent($email);
-
             $user = $this->userPDO->SearchUser($email);
-
-            /*if(!empty($user) && $user->getRole() == "student"){
-                
-                $student = $this->studentPDO->SearchStudent($user->getEmail());
-                $_SESSION['studentlogged'] = $student;
-                //$this->ShowStudentView();
-                require_once(VIEWS_PATH."nav-user.php");
-                require_once(VIEWS_PATH."student-profile.php");
-            }*/
 
             if(!empty($user)){
 
                 switch($user->getRole()){
 
-                    case "student": 
+                    case "user": 
                         $student = $this->studentPDO->SearchStudent($user->getEmail());
                         $student->setPassword($user->getPassword());
                         $student->setRole($user->getRole());
-                        $_SESSION['userlogged'] = $student;
-                        //$this->ShowStudentView();                       
+                        $_SESSION['userlogged'] = $student;                    
                         require_once(VIEWS_PATH."select-nav.php");
                         require_once(VIEWS_PATH."student-profile.php");
                         break;
 
                     case "admin": 
-                        $_SESSION['userlogged'] = $user;
-                        //$this->ShowStudentView();                        
+                        $_SESSION['userlogged'] = $user;                      
                         require_once(VIEWS_PATH."select-nav.php");
                         require_once(VIEWS_PATH."home.php");
                         break;
@@ -108,26 +79,6 @@
                             break;        
                 }
             }
-
-            /*
-            if(isset($student) && ($student->getEmail() != ""))
-            {
-                $_SESSION['email'] = $user->getEmail();
-                $_SESSION['role'] = $user->getRole();
-                if($user->getRole() == "admin"){
-                    $this->ShowAdminHome();
-                } else {
-                    //$this->ShowUserHome();
-                    //
-                    require_once(VIEWS_PATH."nav-user.php");
-                    require_once(VIEWS_PATH."student-profile.php");
-                }
-            } else {
-            $this->ShowSignInView();}
-
-            
-
-            */
         }
 
         public function LogOut(){

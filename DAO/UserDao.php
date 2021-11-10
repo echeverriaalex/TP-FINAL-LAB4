@@ -26,13 +26,9 @@
         
         public function isStudent($email)
         {
-            $result = false;
             $studentDAO = new StudentDAO();
             $student = $studentDAO->retrieveStudent($email);
-            if(isset($student)){
-                $result = true;
-            }
-            return $result;
+            return isset($student);
         }
 
         public function retrieveUser($email, $password)

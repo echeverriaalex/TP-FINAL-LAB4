@@ -5,7 +5,7 @@
        
         switch($roleUser){
 
-            case "student": require_once(VIEWS_PATH."nav-user.php"); break;
+            case "user": require_once(VIEWS_PATH."nav-user.php"); break;
             case "admin": require_once(VIEWS_PATH."nav-admin.php"); break;
             default: require_once(VIEWS_PATH."nav.php"); break;
         }

@@ -5,13 +5,13 @@
 
         private $id;
         private $salary;
-        private $companyId;
+        private $nameCompany;
         private $jobPositionId;
 
-        public function __construct($id = '', $salary= '', $companyId = '', $jobPositionId = ''){
+        public function __construct($id = '', $salary= '', $nameCompany = '', $jobPositionId = ''){
             $this->setId($id);
             $this->setSalary($salary);
-            $this->setCompanyId($companyId);
+            $this->setNameCompany($nameCompany);
             $this->setJobPositionId($jobPositionId);
         }
         
@@ -21,8 +21,8 @@
         public function setSalary($salary){$this->salary = $salary;}
         public function getSalary(){return $this->salary;}
 
-        public function setCompanyId($companyId){$this->companyId = $companyId;}
-        public function getCompanyId(){return $this->companyId;}
+        public function setNameCompany($nameCompany){$this->nameCompany = $nameCompany;}
+        public function getNameCompany(){return $this->nameCompany;}
 
         public function setJobPositionId($jobPositionId){$this->jobPositionId = $jobPositionId;}
         public function getJobPositionId(){return $this->jobPositionId;}
