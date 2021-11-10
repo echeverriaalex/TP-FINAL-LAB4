@@ -67,9 +67,9 @@ create table if not exists jobOffers(
 
 CREATE TABLE applications (
 	id INT NOT NULL AUTO_INCREMENT, 
-	jobOffer_id INT NOT NULL, 
+	jobOfferId INT NOT NULL, 
 	studentId INT NOT NULL, 
 	CONSTRAINT pk_applications PRIMARY KEY (id), 
-	CONSTRAINT fk_applications_jobOffers FOREIGN KEY (jobOffer_id) REFERENCES jobOffers (id), 
+	CONSTRAINT fk_applications_jobOffers FOREIGN KEY (jobOfferId) REFERENCES jobOffers (id), 
 	CONSTRAINT fk_applications_students FOREIGN KEY (studentId) REFERENCES students (studentId) 
 );
