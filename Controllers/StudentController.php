@@ -34,8 +34,11 @@
         }
 
         public function ShowManageView(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            $studentsList = $this->studentDAO->getAll();
+
+            require_once(VIEWS_PATH.'nav-admin.php');
+            $this->ShowFilterView();
+            //$studentsList = $this->studentDAO->GetAll();
+            $studentsList = $this->studentPDO->GetAll();
             require_once(VIEWS_PATH."student-manage.php");
         }
 
@@ -50,7 +53,8 @@
 
         public function ShowListView(){
             require_once(VIEWS_PATH."nav-admin.php");
-            $studentList = $this->studentDAO->getAll();
+            //$studentList = $this->studentDAO->GetAll();
+            $studentList = $this->studentPDO->GetAll();
             require_once(VIEWS_PATH."student-list.php");
         }
 
@@ -77,10 +81,31 @@
             */
         }
 
+        public function Filter ($studentName){
+
+            require_once(VIEWS_PATH."select-nav.php");       
+            //$company = $this->companyDAO->Filter($studentName);
+            $student = $this->studentPDO->SearchStudent($studentName);
+            //require_once(VIEWS_PATH. "student-profile.php");
+            
+            if($student != null && $student->getFirstName() != "") {
+
+                // aca despues poner select nav porque tambien lo van a usar los estudiantes
+                require_once(VIEWS_PATH."select-nav.php");
+                require_once(VIEWS_PATH. "student-profile.php");
+
+            } else {
+                //$this->ShowFilterView();
+                // aca despues poner select nav porque tambien lo van a usar los estudiantes
+                require_once(VIEWS_PATH."select-nav.php");
+                require_once(VIEWS_PATH. "student-profile.php");
+            }            
+        }
+
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
 
             $student = new Student($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
-            $this->studentDAO->add($student);
+            //$this->studentDAO->add($student);
             $this->ShowAddView();
         }
     }

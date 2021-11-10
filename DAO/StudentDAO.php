@@ -15,7 +15,7 @@
 
         public function retrieveStudent ($studentEmail){
 
-            $this->RetrieveData();
+            $this->retrieveData();
             $result = null;
 
             foreach($this->studentList as $student){

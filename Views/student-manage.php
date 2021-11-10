@@ -3,6 +3,14 @@
           <div class="container">
                <h2 class="mb-4"> Manage Students</h2>
 
+               <div class="container">
+                    <a href="<?php  echo FRONT_ROOT?>Student/ShowAddView"> <h2 class="mb-2"> Add a new student</h2> </a>
+               </div>
+
+               <div class="container">
+                    <a href="<?php  echo FRONT_ROOT?>Student/Update"> <h2 class="mb-2"> Update Student </h2> </a>
+               </div>   
+
                <?php
                     if(!empty($studentsList)){
                ?>
@@ -12,6 +20,7 @@
                         <th> First name </th>
                         <th> Last name </th>
                         <th> Dni </th>
+                        <th> E-mail </th>
                         <th> Phone number </th>
                         <th> Gender </th>
                         <th> Birth date </th>
@@ -29,6 +38,7 @@
                                    <td><?php echo $student->getFirstName(); ?></td>
                                    <td><?php echo $student->getLastName(); ?></td>
                                    <td><?php echo $student->getDni(); ?></td>
+                                   <td><?php echo $student->getEmail(); ?></td>
                                    <td><?php echo $student->getPhoneNumber(); ?></td>
                                    <td><?php echo $student->getGender(); ?></td>
                                    <td><?php echo $student->getBirthDate(); ?></td>

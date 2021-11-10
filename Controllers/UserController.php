@@ -1,6 +1,6 @@
 <?php
     namespace Controllers;
-
+    use DAO\StudentDAO;
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
     use PDO\StudentPDO;
@@ -23,31 +23,33 @@
 
         public function ShowSignInView()
         {
-            require_once(VIEWS_PATH."nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require(VIEWS_PATH."signIn.php");
         }
 
         public function ShowSignUpView()
         {
-            require_once(VIEWS_PATH."nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require(VIEWS_PATH."signUp.php");
         }
 
         public function ShowAdminHome()
         {
-            require_once(VIEWS_PATH."nav-admin.php");            
-            require(VIEWS_PATH.'home.php');    
+            require_once(VIEWS_PATH."select-nav.php");            
+            require_once(VIEWS_PATH."company-filter.php");
+            require(VIEWS_PATH.'index.php');
         }
 
         public function ShowUserHome()
         {
-            require_once(VIEWS_PATH."nav-user.php");
-            require(VIEWS_PATH.'user-profile.php');
+            require_once(VIEWS_PATH."select-nav.php");
+            //require_once(VIEWS_PATH."company-filter.php");
+            require(VIEWS_PATH.'student-profile.php');
         }
 
         public function ShowStudentView(){
 
-            require_once(VIEWS_PATH."nav-user.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require_once(VIEWS_PATH."student-profile.php");
         }
      
@@ -106,11 +108,6 @@
                             break;        
                 }
             }
-
-
-
-
-
 
             /*
             if(isset($student) && ($student->getEmail() != ""))

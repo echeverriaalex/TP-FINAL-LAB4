@@ -1,7 +1,9 @@
 <?php
     namespace Controllers;
-    use DAO\CareerDAO as CareerDAO;
-    use Models\Career as Career;
+    use DAO\CareerDAO;
+    use Models\Career;
+    use PDO\CareerPDO;
+    use PDO\SessionCheck;
 
     class CareerController{
 
@@ -15,23 +17,31 @@
         }
 
         public function ShowAddView(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            require_once(VIEWS_PATH."career-add.php");
+            require_once(VIEWS_PATH."select-nav.php");
+            if(SessionCheck::Check())
+                require_once(VIEWS_PATH."career-add.php");
+            else
+                HomeController::Index();
         }
 
         public function ShowListView(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            $this->ShowFilterView();
-            //$careerList = $this->careerDAO->GetAll();
-            $careerList = $this->careerPDO->GetAll();
-            var_dump($careers);
-            //require_once(VIEWS_PATH."career-list.php");
+            require_once(VIEWS_PATH."select-nav.php");
+
+            if(SessionCheck::Check()){
+                $this->ShowFilterView();
+                //$careerList = $this->careerDAO->GetAll();
+                $careerList = $this->careerPDO->GetAll();
+                var_dump($careers);
+                //require_once(VIEWS_PATH."career-list.php");
+            }
+            else
+                HomeController::Index();            
         }
         
         public function ShowManageView(){
 
             //$companyList = $this->companyDAO->GetAll();  
-            require_once(VIEWS_PATH.'nav-admin.php');
+            require_once(VIEWS_PATH.'select-nav.php');
             $this->ShowFilterView();
             $careerList = $this->careerPDO->GetAll();
             require_once(VIEWS_PATH."career-manage.php");
@@ -56,27 +66,36 @@
             if($career != null && $career->getDescription() != "") {
 
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "career-info.php");
 
             } else {
                 //$this->ShowFilterView();
                 // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."nav-admin.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "career-info.php");
             }            
         }
 
+        public function Delete($careerName){
+
+            //$this-> companyDAO->Delete($careerName);
+            $this->careerPDO->Delete($careerName);
+            $this->ShowManageView();
+        }
+
         public function Update(){
 
-            $careerList = $this->careerDAO->getAll();
-            require_once(VIEWS_PATH."career-list.php");
+            $this->careerPDO->UpdateCareerDatabase();
+            echo "<br> Base de datos actualizada con API <br>";
+            $this->ShowManageView();
         }
 
         public function Add($careerId, $description, $active){
 
             $career = new Career($careerId, $description, $active);
-            $this->studentDAO->add($career);
+            //$this->careerDAO->Add($career);
+            $this->careerPDO->Add($career);
             $this->ShowAddView();
         }
     }
