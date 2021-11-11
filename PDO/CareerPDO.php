@@ -29,22 +29,29 @@
 
         public function GetAll(){
             
-            try {
-                $careerList = array();
+            try {                
                 $query = "SELECT * FROM ".$this->tableName;
-
                 $this->connection = Connection::GetInstance();
                 $careerResults = $this->connection->Execute($query);
 
-                foreach ($careerResults as $row) {
+                if(!empty($careerResults)){
+                    
+                    $careerList = array();
 
-                    $career = new Career();
-                    $career->setCareerId($row['careerId']);
-                    $career->setDescription($row['descriptionCareer']);
-                    $career->setActive($row['statusCareer']);
-                    array_push($careerList, $career);
+                    foreach ($careerResults as $row) {
+
+                        $career = new Career();
+                        $career->setCareerId($row['careerId']);
+                        $career->setDescription($row['descriptionCareer']);
+                        $career->setActive($row['statusCareer']);
+                        array_push($careerList, $career);
+                    }
+                    return $careerList;
                 }
-                return $careerList;
+                else{
+
+                    return null;
+                }
 
             } catch (PDOException $ex) {
                 throw $ex;
