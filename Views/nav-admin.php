@@ -8,7 +8,7 @@
          <!-- <li><a class="dropdown-item text-light" href="<?php //echo FRONT_ROOT ?>Company/ShowAddView">Add company</a> -->
           <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Company/ShowManageView">Manage companies</a>
           <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Administrator/ShowManageView">Manage administrator</a>
-          <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>JobOffer/Add">Add job offer</a>
+         <!-- <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>JobOffer/Add">Add job offer</a> -->
           <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>JobOffer/ShowManageView">Manage job offers</a>
          <!-- <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Career/Update">Update Careers</a>  -->
           <li><a class="dropdown-item text-light" href="<?php echo FRONT_ROOT ?>Career/ShowManageView">Manage career</a>
