@@ -9,7 +9,7 @@
     class CompanyPDO implements ICompanyPDO{
 
         private $connection;
-        private $tableName ="Companies";
+        private $tableName ="companies";
 
         public function Add(Company $company){
 
@@ -34,26 +34,6 @@
                 //require_once(VIEWS_PATH."company-add.php");
             }
         }
-
-       
-       /* public function SearchCompanyByName($nameCompany){
-
-            try {
-                $query = "SELECT * FROM ".$this->tableName." WHERE (nameCompany = :nameCompany);";
-
-                $parameters['nameCompany'] = $nameCompany;
-                $this->connection = Connection::GetInstance();
-                $companyResults = $this->connection->Execute($query, $parameters);
-
-                if (!empty($companyResults)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (PDOException $ex) {
-                throw $ex;
-            }
-        }*/
 
         public function Filter($nameCompany){
             

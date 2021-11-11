@@ -3,7 +3,12 @@
           <div class="container">
                <h2 class="mb-4">Add Job Offer</h2>
                <form action="<?php echo FRONT_ROOT ?>JobOffer/Add" method="post" class="bg-light-alpha p-5">
-                    <div class="row">  
+                    <div class="row">
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <input type="hidden" name="id" value="" class="form-control text-light" autofocus>
+                              </div>
+                         </div>  
                          <div class="col-lg-4">
                               <div class="form-group">
 

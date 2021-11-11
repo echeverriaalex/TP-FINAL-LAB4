@@ -1,7 +1,7 @@
 <?php
     namespace PDO;
 
-    use Models\Career;
+    use Models\Career as Career;
 
     interface ICareerPDO
     {

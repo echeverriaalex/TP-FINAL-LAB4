@@ -103,17 +103,14 @@ class JobOfferController{
 
         public function Filter ($companyName){
 
-            /*
             require_once(VIEWS_PATH."select-nav.php");       
-            $company = $this->companyDAO->Filter($companyName);
-            require_once(VIEWS_PATH. "company-info.php");
+            $company = $this->jobOfferPDO->Filter($companyName);
 
             if($company->getName() != "") {
                 require_once(VIEWS_PATH. "company-info.php");
             } else {
                 $this->ShowFilterView();
             }
-            */
         }
     }
 ?>

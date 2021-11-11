@@ -15,10 +15,9 @@ create table if not exists Students(
     email varchar(50) not null,
     phoneNumber varchar(20) not null,
     studentStatus boolean not null,
-    
-    CONSTRAINT pk_studentId PRIMARY KEY (studentId)
-    /*CONSTRAINT pk_dni PRIMARY KEY (dni),
-    CONSTRAINT fk_email FOREIGN KEY (email) REFERENCES Users (email)*/
+    CONSTRAINT pk_students PRIMARY KEY (studentId),
+    CONSTRAINT unq_email UNIQUE (email), 
+    CONSTRAINT fk_students_career FOREIGN KEY (careerId) REFERENCES careers (careerId)
 );
 
 /* TODOS LOS USUARIOS (ALUMNOS, ADMIN) */
@@ -27,8 +26,7 @@ create table if not exists Users(
     email varchar(50) not null,
     passwordUser varchar(30) not null,
     roleUser varchar(20) not null,
-    
-    CONSTRAINT pk_email PRIMARY KEY (email)
+    CONSTRAINT pk_users PRIMARY KEY (email)
 );
 
 /* PUESTOS DE TRABAJO (DEVELOPER, ENGEEGIER, SR)*/
@@ -70,13 +68,15 @@ create table if not exists Companies(
     CONSTRAINT pk_nameCompany PRIMARY KEY (nameCompany)
 );
 
-create table if not exists CompaniesXjobPositions(
+create table if not exists jobOffers(
 
-	IdCompaniesXjobPositions INT NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
+    salary float, 
     jobPositionId int not null,
     nameCompany varchar(30) not null,
-    
-    CONSTRAINT pk_CompaniesXjobPositions PRIMARY KEY (CompaniesXjobPositions)
+    CONSTRAINT pk_jobOffers PRIMARY KEY (id), 
+    CONSTRAINT fk_jobOffers_companies FOREIGN KEY (nameCompany) REFERENCES companies (nameCompany), 
+	CONSTRAINT fk_jobOffers_jobPositions FOREIGN KEY (jobPositionId) REFERENCES jobPositions (jobPositionId) 
 );
 
 /* OFERTAS DE TRABAJO  */

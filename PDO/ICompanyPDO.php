@@ -1,7 +1,7 @@
 <?php
     namespace PDO;
 
-    use Models\Company;
+    use Models\Company as Company;
 
     interface ICompanyPDO
     {

@@ -1,15 +1,15 @@
 <?php
     namespace PDO;
-    use PDO\StudentPDO;
+    use PDO\StudentPDO as StudentPDO;
     use Models\User as User;
     use Models\Student as Student;
-    use PDO\Connection;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class AdministratorPDO{
 
         private $connection;
-        private $tableName = "Users";
+        private $tableName = "users";
 
         public function Add(User $user){
 

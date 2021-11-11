@@ -19,7 +19,7 @@
                     </thead>
                     <tbody>
                          <?php
-                              foreach($jobOfferList as $jobOffer){
+                              foreach($jobOffersList as $jobOffer){
                          ?>
                                    <tr>
                                         <td>

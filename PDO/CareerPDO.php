@@ -1,13 +1,13 @@
 <?php
     namespace PDO;
-    use Models\Career;
-    use PDO\Connection;
+    use Models\Career as Career;
+    use PDO\Connection as Connection;
     use PDOException;
 
     class CareerPDO{
 
         private $connection;
-        private $tableName = "Careers";
+        private $tableName = "careers";
 
         public function Add(Career $newCareer){
 

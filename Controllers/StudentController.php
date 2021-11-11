@@ -15,29 +15,19 @@
         }
 
         public function IndexStudent(){
-
-           // if(isset($_SESSION['userlogged'])){
-
-                require_once(VIEWS_PATH."nav-user.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH."home.php");
-           // }
-           // else{
-
-               // $home = new HomeController();
-              //  $home->Index();
-           // }
         }
 
         public function ShowAddView(){
-            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."select-nav.php");
             require_once(VIEWS_PATH."student-add.php");
         }
 
         public function ShowManageView(){
 
-            require_once(VIEWS_PATH.'nav-admin.php');
+            require_once(VIEWS_PATH.'select-nav.php');
             $this->ShowFilterView();
-            //$studentsList = $this->studentDAO->GetAll();
             $studentsList = $this->studentPDO->GetAll();
             require_once(VIEWS_PATH."student-manage.php");
         }
@@ -52,8 +42,7 @@
         }
 
         public function ShowListView(){
-            require_once(VIEWS_PATH."nav-admin.php");
-            //$studentList = $this->studentDAO->GetAll();
+            require_once(VIEWS_PATH."select-nav.php");
             $studentList = $this->studentPDO->GetAll();
             require_once(VIEWS_PATH."student-list.php");
         }
@@ -66,46 +55,30 @@
         }
 
         public function ShowMyProfile(){
-
-          //  if(isset($_SESSION['userlogged'])){
-
-                require_once(VIEWS_PATH."nav-user.php");
+                require_once(VIEWS_PATH."select-nav.php");
                 $student = $_SESSION['userlogged'];
                 require_once(VIEWS_PATH."student-profile.php");
-           /* }
-            else{
-
-                $home = new HomeController();
-                $home->Index();
-            }
-            */
         }
 
         public function Filter ($studentName){
 
             require_once(VIEWS_PATH."select-nav.php");       
-            //$company = $this->companyDAO->Filter($studentName);
             $student = $this->studentPDO->SearchStudent($studentName);
-            //require_once(VIEWS_PATH. "student-profile.php");
             
             if($student != null && $student->getFirstName() != "") {
 
-                // aca despues poner select nav porque tambien lo van a usar los estudiantes
                 require_once(VIEWS_PATH."select-nav.php");
                 require_once(VIEWS_PATH. "student-profile.php");
 
             } else {
-                //$this->ShowFilterView();
-                // aca despues poner select nav porque tambien lo van a usar los estudiantes
-                require_once(VIEWS_PATH."select-nav.php");
-                require_once(VIEWS_PATH. "student-profile.php");
+                $this->ShowFilterView();
             }            
         }
 
         public function Add($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password){
 
             $student = new Student($firstName, $lastName, $dni, $phoneNumber, $gender, $birthDate, $email, $studentId, $carrerId, $fileNumber, $active, $password);
-            //$this->studentDAO->add($student);
+            $this->studentPDO->Add($student);
             $this->ShowAddView();
         }
     }

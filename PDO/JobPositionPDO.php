@@ -8,7 +8,7 @@
     class JobPositionPDO implements IJobPositionPDO{
 
         private $connection;
-        private $tableName = "JobPositions";
+        private $tableName = "jobPositions";
 
         public function Add(JobPosition $jobPosition)
         {
