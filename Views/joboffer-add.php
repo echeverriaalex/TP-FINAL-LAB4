@@ -6,18 +6,12 @@
                     <div class="row">
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <input type="hidden" name="id" value="" class="form-control text-light" autofocus>
-                              </div>
-                         </div>  
-                         <div class="col-lg-4">
-                              <div class="form-group">
-
                                    <label for="">Company Name</label>
                                    <select name="company" class="form-select" required>
                                         <?php
                                              foreach($companyList as $company){
                                         ?>
-                                                  <option value="<?php echo $company->getCuit(); ?>"> <?php echo $company->getName(); ?> </option>
+                                                  <option value="<?php echo $company->getName(); ?>"> <?php echo $company->getName(); ?> </option>
                                         <?php        
                                              }
                                         ?>

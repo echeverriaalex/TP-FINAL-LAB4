@@ -2,8 +2,8 @@
     namespace Controllers;
     use PDO\JobOfferPDO;
     use Models\JobOffer;
-use PDO\CompanyPDO;
-use PDO\JobPositionPDO;
+    use PDO\CompanyPDO;
+    use PDO\JobPositionPDO;
 
 class JobOfferController{
 
@@ -28,19 +28,27 @@ class JobOfferController{
 
         public function ShowListView(){
             require_once(VIEWS_PATH."select-nav.php");
-            $jobOfferList = $this->jobOfferPDO->GetAll();
 
-            if(!empty($jobOfferList)){
-                
-                $companyList = $this->companyPDO->GetAll();
-                $jobPositionList = $this->jobPositionPDO->GetAll();
+            if($_SESSION['userlogged']-> getActive()){
 
-                if(empty($jobPositionList)){
-                    $this->jobPositionPDO->UpdateJobPositionDatabase();
+                $jobOfferList = $this->jobOfferPDO->GetAll();
+
+                if(!empty($jobOfferList)){
+                    
+                    $companyList = $this->companyPDO->GetAll();
                     $jobPositionList = $this->jobPositionPDO->GetAll();
+
+                    if(empty($jobPositionList)){
+                        $this->jobPositionPDO->UpdateJobPositionDatabase();
+                        $jobPositionList = $this->jobPositionPDO->GetAll();
+                    }
                 }
+                require_once(VIEWS_PATH."jobOffer-list.php");
             }
-            require_once(VIEWS_PATH."jobOffer-list.php");
+            else{
+
+                echo "No estas activo no podes postularte. Decile a la utn que te active.";
+            }
         }
 
         public function ShowEditView($id, $salary, $companyId, $jobPositionId){
@@ -80,7 +88,7 @@ class JobOfferController{
         public function Add($company, $jobPosition, $salary){
             
             $jobOffer = new JobOffer();
-            $jobOffer->setCompanyId($company);
+            $jobOffer->setNameCompany($company);
             $jobOffer->setJobPositionId($jobPosition);
             $jobOffer->setSalary($salary);
             $this->jobOfferPDO->Add($jobOffer);
@@ -101,12 +109,13 @@ class JobOfferController{
             $this->ShowManageView();
         }
 
-        public function Filter ($companyName){
+        public function Filter ($id){
 
             require_once(VIEWS_PATH."select-nav.php");       
-            $company = $this->jobOfferPDO->Filter($companyName);
-
-            if($company->getName() != "") {
+            $jobOffer = $this->jobOfferPDO->Filter($id);
+ 
+            // revisar
+            if($jobOffer != "") {
                 require_once(VIEWS_PATH. "company-info.php");
             } else {
                 $this->ShowFilterView();

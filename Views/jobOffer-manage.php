@@ -25,7 +25,7 @@
                                         <td>
                                              <?php
                                                   foreach($companyList as $company){
-                                                       if($company->getCuit() == $jobOffer->getCompanyId()){
+                                                       if($company->getName() == $jobOffer->getNameCompany()){
                                                             echo $company->getName(); 
                                                        }
                                                   }
@@ -53,7 +53,7 @@
                                              <form method="POST" action="<?php echo FRONT_ROOT?>jobOffer/ShowEditView">
                                                   <input type="hidden" name="id" value="<?php echo $jobOffer->getId(); ?>">
                                                   <input type="hidden" name="salary" value="<?php echo $jobOffer->getSalary(); ?>">
-                                                  <input type="hidden" name="companyId" value="<?php echo $jobOffer->getCompanyId(); ?>">
+                                                  <input type="hidden" name="companyId" value="<?php echo $jobOffer->getNameCompany(); ?>">
                                                   <input type="hidden" name="jobPositionId" value="<?php echo $jobOffer->getJobPositionId(); ?>">
                                                   <button type="submit" class="btn btn-outline-primary"> Edit </button>
                                              </form>

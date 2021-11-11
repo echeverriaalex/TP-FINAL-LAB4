@@ -21,7 +21,7 @@
                                         <td>
                                              <?php
                                                   foreach($companyList as $company){
-                                                       if($company->getCuit() == $jobOffer->getCompanyId()){
+                                                       if($company->getName() == $jobOffer->getNameCompany()){
                                                             echo $company->getName(); 
                                                        }
                                                   }
@@ -41,8 +41,9 @@
                                         <td> <?php echo $jobOffer->getSalary(); ?> </td>
                                         
                                         <td>
-                                             <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/Postule">
-                                                  <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getId();?>">                                                  
+                                             <form method="POST" action="<?php echo FRONT_ROOT?>Application/Add"> 
+                                                  <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getId();?>">  
+                                                  <input type="hidden" name="studentId" value="<?php echo $_SESSION['userlogged']->getStudentId();?>">                                                  
                                                   <button type="submit" class="btn btn-outline-danger"> Apply </button>
                                              </form>
                                         </td>
