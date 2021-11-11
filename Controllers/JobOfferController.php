@@ -1,64 +1,103 @@
 <?php
-    namespace Models;
+    namespace Controllers;
+    use PDO\JobOfferPDO;
+    use Models\JobOffer;
+use PDO\CompanyPDO;
+use PDO\JobPositionPDO;
 
-    use PDO/JobOfferPDO;
-
-
-    class JobOfferController{
+class JobOfferController{
 
         private $jobOfferPDO;
+        private $companyPDO;
+        private $jobPositionPDO;
 
-        public function __construct(){$this->jobOfferPDO ;}= new JobOfferPDO();}
+        public function __construct(){
+            $this->jobOfferPDO = new JobOfferPDO();
+            $this->companyPDO = new CompanyPDO();
+            $this->jobPositionPDO = new JobPositionPDO();
+        }
 
         public function ShowAddView(){
 
             require_once(VIEWS_PATH."nav-admin.php");
+
+            $companyList = $this->companyPDO->GetAll();
+            $jobPositionList = $this->jobPositionPDO->GetAll();
             require_once(VIEWS_PATH."jobOffer-add.php");
         }
 
         public function ShowListView(){
             require_once(VIEWS_PATH."select-nav.php");
-            require_once(VIEWS_PATH."");
-            //$jobOffersList = $this->->GetAll();
-            require_once(VIEWS_PATH."");
+            $jobOfferList = $this->jobOfferPDO->GetAll();
+
+            if(!empty($jobOfferList)){
+                
+                $companyList = $this->companyPDO->GetAll();
+                $jobPositionList = $this->jobPositionPDO->GetAll();
+
+                if(empty($jobPositionList)){
+                    $this->jobPositionPDO->UpdateJobPositionDatabase();
+                    $jobPositionList = $this->jobPositionPDO->GetAll();
+                }
+            }
+            require_once(VIEWS_PATH."jobOffer-list.php");
         }
 
-        public function ShowEditView($name, $address, $phone, $cuit){
+        public function ShowEditView($id, $salary, $companyId, $jobPositionId){
+            require_once(VIEWS_PATH."select-nav.php");
             require_once(VIEWS_PATH."jobOffer-edit.php");
         }
 
         public function ShowManageView(){
+            
+            require_once(VIEWS_PATH.'select-nav.php');
 
-            //$companyList = $this->companyDAO->GetAll();    
-            $companyList = $this->companyPDO->GetAll();  
-            require_once(VIEWS_PATH.'nav-admin.php');
-            require_once(VIEWS_PATH."");
+            $jobOfferList = $this->jobOfferPDO->GetAll();
+
+            if(!empty($jobOfferList)){
+                
+                $companyList = $this->companyPDO->GetAll();
+                $jobPositionList = $this->jobPositionPDO->GetAll();
+
+                if(empty($jobPositionList)){
+                    $this->jobPositionPDO->UpdateJobPositionDatabase();
+                    $jobPositionList = $this->jobPositionPDO->GetAll();
+                }
+            }
+            require_once(VIEWS_PATH."jobOffer-manage.php");
+            //$jobOfferList = $this->jobOfferPDO->GetAll();
         }
 
         public function ShowFilterView(){
 
-            require_once(VIEWS_PATH."select-nav.php");
-            require_once(VIEWS_PATH."");
+            $nameFilter = "Job offer Filter";
+            $infoFilter = "You can filter by jof offer name!";
+            $controllerMethod = "JobOffer/Filter";
+            $nameParameter = "jobOfferName";
+            require_once(VIEWS_PATH."filter.php");
         }
 
-        public function Add($companyName, $jobPositionId, $salary){
+        public function Add($company, $jobPosition, $salary){
             
-            $jobOffer = new JobOffer($companyName, $jobPositionId, $salary);
+            $jobOffer = new JobOffer();
+            $jobOffer->setCompanyId($company);
+            $jobOffer->setJobPositionId($jobPosition);
+            $jobOffer->setSalary($salary);
             $this->jobOfferPDO->Add($jobOffer);
             echo "<script> alert('La oferta de trabajo se agrego exitosamente.');</script>";
             $this->ShowAddView();
         }
 
-        public function Edit($currentName, $companyName, $jobPositionId, $salary){
+        public function Edit($currentId, $company, $jobPosition, $salary){
             
-            $jobOfferEdit = new JobOffer($companyName, $jobPositionId, $salary);
-            $this->jobOfferPDO->Edit($currentName, $jobOfferEdit);
+            $jobOfferEdit = new JobOffer($company, $jobPosition, $salary);
+            $this->jobOfferPDO->Edit($currentId, $jobOfferEdit);
             $this->ShowManageView();
         }
 
-        public function Delete($companyName){
+        public function Delete($id){
 
-            $this-> jobOfferPDO->Delete($companyName);
+            $this->jobOfferPDO->Delete($id);
             $this->ShowManageView();
         }
 
