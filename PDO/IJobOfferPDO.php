@@ -1,10 +1,9 @@
 <?php
-    namespace DAO;
-
+    namespace PDO;
     use Models\JobOffer as JobOffer;
 
-    interface IJobOfferPDO
-    {
+    interface IJobOfferPDO{
+        
         function Add(JobOffer $jobOffer);
         function GetAll();
     }

@@ -1,10 +1,9 @@
 <?php
     namespace PDO;
-
     use Models\JobPosition as JobPosition;
 
-    interface IJobPositionDAO
-    {
+    interface IJobPositionPDO{
+
         function Add(JobPosition $jobPosition);
         function GetAll();
     }
