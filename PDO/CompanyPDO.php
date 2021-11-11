@@ -1,6 +1,6 @@
 <?php
     namespace PDO;
-
+    use Controllers\CompanyController;
     use PDO\ICompanyPDO;
     use Models\Company;
     use PDO\Connection;
@@ -22,10 +22,16 @@
 
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
+                echo "<script> alert('La empresa se agrego exitosamente.');</script>";
 
             }catch(PDOException $ex){
 
-                throw $ex;
+                //throw $ex;
+                echo "<script> alert('Error al ingresar la empresa contiene un dato ya registrado anteriormente. Reintente con una empresa totalmente nueva.');</script>";
+                //$companyController = new CompanyController();
+                //$companyController->ShowAddView();
+                //require_once(VIEWS_PATH.)
+                //require_once(VIEWS_PATH."company-add.php");
             }
         }
 
@@ -94,11 +100,13 @@
 
                 $this->connection = Connection::GetInstance();
                 $deletedCount = $this->connection->ExecuteNonQuery($query, $parameters);
+                echo "<script> alert('La empresa se edito exitosamente.');</script>";
                 return $deletedCount;
 
             } catch (PDOException $ex) {
 
                 throw $ex;
+                echo "<script> alert('Error al editar la empresa. Reintente nuevamente.');</script>";
             }
         }
 
