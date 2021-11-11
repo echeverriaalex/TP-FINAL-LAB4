@@ -1,76 +1,70 @@
 <?php
-    
-
     namespace PDO;
     use Models\JobPosition;
     use PDO\Connection;
+    use PDO\IJobPositionPDO;
     use PDOException;
 
-    class JobPositionPDO implements IJobPositionPDO
-    {
+    class JobPositionPDO implements IJobPositionPDO{
+
         private $connection;
         private $tableName = "JobPositions";
-
 
         public function Add(JobPosition $jobPosition)
         {
             try{
-                $query = "INSERT INTO".$this->tableName."(jobPositionId, careerId, descrtiption) VALUES (:jobPositionId, careerId, description);";
-                $parameters["jobPositionId"] = $jobPosition->getJobPositionId();
+                $query = "INSERT INTO ".$this->tableName." (jobPositionId, careerId, descriptionJob) VALUES (:jobPositionId, :careerId, :descriptionJob);";
+                $parameters["jobPositionId"] = $jobPosition->getId();
                 $parameters["careerId"] = $jobPosition->getCareerId();
-                $parameters["description"] = $jobPosition->getDescription();
-
+                $parameters["descriptionJob"] = $jobPosition->getDescription();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
-            }catch(PDOExpection $ex)
+            }catch(PDOException $ex)
             {
                 throw $ex;
             }
         }
 
-
         public function UpdateJobPositionDatabase(){
 
             $jobPositionListApi = $this->RetrieveDataAPI();
-            
+
             foreach($jobPositionListApi as $jobPosition){
 
                 $this->Add($jobPosition);
             }
         }
 
-
-
         public function GetAll(){
 
-
             try{
-
-                $jobPositionList = array();
-                $query = "SELECT * FROM ".$this->tableName;
                 
+                $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
-                $jobPositionResults = $this->conection->Execute($query);
+                $jobPositionResults = $this->connection->Execute($query);
 
+                if(!empty($jobPositionResults)){
+                    
+                    $jobPositionList = array();
+                    
+                    foreach($jobPositionResults as $row){
 
-                foreach ($jobPositionResults as $row)
-                {
-                    $jobPosition = new JobPosition();
-                    $jobPosition->setJobPositionId($row['jobPositionId']);
-                    $jobPosition->setCareerId($row['careerId']);
-                    $jobPosition->setDescription($row['description']);
+                        $jobPosition = new JobPosition();
+                        $jobPosition->setId($row['jobPositionId']);
+                        $jobPosition->setCareerId($row['careerId']);
+                        $jobPosition->setDescription($row['descriptionJob']);
+                        array_push($jobPositionList, $jobPosition);
+                    }
+                    return $jobPositionList;
                 }
-                return $jobPositionList;
+                else{
+
+                    return null;
+                }               
             }catch (PDOException $ex){
                 throw $ex;
             }
-
-
-
         }
-
-
-
 
         public function RetrieveDataAPI(){
 
@@ -89,7 +83,7 @@
     
             foreach($arrayToDecode as $valuesArray){
 
-                $career = new JobPosition($valuesArray['jobPositionId'], $valuesArray['careerId'], $valuesArray['description']);
+                $career = new JobPosition($valuesArray['jobPositionId'], $valuesArray['description'], $valuesArray['careerId']);
                 array_push($careerListApi, $career);
             }
             return $careerListApi;
