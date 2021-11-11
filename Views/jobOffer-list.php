@@ -18,15 +18,42 @@
                               foreach($jobOfferList as $jobOffer){
                          ?>
                                 <tr>
-                                    <td><?php echo $jobOffer->getCompanyName(); ?></td>
-                                    <td><?php echo $jobOffer->getJobPositionId(); ?></td>
-                                    <td><?php echo $jobOffer->getSalary(); ?></td>
-                                    <td>
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/Postule">
-                                            <input type="hidden" name="companyName" value="<?php echo $company->getName(); ?>">
-                                            <button type="submit" class="btn btn-outline-danger"> Apply </button> 
-                                        </form>
-                                    </td>
+                                        <td>
+                                             <?php
+                                                  foreach($companyList as $company){
+                                                       if($company->getCuit() == $jobOffer->getCompanyId()){
+                                                            echo $company->getName(); 
+                                                       }
+                                                  }
+                                             ?>
+                                        </td>
+
+                                        <td>
+                                             <?php
+                                                  foreach($jobPositionList as $jobPosition){
+                                                       if($jobPosition->getId() == $jobOffer->getJobPositionId()){
+                                                            echo $jobPosition->getDescription(); 
+                                                       }
+                                                  }
+                                             ?>
+                                        </td>
+
+                                        <td> <?php echo $jobOffer->getSalary(); ?> </td>
+                                        
+                                        <td>
+                                             <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/Postule">
+                                                  <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getId();?>">                                                  
+                                                  <button type="submit" class="btn btn-outline-danger"> Apply </button>
+                                             </form>
+                                        </td>
+
+                                        <!--
+                                        <form method="POST" action="<?php //echo FRONT_ROOT?>jobOffer/Apply">
+                                             <input type="hidden" name="jobOfferName" value="<?php //echo $jobOffer->getCompanyName(); ?>">                                            
+                                             <input type="hidden" name="jobPositionId" value="<?php //echo $jobOffer->getJobPositionId(); ?>">
+                                             <input type="hidden" name="salary" value="<?php // echo $jobOffer->getSalary(); ?>">  
+                                        </form> 
+                                   </td> -->
                                 </tr>
                          <?php
                          }

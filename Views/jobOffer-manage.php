@@ -1,49 +1,81 @@
-<?php 
-     if(isset($_SESSION["email"])) {
-          if($_SESSION["role"] != "admin") {
-               header("location: " . FRONT_ROOT . "User/ShowUserHome");
-          }
-     } else {
-          header("location: " . FRONT_ROOT . "Home/Index");
-     }
-?>
-
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4"> Manage Job Offers </h2>
+
+               <div class="container">
+                    <a href="<?php  echo FRONT_ROOT?>JobOffer/ShowAddView"> <h2 class="mb-2"> Add a new JobOffer </h2> </a>
+               </div>
+               
+               <?php
+                    if(!empty($jobOfferList)){
+               ?>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Company Name</th>
                          <th>Job Position Id</th>
                          <th>Salary</th>
-                         
+                         <th>Options</th>
                     </thead>
                     <tbody>
                          <?php
                               foreach($jobOfferList as $jobOffer){
                          ?>
-                                <tr>
-                                    <td><?php echo $jobOffer->getCompanyName(); ?></td>
-                                    <td><?php echo $jobOffer->getJobPositionId(); ?></td>
-                                    <td><?php echo $jobOffer->getSalary(); ?></td>
-                            
-                                    <td> 
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/Delete">
-                                            <input type="hidden" name="companyName" value="<?php echo $jobOffer->getCompanyName(); ?>">
-                                            <button> Delete </button> 
-                                        </form>
+                                   <tr>
+                                        <td>
+                                             <?php
+                                                  foreach($companyList as $company){
+                                                       if($company->getCuit() == $jobOffer->getCompanyId()){
+                                                            echo $company->getName(); 
+                                                       }
+                                                  }
+                                             ?>
+                                        </td>
 
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>Company/ShowEditView">
-                                            <input type="hidden" name="companyName" value="<?php echo $jobOffer->getCompanyName(); ?>">                                            
-                                            <input type="hidden" name="jobPositionId" value="<?php echo $jobOffer->getJobPositionId(); ?>">
-                                            <input type="hidden" name="salary" value="<?php echo $jobOffer->getSalary(); ?>">                                                       
-                                            <button> Edit </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                         <?php
+                                        <td>
+                                             <?php
+                                                  foreach($jobPositionList as $jobPosition){
+                                                       if($jobPosition->getId() == $jobOffer->getJobPositionId()){
+                                                            echo $jobPosition->getDescription(); 
+                                                       }
+                                                  }
+                                             ?>
+                                        </td>
+
+                                        <td> <?php echo $jobOffer->getSalary(); ?> </td>
+                                        
+                                        <td> 
+                                             <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/Delete">
+                                                  <input type="hidden" name="id" value="<?php echo $jobOffer->getId(); ?>">
+                                                  <button type="submit" class="btn btn-outline-danger"> Delete </button> 
+                                             </form>
+
+                                             <form method="POST" action="<?php echo FRONT_ROOT?>jobOffer/ShowEditView">
+                                                  <input type="hidden" name="id" value="<?php echo $jobOffer->getId(); ?>">
+                                                  <input type="hidden" name="salary" value="<?php echo $jobOffer->getSalary(); ?>">
+                                                  <input type="hidden" name="companyId" value="<?php echo $jobOffer->getCompanyId(); ?>">
+                                                  <input type="hidden" name="jobPositionId" value="<?php echo $jobOffer->getJobPositionId(); ?>">
+                                                  <button type="submit" class="btn btn-outline-primary"> Edit </button>
+                                             </form>
+
+                                             <form method="POST" action="<?php echo FRONT_ROOT?>JobOffer/ListApplications">
+                                                  <input type="hidden" name="id" value="<?php echo $jobOffer->getId(); ?>">
+                                                  <button type="submit" class="btn btn-outline-success"> Applicants list </button> 
+                                             </form>
+                                        </td>
+                                   </tr>
+                         <?php 
                               }
+                    }
+                    else{
+                         ?>
+                              <div class="list-group">
+                                   <div class="col-lg-4">
+                                        <h2 class="text-light"> <?php echo "No results found"; ?> </h2>
+                                   </div>
+                              </div>
+                         <?php
+                         }
                          ?>
                          </tr>
                     </tbody>
