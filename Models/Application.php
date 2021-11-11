@@ -7,7 +7,7 @@
         private $jobOfferId;
         private $studentId;
 
-        public function __construct($id = '', $jobOfferId= '', $studentId = ''){
+        public function __construct($jobOfferId= '', $studentId = '', $id = ''){
             $this->setId($id);
             $this->setJobOfferId($jobOfferId);
             $this->setStudentId($studentId);

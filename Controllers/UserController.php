@@ -136,7 +136,7 @@
 
                 switch($user->getRole()){
 
-                    case "user": 
+                    case "student": 
                         $student = $this->studentPDO->SearchStudent($user->getEmail());
                         $student->setPassword($user->getPassword());
                         $student->setRole($user->getRole());
