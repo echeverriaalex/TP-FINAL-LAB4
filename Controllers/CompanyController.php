@@ -69,7 +69,7 @@
             $company = new Company($name, $address, $phone, $cuit);
             //$this->companyDAO->Add($company);
             $this->companyPDO->Add($company);
-            echo "<script> alert('La empresa se agrego exitosamente.');</script>";
+            //echo "<script> alert('La empresa se agrego exitosamente.');</script>";
             $this->ShowAddView();
         }
 
