@@ -8,18 +8,28 @@
                               <div class="form-group">
                                    <input type="hidden" name="currentId" value="<?php echo $id; ?>">
                                    <label for="">Company Name</label>
-                                   <select name="company" class="form-select" required>
-                                        <?php
-                                             use PDO\CompanyPDO;                                             
-                                             $companyPDO = new CompanyPDO();
-                                             $companyList = $companyPDO->GetAll();
-                                             foreach($companyList as $company){
-                                        ?>
-                                                  <option value="<?php echo $company->getCuit(); ?>"> <?php echo $company->getName(); ?> </option>
-                                        <?php        
-                                             }
-                                        ?>
-                                   </select>
+                                   <?php
+                                        use DAO\CompanyPDO;
+                                        if($_SESSION['userlogged']->getRole() == "company"){
+                                   ?>
+                                             <input name="company" class="form-control text-light" value="<?php echo $_SESSION['userlogged']->getName(); ?>">
+                                   <?php
+                                        }
+                                        else{
+                                   ?>
+                                             <select name="company" class="form-select" required>
+                                                  <?php                                      
+                                                       $companyPDO = new CompanyPDO();
+                                                       $companyList = $companyPDO->GetAll();
+                                                       
+                                                       foreach($companyList as $company){
+                                                  ?>
+                                                            <option value="<?php echo $company->getName();?>"> <?php echo $company->getName(); ?> </option>
+                                                  <?php        
+                                                       }
+                                                  }
+                                                  ?>
+                                             </select>
                               </div>
                          </div>
                          <div class="col-lg-4">
@@ -27,9 +37,8 @@
                                    <label for="">Job Position</label>
                                    <select name="jobPosition" class="form-select" required>
                                         <?php
-                                             use PDO\JobPositionPDO;
-                                             $jobPositionPDO = new JobPositionPDO();
-                                             $jobPositionList = $jobPositionPDO->GetAll();
+                                             use DAO\JobPositionPDO;
+                                             $jobPositionList = JobPositionPDO::getJobPositionListApi();
                                              foreach($jobPositionList as $jobPosition){
                                         ?>
                                                   <option value="<?php echo $jobPosition->getId(); ?>"> <?php echo $jobPosition->getDescription(); ?> </option>
@@ -43,6 +52,12 @@
                               <div class="form-group">
                                    <label for="">Salary</label>
                                    <input type="number" name="salary" value="<?php echo $salary ;?>" class="form-control text-light">
+                              </div>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">URL photo</label>
+                                   <input type="url" name="photo" value="<?php echo $photo; ?>" class="form-control text-light">
                               </div>
                          </div>
                     </div>

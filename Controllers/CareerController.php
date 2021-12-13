@@ -1,8 +1,8 @@
 <?php
     namespace Controllers;
     use Models\Career as Career;
-    use PDO\CareerPDO as CareerPDO;
-    use PDO\SessionCheck as SessionCheck;
+    use DAO\CareerPDO as CareerPDO;
+    use DAO\SessionCheck as SessionCheck;
 
     class CareerController{
 
@@ -13,6 +13,7 @@
             $this->careerPDO = new CareerPDO();
         }
 
+        /*
         public function ShowAddView(){
             require_once(VIEWS_PATH."select-nav.php");
             if(SessionCheck::Check())
@@ -20,13 +21,14 @@
             else
                 HomeController::Index();
         }
+        */
 
         public function ShowListView(){
             require_once(VIEWS_PATH."select-nav.php");
 
             if(SessionCheck::Check()){
                 $this->ShowFilterView();
-                $careerList = $this->careerPDO->GetAll();
+                $careerList = CareerPDO::getCareerListApi();
                 require_once(VIEWS_PATH."career-list.php");
             }
             else
@@ -37,7 +39,7 @@
 
             require_once(VIEWS_PATH.'select-nav.php');
             $this->ShowFilterView();
-            $careerList = $this->careerPDO->GetAll();
+            $careerList = CareerPDO::getCareerListApi();
             require_once(VIEWS_PATH."career-manage.php");
         }
 
@@ -64,6 +66,7 @@
             }            
         }
 
+        /*
         public function Delete($careerID){
 
             //$this-> companyDAO->Delete($careerName);
@@ -84,5 +87,6 @@
             $this->careerPDO->Add($career);
             $this->ShowAddView();
         }
+        */
     }
 ?>

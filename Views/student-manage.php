@@ -3,13 +3,15 @@
           <div class="container">
                <h2 class="mb-4"> Manage Students</h2>
 
+               
                <div class="container">
-                    <a href="<?php  echo FRONT_ROOT?>Student/ShowAddView"> <h2 class="mb-2"> Add a new student</h2> </a>
+                    <a href="<?php echo FRONT_ROOT?>Student/ShowListStudentsRegisteredSystemView"> <h2 class="mb-2"> Students registered in the system</h2> </a>
                </div>
-
+               <!--
                <div class="container">
-                    <a href="<?php  echo FRONT_ROOT?>Student/Update"> <h2 class="mb-2"> Update Student </h2> </a>
-               </div>   
+                    <a href="<?php  //echo FRONT_ROOT?>Student/Update"> <h2 class="mb-2"> Update Student </h2> </a>
+               </div> 
+               -->  
 
                <?php
                     if(!empty($studentsList)){
@@ -28,7 +30,7 @@
                         <th> Carrer id </th>
                         <th> File Number </th>
                         <th> Active </th>
-                        <th> Options </th>
+                        <!--<th> Options </th> -->
                     </thead>
                     <tbody>
                          <?php                              
@@ -47,26 +49,28 @@
                                    <td><?php echo $student->getFileNumber(); ?></td>
                                    <td><?php if($student->getActive()) echo "Active"; else echo "No active"; ?></td>
                                     
+                                   <!--
                                    <td> 
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>student/Delete">
-                                            <input type="hidden" name="studentName" value="<?php echo $student->getFirstName(); ?>">
+                                        <form method="POST" action="<?php //echo FRONT_ROOT?>student/Delete">
+                                            <input type="hidden" name="studentName" value="<?php //echo $student->getFirstName(); ?>">
                                             <button type="button" class="btn btn-outline-danger"> Delete </button> 
                                         </form>
                                              <br>
-                                        <form method="POST" action="<?php echo FRONT_ROOT?>student/ShowEditView">
-                                             <input type="hidden" name="firstName" value="<?php echo $student->getFirstName(); ?>"> 
-                                             <input type="hidden" name="lastName" value="<?php echo $student->getLastName(); ?>">
-                                             <input type="hidden" name="dni" value="<?php echo $student->getDni(); ?>">
-                                             <input type="hidden" name="phoneNumber" value="<?php echo $student->getPhoneNumber(); ?>">
-                                             <input type="hidden" name="gender" value="<?php echo $student->getGender(); ?>">
-                                             <input type="hidden" name="birthDate" value="<?php echo $student->getBirthDate(); ?>">
-                                             <input type="hidden" name="studentId" value="<?php echo $student->getStudentId(); ?>">
-                                             <input type="hidden" name="carrerId" value="<?php echo $student->getCareerId(); ?>">
-                                             <input type="hidden" name="fileNumber" value="<?php echo $student->getFileNumber(); ?>">
-                                             <input type="hidden" name="active" value="<?php echo $student->getActive(); ?>">
+                                        <form method="POST" action="<?php //echo FRONT_ROOT?>student/ShowEditView">
+                                             <input type="hidden" name="firstName" value="<?php //echo $student->getFirstName(); ?>"> 
+                                             <input type="hidden" name="lastName" value="<?php //echo $student->getLastName(); ?>">
+                                             <input type="hidden" name="dni" value="<?php //echo $student->getDni(); ?>">
+                                             <input type="hidden" name="phoneNumber" value="<?php //echo $student->getPhoneNumber(); ?>">
+                                             <input type="hidden" name="gender" value="<?php //echo $student->getGender(); ?>">
+                                             <input type="hidden" name="birthDate" value="<?php //echo $student->getBirthDate(); ?>">
+                                             <input type="hidden" name="studentId" value="<?php //echo $student->getStudentId(); ?>">
+                                             <input type="hidden" name="carrerId" value="<?php //echo $student->getCareerId(); ?>">
+                                             <input type="hidden" name="fileNumber" value="<?php //echo $student->getFileNumber(); ?>">
+                                             <input type="hidden" name="active" value="<?php //echo $student->getActive(); ?>">
                                             <button type="button" class="btn btn-outline-primary"> Edit </button>
                                         </form>
                                    </td>
+                                   -->
                               </tr>
                          <?php
                                    }

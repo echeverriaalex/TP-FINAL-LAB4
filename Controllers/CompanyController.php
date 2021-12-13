@@ -1,18 +1,16 @@
 <?php
     namespace Controllers;
     use DAO\CompanyDAO;
-    use PDO\CompanyPDO;
+    use DAO\CompanyPDO;
     use Models\Company;
-    use PDO\SessionCheck;
+    use DAO\SessionCheck;
 
     class CompanyController{
 
-        private $companyDAO;
         private $companyPDO;
 
         public function __construct(){
         
-            $this->companyDAO = new CompanyDAO();
             $this->companyPDO = new CompanyPDO();
         }
 
@@ -21,7 +19,16 @@
             if(SessionCheck::Check())
                 require_once(VIEWS_PATH."company-add.php");
             else
-                HomeController::Index();
+                header("location: ../Home/Index");
+        }
+
+        public function ShowSignUpAsCompany(){
+
+            require_once(VIEWS_PATH."select-nav.php");
+            if(!SessionCheck::Check())
+                require_once(VIEWS_PATH."signUpCompany.php");
+            else
+                header("location: ../Home/Index");
         }
 
         public function ShowListView(){
@@ -34,7 +41,7 @@
                 require_once(VIEWS_PATH."company-list.php");
             }
             else
-                HomeController::Index();
+                header("location: ../Home/Index");
         }
         
         public function ShowManageView(){
@@ -48,7 +55,15 @@
                 require_once(VIEWS_PATH."company-manage.php");
             }
             else
-                HomeController::Index();
+                header("location: ../Home/Index");
+        }
+
+        public function ShowProfileCompany(){
+            require_once(VIEWS_PATH."select-nav.php");
+            if(SessionCheck::Check())
+                require_once(VIEWS_PATH."company-profile.php");
+            else
+                header("location: ../Home/Index");
         }
 
         public function ShowEditView($name, $address, $phone, $cuit){

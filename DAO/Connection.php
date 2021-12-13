@@ -2,7 +2,7 @@
     namespace DAO;
 
     use \PDO as PDO;
-    use \Exception as Exception;
+    use PDOException as Exception;
     use DAO\QueryType as QueryType;
 
     class Connection
@@ -13,13 +13,11 @@
 
         private function __construct()
         {
-            try
-            {
+            try{
                 $this->pdo = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME, DB_USER, DB_PASS);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
-            catch(Exception $ex)
-            {
+            catch(Exception $ex){
                 throw $ex;
             }
         }
@@ -34,48 +32,36 @@
 
         public function Execute($query, $parameters = array(), $queryType = QueryType::Query)
 	    {
-            try
-            {
-                $this->Prepare($query);
-                
+            try{
+                $this->Prepare($query);                
                 $this->BindParameters($parameters, $queryType);
-                
                 $this->pdoStatement->execute();
-
                 return $this->pdoStatement->fetchAll();
             }
-            catch(Exception $ex)
-            {
+            catch(Exception $ex){
                 throw $ex;
             }
         }
         
         public function ExecuteNonQuery($query, $parameters = array(), $queryType = QueryType::Query)
 	    {            
-            try
-            {
+            try{
                 $this->Prepare($query);
-                
                 $this->BindParameters($parameters, $queryType);
-
                 $this->pdoStatement->execute();
-
                 return $this->pdoStatement->rowCount();
             }
-            catch(Exception $ex)
-            {
+            catch(Exception $ex){
                 throw $ex;
             }        	    	
         }
         
         private function Prepare($query)
         {
-            try
-            {
+            try{
                 $this->pdoStatement = $this->pdo->prepare($query);
             }
-            catch(Exception $ex)
-            {
+            catch(Exception $ex){
                 throw $ex;
             }
         }
@@ -84,8 +70,8 @@
         {
             $i = 0;
 
-            foreach($parameters as $parameterName => $value)
-            {                
+            foreach($parameters as $parameterName => $value) {      
+
                 $i++;
 
                 if($queryType == QueryType::Query)

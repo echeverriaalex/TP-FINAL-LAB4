@@ -16,6 +16,7 @@
         <li class="nav-item"> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Company/ShowListView">Company List</a> </li>
         <li> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Student/ShowMyProfile">Profile</a> </li>
         <li> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>JobOffer/ShowListView">Job offers</a> </li>
+        <li> <a class="nav-link text-light" href="<?php echo FRONT_ROOT?>Application/ShowMyApplicationList">My applications list</a> </li>
 
         <?php if(isset($_SESSION['userlogged'])) { ?>
             <li><a class="nav-link text-light" href="<?php echo FRONT_ROOT?>User/LogOut">LogOut</a></li>

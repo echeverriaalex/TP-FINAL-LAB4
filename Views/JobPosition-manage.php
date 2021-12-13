@@ -45,9 +45,9 @@
                          }
                          else{
                          ?>
-                              <div class="list-group">
-                                   <div class="col-lg-4">
-                                        <h2 class="text-light"> <?php echo "No results found"; ?> </h2>
+                              <div class="">
+                                   <div class="">
+                                        <h2 > <?php echo "No results found"; ?> </h2>
                                    </div>
                               </div>
                          <?php

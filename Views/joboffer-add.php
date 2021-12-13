@@ -7,15 +7,24 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Company Name</label>
-                                   <select name="company" class="form-select" required>
-                                        <?php
-                                             foreach($companyList as $company){
-                                        ?>
-                                                  <option value="<?php echo $company->getName(); ?>"> <?php echo $company->getName(); ?> </option>
-                                        <?php        
-                                             }
-                                        ?>
-                                   </select>
+                                   <?php
+                                        if($_SESSION['userlogged']->getRole() == "company"){
+                                   ?>
+                                             <input name="company" class="form-control text-light" value="<?php echo $_SESSION['userlogged']->getName(); ?>">
+                                   <?php
+                                        }
+                                        else{
+                                   ?>
+                                             <select name="company" class="form-select" required>
+                                                  <?php
+                                                       foreach($companyList as $company){
+                                                  ?>
+                                                            <option value="<?php echo $company->getName(); ?>"> <?php echo $company->getName(); ?> </option>
+                                                  <?php        
+                                                       }
+                                                  }
+                                                  ?>
+                                             </select>
                               </div>
                          </div>
                          <div class="col-lg-4">
@@ -39,8 +48,39 @@
                                    <input type="number" name="salary" value="" class="form-control text-light">
                               </div>
                          </div>
+                         
+                         <!--
+                         <div class="col-lg-4">
+                              <input type="file" name="photo" required>
+                         </div>
+                         -->                        
+
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">URL image</label>
+                                   <input type="url" name="photo" value="" class="form-control text-light">
+                              </div>
+                         </div>
+
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">Creation Date</label>
+                                   <input type="datetime-local" name="createDate" value="time" class="form-control text-light" >
+                              </div>
+                         </div>
+                         
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">Culmination</label>
+                                   <input type="datetime-local" name="culmination" value="" class="form-control text-light">
+                              </div>
+                         </div>
                     </div>
-                    <button type="submit" class="btn btn-dark ml-auto d-block">Create job offer</button>
+                    <div class="col-lg-4">
+                         <div class="form-group">
+                              <button type="submit" class="btn btn-dark ml-auto d-block">Create job offer</button>
+                         </div>
+                    </div>
                </form>
           </div>          
      </section>

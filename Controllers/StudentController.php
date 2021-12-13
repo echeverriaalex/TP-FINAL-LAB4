@@ -1,16 +1,17 @@
 <?php
     namespace Controllers;
     use DAO\StudentDAO as StudentDAO;
-    use PDO\StudentPDO;
+    use DAO\StudentPDO;
     use Models\Student as Student;
+    use DAO\SessionCheck;
 
     class StudentController
     {
-        private $studentDAO;
+        //private $studentDAO;
         private $studentPDO;
 
         public function __construct(){
-            $this->studentDAO = new StudentDAO();
+            //$this->studentDAO = new StudentDAO();
             $this->studentPDO = new StudentPDO;
         }
 
@@ -27,9 +28,14 @@
         public function ShowManageView(){
 
             require_once(VIEWS_PATH.'select-nav.php');
-            $this->ShowFilterView();
-            $studentsList = $this->studentPDO->GetAll();
-            require_once(VIEWS_PATH."student-manage.php");
+
+            if(SessionCheck::Check()){
+                $this->ShowFilterView();
+                $studentsList = StudentPDO::getStudentListApi();
+                require_once(VIEWS_PATH."student-manage.php");
+            }
+            else
+                header("location: ../Home/Index");
         }
 
         public function ShowFilterView(){
@@ -41,23 +47,25 @@
             require_once(VIEWS_PATH."filter.php");
         }
 
-        public function ShowListView(){
+        public function ShowListStudentsRegisteredSystemView(){
             require_once(VIEWS_PATH."select-nav.php");
-            $studentList = $this->studentPDO->GetAll();
-            require_once(VIEWS_PATH."student-list.php");
-        }
+            if(SessionCheck::Check()){
 
-        public function Update(){
-
-            $this->studentPDO->UpdateStudentsDatabase();
-            echo "<br> Base de datos actualizada con API <br>";
-            $this->ShowManageView();
+                $studentListRegistered = $this->studentPDO->GetAll();
+                require_once(VIEWS_PATH."student-list.php");
+            }
+            else
+                header("location: ../Home/Index");
         }
 
         public function ShowMyProfile(){
-                require_once(VIEWS_PATH."select-nav.php");
+            require_once(VIEWS_PATH."select-nav.php");
+            if(SessionCheck::Check()){
                 $student = $_SESSION['userlogged'];
                 require_once(VIEWS_PATH."student-profile.php");
+            }
+            else
+                header("location: ../Home/Index");
         }
 
         public function Filter ($studentName){

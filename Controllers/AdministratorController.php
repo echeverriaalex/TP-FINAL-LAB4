@@ -1,9 +1,9 @@
 <?php
     namespace Controllers;
     use Models\User;
-    use PDO\AdministratorPDO;
-    use PDO\SessionCheck;
-    use PDO\UserPDO;
+    use DAO\AdministratorPDO;
+    use DAO\SessionCheck;
+    use DAO\UserPDO;
 
     class AdministratorController{
 

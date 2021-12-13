@@ -14,6 +14,7 @@
                     <thead>
                          <th>Cuit</th>
                          <th>Name</th>
+                         <th>E-mail</th>
                          <th>Address</th>
                          <th>Phone</th>
                          <th>Options</th>
@@ -25,6 +26,7 @@
                                 <tr>
                                     <td><?php echo $company->getCuit(); ?></td>
                                     <td><?php echo $company->getName(); ?></td>
+                                    <td><?php echo $company->getEmail(); ?></td>
                                     <td><?php echo $company->getAddress(); ?></td>
                                     <td><?php echo $company->getPhone(); ?></td>
                                     <td> 
