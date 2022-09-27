@@ -188,6 +188,7 @@ insert into Careers (careerId, descriptionCareer, statusCareer)values(8,"Univers
 
 
 
+
 drop database linkedon;
 
 INSERT INTO Users (email, passwordUser, roleUser) VALUES ("aleex.naahuel@outlook.com", "", "admin");

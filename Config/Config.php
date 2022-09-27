@@ -10,6 +10,8 @@
     define("IMG_PATH", FRONT_ROOT.VIEWS_PATH . "img/");
 
     //API constants
+    define("URLOrigen1", "https://utn-students-api2.herokuapp.com/index.html");
+    define("URLOrigen2", "https://utn-students-api2.herokuapp.com/index.html");
     define("Header_Name","x-api-key");
     define("Header_Value","4f3bceed-50ba-4461-a910-518598664c08");
     define("Request_URL_Career","https://utn-students-api.herokuapp.com/api/Career");
